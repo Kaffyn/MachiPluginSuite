@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="AbilitySystemConfig" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="AbilitySystemConfig" load_steps=2 format=3 uid="uid://be6ncmgb3pgyl"]
 
-[ext_resource type="Script" path="res://addons/ability_system/resources/config.gd" id="1_bdmin"]
+[ext_resource type="Script" uid="uid://c3enqvijhlh3w" path="res://addons/ability_system/resources/config.gd" id="1_bdmin"]
 
 [resource]
 script = ExtResource("1_bdmin")
-game_type = 1
-use_gravity = false
-default_gravity = 0.0
+game_type = 2
+default_gravity = 10.0
 state_node_color = Color(0.392157, 0.584314, 0.929412, 1)
 log_color = Color(1, 0.647059, 0, 1)

@@ -31,6 +31,7 @@ theme = ExtResource("2_theme")
 layout_mode = 2
 theme = ExtResource("2_theme")
 current_tab = 0
+clip_tabs = false
 
 [node name="Biblioteca" parent="MarginContainer/TabContainer" instance=ExtResource("2_lib")]
 layout_mode = 2
