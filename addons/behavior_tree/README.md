@@ -1,7 +1,8 @@
 # Behavior Tree: A Lógica por Trás da Ação
 
-> **Inspiração:** Baseado na robustez das árvores da **Unreal Engine** e na leveza do **LimboAI**.
+> **Inspiração:** Baseado na robustez das árvores da **Unreal Engine** e na experiência de usuário do **LimboAI**.
 > **Integração:** Projetado para ser o "Motorista" do **Ability System (GAS)**.
+> **Editor:** Funciona como um **Main Screen Plugin** (lado a lado com 2D/3D/Script), não como Bottom Panel.
 
 ---
 
@@ -91,14 +92,20 @@ addons/behavior_tree/
 │   └── bt_node.gd           # Classe base
 ├── resources/
 │   ├── blackboard.gd        # Dados compartilhados
-│   └── behavior_tree.gd     # O Resource da árvore (editável visualmente)
+│   └── behavior_tree.gd     # O Resource da árvore
 ├── tasks/
 │   ├── bt_task_wait.gd
 │   ├── bt_task_move_to.gd
 │   └── asc_tasks/           # Integração com Ability System
 │       ├── bt_task_activate_ability.gd
 │       └── bt_task_set_context.gd
-└── editor/                  # GraphEdit customizado (similar ao LimboAI)
+└── editor/
+    ├── main_screen.tscn     # A Tela Principal (LimboAI style)
+    ├── detailed_gui/        # Componentes UI
+    │   ├── task_palette.gd  # Lista de Tasks arrastáveis (Esquerda)
+    │   ├── tree_editor.gd   # GraphEdit/Tree visual (Centro)
+    │   └── blackboard_panel.gd # Editor de Blackboard (Direita)
+    └── plugin.gd            # EditorPlugin (has_main_screen = true)
 ```
 
 ---
