@@ -1,16 +1,16 @@
-name: Build MGAS GDExtension
+name: Build Behavior Tree GDExtension
 
 on:
   push:
     paths:
-      - "addons/mgas/**"
-      - ".github/workflows/build_mgas.yml"
+      - "addons/behavior_tree/**"
+      - ".github/workflows/behavior_tree.yml"
   pull_request:
     paths:
-      - "addons/mgas/**"
+      - "addons/behavior_tree/**"
 
 env:
-  LIBNAME: mgas
+  LIBNAME: libbehaviortree
 
 jobs:
   build:
@@ -61,7 +61,7 @@ jobs:
           pip install scons
 
       - name: Compile GDExtension
-        working-directory: addons/mgas
+        working-directory: addons/behavior_tree
         run: |
           scons platform=${{ matrix.platform }} target=${{ matrix.target }}
 
@@ -69,7 +69,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.LIBNAME }}.${{ matrix.platform }}${{ matrix.suffix }}
-          path: addons/mgas/bin/
+          path: addons/behavior_tree/bin/
 
   build-android:
     name: Build Android (${{ matrix.arch }})
@@ -117,7 +117,7 @@ jobs:
           link-to-sdk: true
 
       - name: Compile Android
-        working-directory: addons/mgas
+        working-directory: addons/behavior_tree
         env:
           ANDROID_HOME: ${{ steps.setup-ndk.outputs.android-sdk-root }}
           ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
@@ -128,4 +128,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.LIBNAME }}.android.${{ matrix.arch }}${{ matrix.suffix }}
-          path: addons/mgas/bin/
+          path: addons/behavior_tree/bin/

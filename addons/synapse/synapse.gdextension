@@ -1,0 +1,15 @@
+[configuration]
+
+entry_symbol = "synapse_library_init"
+compatibility_minimum = "4.1"
+
+[libraries]
+
+windows.debug.x86_64 = "bin/libsynapse.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "bin/libsynapse.windows.template_release.x86_64.dll"
+linux.debug.x86_64 = "bin/libsynapse.linux.template_debug.x86_64.so"
+linux.release.x86_64 = "bin/libsynapse.linux.template_release.x86_64.so"
+macos.debug = "bin/libsynapse.macos.template_debug.framework/libsynapse"
+macos.release = "bin/libsynapse.macos.template_release.framework/libsynapse"
+android.debug.arm64 = "bin/libsynapse.android.template_debug.arm64.so"
+android.release.arm64 = "bin/libsynapse.android.template_release.arm64.so"
