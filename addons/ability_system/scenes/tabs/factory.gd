@@ -190,22 +190,24 @@ func _on_file_selected(path: String) -> void:
 func _create_resource_for_type(type_name: String) -> Resource:
 	var script_map = {
 		"State": "res://addons/ability_system/resources/state.gd",
-		"Item": "res://addons/inventory_system/resources/item.gd",
+		# "Item": Native Class
 		"Skill": "res://addons/ability_system/resources/skill.gd",
 		"Compose": "res://addons/ability_system/resources/compose.gd",
-		"Inventory": "res://addons/inventory_system/resources/inventory.gd",
+		# "Inventory": Native Class
 		"SkillTree": "res://addons/ability_system/resources/skilltree.gd",
 		"CharacterSheet": "res://addons/ability_system/resources/character_sheet.gd"
 	}
 	
-	if not type_name in script_map:
-		return null
+	if type_name in script_map:
+		var script_path = script_map[type_name]
+		if ResourceLoader.exists(script_path):
+			var script = load(script_path)
+			if script and script is GDScript:
+				return script.new()
 	
-	var script_path = script_map[type_name]
-	if ResourceLoader.exists(script_path):
-		var script = load(script_path)
-		if script and script is GDScript:
-			return script.new()
+	# Fallback for Native Classes (C++)
+	if ClassDB.class_exists(type_name):
+		return ClassDB.instantiate(type_name)
 	
 	return null
 

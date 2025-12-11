@@ -1,8 +1,10 @@
 #ifndef SOUND_SERVER_H
 #define SOUND_SERVER_H
 
-#include <godot_cpp/classes/audio_server.hpp> // Or just Object/Node? Use extends Object?
-#include <godot_cpp/classes/object.hpp> 
+#include <godot_cpp/classes/audio_server.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/ref.hpp> 
 
 using namespace godot;
 
