@@ -4,17 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://jydhqwmja5uo" path="res://addons/ability_system/scenes/tabs/library.tscn" id="2_lib"]
 [ext_resource type="Theme" uid="uid://hy5kockqpp4i" path="res://addons/ability_system/assets/theme.tres" id="2_theme"]
 [ext_resource type="PackedScene" path="res://addons/ability_system/scenes/tabs/editor.tscn" id="3_editor"]
-[ext_resource type="PackedScene" path="res://addons/ability_system/scenes/tabs/factory.tscn" id="4_fact"]
+[ext_resource type="PackedScene" uid="uid://cqunx7ihtyp6r" path="res://addons/ability_system/scenes/tabs/factory.tscn" id="4_fact"]
 [ext_resource type="PackedScene" path="res://addons/ability_system/scenes/tabs/docs_viewer.tscn" id="6_docs"]
 
 [node name="BehaviorStatesPanel" type="Control"]
-custom_minimum_size = Vector2(0, 235)
+custom_minimum_size = Vector2(0, 240)
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
 theme = ExtResource("2_theme")
 script = ExtResource("1_script")
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://cqunx7ihtyp6r"]
 
-[ext_resource type="Theme" path="res://addons/ability_system/assets/theme.tres" id="1_theme"]
-[ext_resource type="Script" path="res://addons/ability_system/scenes/tabs/factory.gd" id="2_script"]
+[ext_resource type="Theme" uid="uid://hy5kockqpp4i" path="res://addons/ability_system/assets/theme.tres" id="1_theme"]
+[ext_resource type="Script" uid="uid://ym6wulkskuhd" path="res://addons/ability_system/scenes/tabs/factory.gd" id="2_script"]
 
 [node name="Factory" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 160)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -51,7 +52,7 @@ text = "Game Type:"
 [node name="GameTypeOption" type="OptionButton" parent="HSplitContainer/RightPanel/ConfigPanel/GameTypeRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-selected = 1
+selected = 2
 item_count = 3
 popup/item_0/text = "Platform2D"
 popup/item_0/id = 0
@@ -70,6 +71,7 @@ text = "Use Gravity:"
 
 [node name="GravityCheck" type="CheckBox" parent="HSplitContainer/RightPanel/ConfigPanel/GravityRow"]
 layout_mode = 2
+button_pressed = true
 
 [node name="GravityValueRow" type="HBoxContainer" parent="HSplitContainer/RightPanel/ConfigPanel"]
 layout_mode = 2
@@ -84,6 +86,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 min_value = -2000.0
 max_value = 2000.0
+value = 10.0
 
 [node name="DefaultStateRow" type="HBoxContainer" parent="HSplitContainer/RightPanel/ConfigPanel"]
 layout_mode = 2
@@ -119,11 +122,10 @@ visible = false
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="PresetGrid" type="GridContainer" parent="HSplitContainer/RightPanel/ResourcePanel"]
+[node name="PresetGrid" type="HFlowContainer" parent="HSplitContainer/RightPanel/ResourcePanel"]
 layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
-columns = 3
 
 [node name="PresetDescription" type="Label" parent="HSplitContainer/RightPanel/ResourcePanel"]
 layout_mode = 2

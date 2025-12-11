@@ -6,6 +6,7 @@
 extends MarginContainer
 
 const Presets = preload("res://addons/ability_system/scenes/tabs/factory_presets.gd")
+const ComponentDefs = preload("res://addons/ability_system/resources/components/component_definitions.gd")
 const CONFIG_PATH = "res://addons/ability_system/data/config.tres"
 
 # Tipos disponíveis
@@ -16,7 +17,7 @@ const RESOURCE_TYPES = ["State", "Item", "Skill", "Compose", "Inventory", "Skill
 # @onready var options_label: Label = $HSplitContainer/RightPanel/OptionsLabel
 @onready var config_panel: VBoxContainer = $HSplitContainer/RightPanel/ConfigPanel
 @onready var resource_panel: VBoxContainer = $HSplitContainer/RightPanel/ResourcePanel
-@onready var preset_grid: GridContainer = $HSplitContainer/RightPanel/ResourcePanel/PresetGrid
+@onready var preset_grid: HFlowContainer = $HSplitContainer/RightPanel/ResourcePanel/PresetGrid
 @onready var preset_description: Label = $HSplitContainer/RightPanel/ResourcePanel/PresetDescription
 @onready var name_edit: LineEdit = $HSplitContainer/RightPanel/ResourcePanel/NameRow/NameEdit
 @onready var file_dialog: FileDialog = $FileDialog
@@ -164,8 +165,9 @@ func _on_file_selected(path: String) -> void:
 		return
 	
 	# Apply preset values
+	# Apply preset values
 	if not _selected_preset.is_empty():
-		Presets.apply_preset_to_resource(res, _selected_type, _selected_preset)
+		_apply_preset_with_components(res, _selected_type, _selected_preset)
 	
 	# Apply name
 	if "name" in res:
@@ -215,3 +217,47 @@ func _get_default_path_for_type(type_name: String) -> String:
 			return _config.default_compose_path
 	
 	return "res://"
+
+func _apply_preset_with_components(res: Resource, type_name: String, preset_name: String) -> void:
+	var presets = Presets.get_presets_for_type(type_name)
+	if not preset_name in presets:
+		return
+	
+	var data = presets[preset_name]
+	var values = data.get("values", {})
+	
+	# 1. Apply direct properties
+	for key in values.keys():
+		if key == "components": continue # Skip special key
+		if key in res:
+			res.set(key, values[key])
+			
+	# 2. Apply Components (if defined)
+	if "components" in values and "components" in res:
+		var comps_data = values["components"] # Array of dictionaries
+		for c_data in comps_data:
+			var c_name = c_data.get("name", "")
+			var c_values = c_data.get("values", {})
+			
+			# Instantiate Component
+			var component = _create_component_by_name(type_name, c_name)
+			if component:
+				# Apply values to component
+				for kv in c_values.keys():
+					if kv in component:
+						component.set(kv, c_values[kv])
+				
+				res.components.append(component)
+
+func _create_component_by_name(type_name: String, comp_name: String) -> Resource:
+	var defs = ComponentDefs.get_components_for_type(type_name)
+	
+	# Search by name matches
+	for key in defs:
+		if defs[key].name == comp_name:
+			var script_path = defs[key].script
+			if ResourceLoader.exists(script_path):
+				var scr = load(script_path)
+				if scr: return scr.new()
+	return null
+

@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://bcyca08i11th0"]
 
-[ext_resource type="Theme" path="res://addons/ability_system/assets/theme.tres" id="1_theme"]
-[ext_resource type="Script" path="res://addons/ability_system/scenes/tabs/editor.gd" id="2_script"]
-[ext_resource type="Script" path="res://addons/ability_system/scenes/tabs/editor_graph.gd" id="3_graph"]
+[ext_resource type="Theme" uid="uid://hy5kockqpp4i" path="res://addons/ability_system/assets/theme.tres" id="1_theme"]
+[ext_resource type="Script" uid="uid://cu4hbljupgwo7" path="res://addons/ability_system/scenes/tabs/editor.gd" id="2_script"]
+[ext_resource type="Script" uid="uid://digy537wahusd" path="res://addons/ability_system/scenes/tabs/editor_graph.gd" id="3_graph"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ks2jb"]
 
@@ -12,6 +12,7 @@ bg_color = Color(0.14509805, 0.16862746, 0.20392157, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7hs3l"]
 
 [node name="Editor" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 160)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -81,6 +82,7 @@ layout_mode = 2
 
 [node name="GraphEdit" type="GraphEdit" parent="VBoxContainer/HSplitContainer/VBoxContainer/GraphContainer"]
 layout_mode = 2
+scroll_offset = Vector2(0, -111)
 right_disconnects = true
 minimap_enabled = false
 script = ExtResource("3_graph")

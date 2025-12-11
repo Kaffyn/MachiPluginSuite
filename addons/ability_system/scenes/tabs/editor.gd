@@ -599,6 +599,10 @@ func _on_file_selected(path: String) -> void:
 		_update_sidebar()
 		_load_resource_to_graph(res, path)
 
+## Public API called by Panel
+func load_resource_from_library(path: String) -> void:
+	_on_file_selected(path)
+
 func _on_save_pressed() -> void:
 	if not _current_resource:
 		return
