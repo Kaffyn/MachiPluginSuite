@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://dvay51mx80bs2"]
 
-[ext_resource type="Script" path="res://addons/ability_system/scenes/panel.gd" id="1_script"]
-[ext_resource type="PackedScene" path="res://addons/ability_system/scenes/tabs/library.tscn" id="2_lib"]
-[ext_resource type="Theme" path="res://addons/ability_system/assets/theme.tres" id="2_theme"]
+[ext_resource type="Script" uid="uid://cfrbhthw780m4" path="res://addons/ability_system/scenes/panel.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://jydhqwmja5uo" path="res://addons/ability_system/scenes/tabs/library.tscn" id="2_lib"]
+[ext_resource type="Theme" uid="uid://hy5kockqpp4i" path="res://addons/ability_system/assets/theme.tres" id="2_theme"]
 [ext_resource type="PackedScene" path="res://addons/ability_system/scenes/tabs/editor.tscn" id="3_editor"]
 [ext_resource type="PackedScene" path="res://addons/ability_system/scenes/tabs/factory.tscn" id="4_fact"]
 [ext_resource type="PackedScene" path="res://addons/ability_system/scenes/tabs/docs_viewer.tscn" id="6_docs"]
 
 [node name="BehaviorStatesPanel" type="Control"]
+custom_minimum_size = Vector2(0, 235)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,10 +26,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_theme")
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
