@@ -2,10 +2,9 @@
 extends EditorPlugin
 
 func _enter_tree() -> void:
-	# Register the C++ Singleton as an Autoload (if desired)
-	# For now, we just ensure the plugin loads without error.
-	# Users can access MachiSoundManager directly or we can add an autoload here later.
-	pass
+	# Check if the singleton is already present to avoid errors (good practice)
+	if not ProjectSettings.has_setting("autoload/Sounds"):
+		add_autoload_singleton("Sounds", "res://addons/sounds/autoload/sound_manager.gd")
 
 func _exit_tree() -> void:
-	pass
+	remove_autoload_singleton("Sounds")
