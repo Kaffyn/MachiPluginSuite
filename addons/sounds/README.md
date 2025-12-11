@@ -4,28 +4,27 @@
 
 ---
 
-## 🎵 O Problema: `AudioStreamPlayer` é primitivo
+## 🎵 O Problema: Escala e Gerenciamento
 
-Na Godot crua, você arrasta um `AudioStreamPlayer`, coloca um `.wav` e chama `.play()`.
-Isso gera problemas em escala AAA:
+A Godot 4 já possui o `AudioStreamRandomizer` para resolver repetição (Pitch/Volume/Weight).
+Porém, ainda faltam recursos de **orquestração de alto nível**:
 
-1. **Repetição:** Ouvir o mesmo "passo" 100x enjoa.
-2. **Variedade:** Você precisa de aleatoriedade de Pitch e Volume para "humanizar" o som.
-3. **Concorrência:** 50 inimigos atirando ao mesmo tempo estouram o áudio e a CPU.
-4. **Organização:** Arquivos de áudio espalhados por cenas.
+1.  **Concorrência:** Impedir que 50 tiros toquem simultaneamente (estourando CPU e ouvido).
+2.  **Prioridade:** Se o limite de sons for atingido, priorizar o "Tiro do Player" sobre o "Passo do NPC distante".
+3.  **Pooling:** Não instanciar `AudioStreamPlayer` a cada tiro.
 
-## 🔊 A Solução: `SoundCue` (O Evento)
+## 🔊 A Solução: `SmartAudio`
 
-Nós não tocamos `.wav` ou `.ogg`. Nós tocamos **`SoundCues`**.
+Nós usamos os recursos nativos da Godot (`AudioStream` e `AudioStreamRandomizer`) e os envolvemos em um sistema de gerenciamento inteligente.
 
-### 1. SoundCue (Resource)
+### 1. SoundCue (Resource wrapper)
 
-Um Resource que encapsula a lógica de reprodução.
+Um wrapper opcional que adiciona metadados ao `AudioStream`:
 
-- **Variations:** Lista de AudioStreams (ex: `footstep_01.wav`, `footstep_02.wav`). O sistema escolhe um aleatório.
-- **Randomization:** `pitch_range` (0.9 a 1.1), `volume_range` (-2db a +2db).
-- **Concurrency:** "Max instances = 3". Se o quarto som tentar tocar, ele é ignorado ou rouba a voz do mais antigo.
-- **Layers:** Pode disparar múltiplos sons (ex: Tiro = Som do Tiro + Som da Cápsula caindo).
+- **Stream:** O `AudioStream` nativo (pode ser um `.wav` único ou um `AudioStreamRandomizer`).
+- **Concurrency:** `max_instances` (ex: 5).
+- **Stealing Behavior:** Se lotar, `IGNORE_NEW` ou `STEAL_OLDEST`?
+- **Cooldown:** Tempo mínimo entre triggers (ex: evitar "metralhadora" de som de hit).
 
 ### 2. SoundManager (O Maestro)
 
