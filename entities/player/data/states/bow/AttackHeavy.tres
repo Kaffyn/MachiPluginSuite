@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="State" load_steps=20 format=3]
 
-[ext_resource type="Script" path="res://addons/behavior_states/resources/state.gd" id="1_attack_data"]
-[ext_resource type="Script" path="res://addons/behavior_states/resources/components/state_component.gd" id="1_egnjp"]
+[ext_resource type="Script" path="res://addons/ability_system/resources/state.gd" id="1_attack_data"]
+[ext_resource type="Script" path="res://addons/ability_system/resources/components/state_component.gd" id="1_egnjp"]
 [ext_resource type="PackedScene" path="res://entities/player/data/states/bow/projectiles/Arrow.tscn" id="2_arrow"]
-[ext_resource type="Script" path="res://addons/behavior_states/resources/components/state/projectile_component.gd" id="3_fpdft"]
-[ext_resource type="Script" path="res://addons/behavior_states/resources/components/state/cooldown_component.gd" id="4_5abm3"]
-[ext_resource type="Script" path="res://addons/behavior_states/resources/components/state/charged_component.gd" id="5_uydm0"]
-[ext_resource type="Script" path="res://addons/behavior_states/resources/components/state/cost_component.gd" id="6_0tvcn"]
+[ext_resource type="Script" path="res://addons/ability_system/resources/components/state/projectile_component.gd" id="3_fpdft"]
+[ext_resource type="Script" path="res://addons/ability_system/resources/components/state/cooldown_component.gd" id="4_5abm3"]
+[ext_resource type="Script" path="res://addons/ability_system/resources/components/state/charged_component.gd" id="5_uydm0"]
+[ext_resource type="Script" path="res://addons/ability_system/resources/components/state/cost_component.gd" id="6_0tvcn"]
 
 [sub_resource type="Resource" id="Resource_3p0ne"]
 script = ExtResource("3_fpdft")

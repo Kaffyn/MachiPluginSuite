@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="State" load_steps=15 format=3]
 
-[ext_resource type="Script" path="res://addons/behavior_states/resources/components/state_component.gd" id="1_aaqtc"]
-[ext_resource type="Script" path="res://addons/behavior_states/resources/state.gd" id="1_attack_data"]
-[ext_resource type="Script" path="res://addons/behavior_states/resources/components/state/hitbox_component.gd" id="2_v4g6k"]
-[ext_resource type="Script" path="res://addons/behavior_states/resources/components/state/cooldown_component.gd" id="3_qlou1"]
-[ext_resource type="Script" path="res://addons/behavior_states/resources/components/state/charged_component.gd" id="4_q01sk"]
+[ext_resource type="Script" path="res://addons/ability_system/resources/components/state_component.gd" id="1_aaqtc"]
+[ext_resource type="Script" path="res://addons/ability_system/resources/state.gd" id="1_attack_data"]
+[ext_resource type="Script" path="res://addons/ability_system/resources/components/state/hitbox_component.gd" id="2_v4g6k"]
+[ext_resource type="Script" path="res://addons/ability_system/resources/components/state/cooldown_component.gd" id="3_qlou1"]
+[ext_resource type="Script" path="res://addons/ability_system/resources/components/state/charged_component.gd" id="4_q01sk"]
 
 [sub_resource type="Resource" id="Resource_d3oat"]
 script = ExtResource("2_v4g6k")

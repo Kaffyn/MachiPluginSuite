@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Compose" load_steps=17 format=3]
 
-[ext_resource type="Script" path="res://addons/behavior_states/resources/state.gd" id="1_45ifw"]
-[ext_resource type="Script" path="res://addons/behavior_states/resources/compose.gd" id="1_compose"]
+[ext_resource type="Script" path="res://addons/ability_system/resources/state.gd" id="1_45ifw"]
+[ext_resource type="Script" path="res://addons/ability_system/resources/compose.gd" id="1_compose"]
 [ext_resource type="Resource" path="res://entities/player/data/states/unarmed/Idle.tres" id="2_idle"]
 [ext_resource type="Resource" path="res://entities/player/data/states/unarmed/Walk.tres" id="3_walk"]
 [ext_resource type="Resource" path="res://entities/player/data/states/unarmed/Run.tres" id="4_run"]
