@@ -1,19 +1,7 @@
-# BehaviorStates — Documentation Index
+# Ability System (GAS) Documentation
 
-Documentação oficial do plugin **BehaviorStates** (GDScript Version).
+The official documentation has been consolidated into the [GEMINI.md](../GEMINI.md) file, which serves as the "Architectural Bible" for this plugin.
 
-> **Nota:** Esta é a versão GDScript estável. Para a versão C++ experimental, veja [MGAS](../../mgas/docs/README.md).
+Please refer to `GEMINI.md` and `README.md` in the root of the plugin for the most up-to-date information.
 
-## Sumário
-
-1. [Architecture & Philosophy](01_Architecture.md)
-2. [Behavior Node (The Brain)](02_BehaviorNode.md)
-3. [Machine Node (The Runner)](03_MachineNode.md)
-4. [Backpack Node (The Inventory)](04_Backpack.md)
-5. [Behavior Branch (Context & Compose)](05_Branch_Behavior.md)
-6. [State Branch (Logic & Components)](06_Branch_States.md)
-7. [Item Branch (Loot & Gear)](07_Branch_Items.md)
-8. [Inverted Index (HashMap)](08_Performance.md)
-9. [Editor Tools](09_EditorTools.md)
-10. [Recipes & Patterns](10_Recipes.md)
-11. [API Reference](11_API_Reference.md)
+The previous documentation files in this directory are deprecated and have been removed to prevent confusion with the new AbilitySystemComponent architecture.

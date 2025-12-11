@@ -20,18 +20,21 @@ extends Resource
 @export_group("Requirements (Filters)")
 # Estes campos existem APENAS para o sistema de Indexação O(1).
 # Eles definem QUANDO este estado pode rodar, não O QUE ele faz.
-@export var weapon: BehaviorStates.Weapon = BehaviorStates.Weapon.ANY
-@export var motion: BehaviorStates.Motion = BehaviorStates.Motion.ANY
-@export var attack: BehaviorStates.Attack = BehaviorStates.Attack.ANY
-@export var physics: BehaviorStates.Physics = BehaviorStates.Physics.ANY
-@export var jump: BehaviorStates.Jump = BehaviorStates.Jump.ANY
+@export_group("Requirements (Filters)")
+# Estes campos existem APENAS para o sistema de Indexação O(1).
+# Eles definem QUANDO este estado pode rodar, não O QUE ele faz.
+@export var weapon: AbilitySystem.Weapon = AbilitySystem.Weapon.ANY
+@export var motion: AbilitySystem.Motion = AbilitySystem.Motion.ANY
+@export var attack: AbilitySystem.Attack = AbilitySystem.Attack.ANY
+@export var physics: AbilitySystem.Physics = AbilitySystem.Physics.ANY
+@export var jump: AbilitySystem.Jump = AbilitySystem.Jump.ANY
 
 @export_group("Reaction Rules")
 # Metadados para a Máquina saber como reagir a eventos externos sem carregar compomentes.
-@export var on_physics_change: BehaviorStates.Reaction = BehaviorStates.Reaction.IGNORE
-@export var on_weapon_change: BehaviorStates.Reaction = BehaviorStates.Reaction.IGNORE
-@export var on_motion_change: BehaviorStates.Reaction = BehaviorStates.Reaction.IGNORE
-@export var on_take_damage: BehaviorStates.Reaction = BehaviorStates.Reaction.IGNORE
+@export var on_physics_change: AbilitySystem.Reaction = AbilitySystem.Reaction.IGNORE
+@export var on_weapon_change: AbilitySystem.Reaction = AbilitySystem.Reaction.IGNORE
+@export var on_motion_change: AbilitySystem.Reaction = AbilitySystem.Reaction.IGNORE
+@export var on_take_damage: AbilitySystem.Reaction = AbilitySystem.Reaction.IGNORE
 
 ## Gera a chave de Hash para este Estado baseada nos seus Requisitos.
 ## Esta função é crítica para a performance (Lookup O(1)).

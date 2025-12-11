@@ -5,27 +5,26 @@
 extends MarginContainer
 
 # Plugin Icon Paths
-const ICON_STATE = "res://addons/behavior_states/assets/icons/state.svg"
-const ICON_COMPOSE = "res://addons/behavior_states/assets/icons/compose.svg"
-const ICON_ITEM = "res://addons/behavior_states/assets/icons/item.svg"
-const ICON_SKILL = "res://addons/behavior_states/assets/icons/skill.svg"
-const ICON_CHARACTER_SHEET = "res://addons/behavior_states/assets/icons/character_sheet.svg"
-const ICON_CONFIG = "res://addons/behavior_states/assets/icons/config.svg"
+const ICON_STATE = "res://addons/ability_system/assets/icons/state.svg"
+const ICON_COMPOSE = "res://addons/ability_system/assets/icons/compose.svg"
+const ICON_SKILL = "res://addons/ability_system/assets/icons/skill.svg"
+const ICON_CHARACTER_SHEET = "res://addons/ability_system/assets/icons/character_sheet.svg"
+const ICON_CONFIG = "res://addons/ability_system/assets/icons/config.svg"
 
 # Plugin resource types to show
-const PLUGIN_TYPES = ["State", "Compose", "Item", "Skill", "CharacterSheet", "BehaviorStatesConfig"]
+const PLUGIN_TYPES = ["State", "Compose", "Skill", "CharacterSheet", "AbilitySystemConfig"]
 
 @onready var search_edit: LineEdit = $VBoxContainer/HBoxContainer/SearchEdit
 @onready var content_box: VBoxContainer = $VBoxContainer/ScrollContainer/Content
 
-const ASSET_CARD_SCENE = "res://addons/behavior_states/scenes/components/asset_card.tscn"
+const ASSET_CARD_SCENE = "res://addons/ability_system/scenes/components/asset_card.tscn"
 var AssetCardScene: PackedScene
 
 var _all_assets: Array[String] = []
 var _icon_cache: Dictionary = {}
 
 # Grouping Definitions
-const GROUP_SYSTEM = ["BehaviorStatesConfig", "Inventory", "Item", "Skill", "SkillTree", "CharacterSheet"]
+const GROUP_SYSTEM = ["AbilitySystemConfig", "Skill", "SkillTree", "CharacterSheet"]
 
 func _ready() -> void:
 	AssetCardScene = load(ASSET_CARD_SCENE)

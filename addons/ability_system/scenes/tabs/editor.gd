@@ -5,27 +5,27 @@
 ## Suporta State, Item, Skill (component-based) e Compose, Inventory, SkillTree (containers).
 extends MarginContainer
 
-const ComponentDefs = preload("res://addons/behavior_states/resources/components/component_definitions.gd")
+const ComponentDefs = preload("res://addons/ability_system/resources/components/component_definitions.gd")
 
 # Tipos block-based vs containers
-const BLOCK_TYPES = ["State", "Item", "Skill", "Effects", "BehaviorStatesConfig", "CharacterSheet"]
+const BLOCK_TYPES = ["State", "Item", "Skill", "Effects", "AbilitySystemConfig", "CharacterSheet"]
 const CONTAINER_TYPES = ["Compose", "Inventory", "SkillTree"]
 
 const CONTAINER_CHILD_TYPE = {
 	"Compose": "State",
-	"Inventory": "Item", 
+	"Inventory": "Item",
 	"SkillTree": "Skill"
 }
 
 const TYPE_COLORS = {
-	"State": Color("#22c55e"),
-	"Item": Color("#3b82f6"),
-	"Skill": Color("#ec4899"),
-	"Effects": Color("#a855f7"),
-	"Compose": Color("#f59e0b"),
-	"Inventory": Color("#8b5cf6"),
-	"SkillTree": Color("#a855f7"),
-	"BehaviorStatesConfig": Color("#f59e0b"),
+	"State": Color("#3b82f6"),
+	"Item": Color("#22c55e"),
+	"Skill": Color("#a855f7"),
+	"Effects": Color("#f97316"),
+	"Compose": Color("#06b6d4"),
+	"Inventory": Color("#6d28d9"),
+	"SkillTree": Color("#db2777"),
+	"AbilitySystemConfig": Color("#f59e0b"),
 	"CharacterSheet": Color("#ef4444")
 }
 
@@ -37,9 +37,24 @@ const TYPE_FILTERS = {
 	"Compose": "*.tres",
 	"Inventory": "*.tres",
 	"SkillTree": "*.tres",
-	"BehaviorStatesConfig": "*.tres",
+	"AbilitySystemConfig": "*.tres",
 	"CharacterSheet": "*.tres"
 }
+
+# ... (inside _on_block_activated)
+	elif _selected_type in CONTAINER_TYPES:
+		var child_path = "res://addons/ability_system/data/" + item_text
+		var child_res = load(child_path)
+
+# ... (inside _create_resource_for_type)
+		"SkillTree": return SkillTree.new()
+		"AbilitySystemConfig": return AbilitySystemConfig.new()
+		"CharacterSheet": return CharacterSheet.new()
+
+# ... (inside _detect_resource_type)
+	elif res is SkillTree: return "SkillTree"
+	elif res is AbilitySystemConfig: return "AbilitySystemConfig"
+	elif res is CharacterSheet: return "CharacterSheet"
 
 @onready var block_list: ItemList = $VBoxContainer/HSplitContainer/Sidebar/BlockList
 @onready var search_edit: LineEdit = $VBoxContainer/HSplitContainer/Sidebar/SearchEdit
@@ -111,7 +126,7 @@ func _update_sidebar(filter: String = "") -> void:
 
 func _scan_assets_for_type(type_name: String) -> Array:
 	var results: Array = []
-	var base_path = "res://addons/behavior_states/data/"
+	var base_path = "res://addons/ability_system/data/"
 	var dir = DirAccess.open(base_path)
 	if dir:
 		dir.list_dir_begin()
@@ -456,7 +471,7 @@ func _on_block_activated(index: int) -> void:
 					_load_resource_to_graph(_current_resource, _current_path)
 
 	elif _selected_type in CONTAINER_TYPES:
-		var child_path = "res://addons/behavior_states/data/" + item_text
+		var child_path = "res://addons/ability_system/data/" + item_text
 		var child_res = load(child_path)
 		if child_res:
 			_add_child_to_container(child_res)
@@ -728,7 +743,7 @@ func _create_resource_for_type(type_name: String) -> Resource:
 		"Compose": return Compose.new()
 		"Inventory": return Inventory.new()
 		"SkillTree": return SkillTree.new()
-		"BehaviorStatesConfig": return BehaviorStatesConfig.new()
+		"AbilitySystemConfig": return AbilitySystemConfig.new()
 		"CharacterSheet": return CharacterSheet.new()
 	return null
 
@@ -739,7 +754,7 @@ func _detect_resource_type(res: Resource) -> String:
 	elif res is Compose: return "Compose"
 	elif res is Inventory: return "Inventory"
 	elif res is SkillTree: return "SkillTree"
-	elif res is BehaviorStatesConfig: return "BehaviorStatesConfig"
+	elif res is AbilitySystemConfig: return "AbilitySystemConfig"
 	elif res is CharacterSheet: return "CharacterSheet"
 	elif res is Effect: return "Effects"
 	return ""

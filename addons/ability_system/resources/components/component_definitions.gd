@@ -31,7 +31,7 @@ static func _initialize() -> void:
 static func _get_state_components() -> Dictionary:
 	return {
 		"MovementComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/movement_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/movement_component.gd",
 			"name": "Movement",
 			"color": Color("#22c55e"),
 			"fields": [
@@ -42,7 +42,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"StandardMoveComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/standard_move_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/standard_move_component.gd",
 			"name": "Standard Move",
 			"color": Color("#3b82f6"),
 			"fields": [
@@ -53,7 +53,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"PhysicsComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/physics_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/physics_component.gd",
 			"name": "Physics",
 			"color": Color("#06b6d4"),
 			"fields": [
@@ -64,7 +64,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"HitboxComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/hitbox_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/hitbox_component.gd",
 			"name": "Hitbox",
 			"color": Color("#ef4444"),
 			"fields": [
@@ -77,7 +77,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"AnimationComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/animation_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/animation_component.gd",
 			"name": "Animation",
 			"color": Color("#a855f7"),
 			"fields": [
@@ -88,7 +88,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"SpriteComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/sprite_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/sprite_component.gd",
 			"name": "Sprite",
 			"color": Color("#a855f7"),
 			"fields": [
@@ -101,7 +101,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"AudioComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/audio_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/audio_component.gd",
 			"name": "Audio",
 			"color": Color("#06b6d4"),
 			"fields": [
@@ -112,7 +112,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"VFXComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/vfx_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/vfx_component.gd",
 			"name": "VFX",
 			"color": Color("#06b6d4"),
 			"fields": [
@@ -123,7 +123,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"ProjectileComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/projectile_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/projectile_component.gd",
 			"name": "Projectile",
 			"color": Color("#f97316"),
 			"fields": [
@@ -136,7 +136,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"ComboComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/combo_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/combo_component.gd",
 			"name": "Combo",
 			"color": Color("#eab308"),
 			"fields": [
@@ -147,7 +147,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"DashComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/dash_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/dash_component.gd",
 			"name": "Dash",
 			"color": Color("#22c55e"),
 			"fields": [
@@ -158,7 +158,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"CostComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/cost_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/cost_component.gd",
 			"name": "Cost",
 			"color": Color("#f59e0b"),
 			"fields": [
@@ -168,7 +168,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"ChargedComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/charged_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/charged_component.gd",
 			"name": "Charged",
 			"color": Color("#8b5cf6"),
 			"fields": [
@@ -179,7 +179,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"BufferComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/buffer_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/buffer_component.gd",
 			"name": "Buffer",
 			"color": Color("#eab308"),
 			"fields": [
@@ -188,7 +188,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"InterruptComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/interrupt_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/interrupt_component.gd",
 			"name": "Interrupt",
 			"color": Color("#ec4899"),
 			"fields": [
@@ -201,7 +201,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"ParryComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/parry_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/parry_component.gd",
 			"name": "Parry",
 			"color": Color("#8b5cf6"),
 			"fields": [
@@ -212,7 +212,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"FilterComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/filter_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/filter_component.gd",
 			"name": "Filter",
 			"color": Color("#3b82f6"),
 			"fields": [
@@ -222,7 +222,7 @@ static func _get_state_components() -> Dictionary:
 			]
 		},
 		"DurationComponent": {
-			"script": "res://addons/behavior_states/resources/components/state/duration_component.gd",
+			"script": "res://addons/ability_system/resources/components/state/duration_component.gd",
 			"name": "Duration",
 			"color": Color("#64748b"),
 			"fields": [
@@ -237,7 +237,7 @@ static func _get_state_components() -> Dictionary:
 static func _get_item_components() -> Dictionary:
 	return {
 		"IdentityComponent": {
-			"script": "res://addons/behavior_states/resources/components/item/identity_component.gd",
+			"script": "res://addons/inventory_system/resources/components/item/identity_component.gd",
 			"name": "Identity",
 			"color": Color("#3b82f6"),
 			"fields": [
@@ -250,7 +250,7 @@ static func _get_item_components() -> Dictionary:
 			]
 		},
 		"StackingComponent": {
-			"script": "res://addons/behavior_states/resources/components/item/stacking_component.gd",
+			"script": "res://addons/inventory_system/resources/components/item/stacking_component.gd",
 			"name": "Stacking",
 			"color": Color("#22c55e"),
 			"fields": [
@@ -259,7 +259,7 @@ static func _get_item_components() -> Dictionary:
 			]
 		},
 		"DurabilityComponent": {
-			"script": "res://addons/behavior_states/resources/components/item/durability_component.gd",
+			"script": "res://addons/inventory_system/resources/components/item/durability_component.gd",
 			"name": "Durability",
 			"color": Color("#f59e0b"),
 			"fields": [
@@ -268,7 +268,7 @@ static func _get_item_components() -> Dictionary:
 			]
 		},
 		"ConsumableComponent": {
-			"script": "res://addons/behavior_states/resources/components/item/consumable_component.gd",
+			"script": "res://addons/inventory_system/resources/components/item/consumable_component.gd",
 			"name": "Consumable",
 			"color": Color("#ef4444"),
 			"fields": [
@@ -277,7 +277,7 @@ static func _get_item_components() -> Dictionary:
 			]
 		},
 		"EquipmentComponent": {
-			"script": "res://addons/behavior_states/resources/components/item/equipment_component.gd",
+			"script": "res://addons/inventory_system/resources/components/item/equipment_component.gd",
 			"name": "Equipment",
 			"color": Color("#8b5cf6"),
 			"fields": [
@@ -287,7 +287,7 @@ static func _get_item_components() -> Dictionary:
 			]
 		},
 		"CraftingComponent": {
-			"script": "res://addons/behavior_states/resources/components/item/crafting_component.gd",
+			"script": "res://addons/inventory_system/resources/components/item/crafting_component.gd",
 			"name": "Crafting",
 			"color": Color("#06b6d4"),
 			"fields": [
@@ -298,7 +298,7 @@ static func _get_item_components() -> Dictionary:
 			]
 		},
 		"EconomyComponent": {
-			"script": "res://addons/behavior_states/resources/components/item/economy_component.gd",
+			"script": "res://addons/inventory_system/resources/components/item/economy_component.gd",
 			"name": "Economy",
 			"color": Color("#eab308"),
 			"fields": [
@@ -312,7 +312,7 @@ static func _get_item_components() -> Dictionary:
 static func _get_effect_components() -> Dictionary:
 	return {
 		"StatModifierComponent": {
-			"script": "res://addons/behavior_states/resources/components/effect/stat_modifier_component.gd",
+			"script": "res://addons/ability_system/resources/components/effect/stat_modifier_component.gd",
 			"name": "Stat Modifier",
 			"color": Color("#3b82f6"),
 			"fields": [
@@ -320,7 +320,7 @@ static func _get_effect_components() -> Dictionary:
 			]
 		},
 		"DamageOverTimeComponent": {
-			"script": "res://addons/behavior_states/resources/components/effect/dot_component.gd",
+			"script": "res://addons/ability_system/resources/components/effect/dot_component.gd",
 			"name": "Damage Over Time",
 			"color": Color("#ef4444"),
 			"fields": [
@@ -330,7 +330,7 @@ static func _get_effect_components() -> Dictionary:
 			]
 		},
 		"HealOverTimeComponent": {
-			"script": "res://addons/behavior_states/resources/components/effect/hot_component.gd",
+			"script": "res://addons/ability_system/resources/components/effect/hot_component.gd",
 			"name": "Heal Over Time",
 			"color": Color("#22c55e"),
 			"fields": [
@@ -344,7 +344,7 @@ static func _get_effect_components() -> Dictionary:
 static func _get_skill_components() -> Dictionary:
 	return {
 		"SkillIdentityComponent": {
-			"script": "res://addons/behavior_states/resources/components/skill/identity_component.gd",
+			"script": "res://addons/ability_system/resources/components/skill/identity_component.gd",
 			"name": "Identity",
 			"color": Color("#ec4899"),
 			"fields": [
@@ -354,7 +354,7 @@ static func _get_skill_components() -> Dictionary:
 			]
 		},
 		"SkillTypeComponent": {
-			"script": "res://addons/behavior_states/resources/components/skill/type_component.gd",
+			"script": "res://addons/ability_system/resources/components/skill/type_component.gd",
 			"name": "Type",
 			"color": Color("#8b5cf6"),
 			"fields": [
@@ -363,7 +363,7 @@ static func _get_skill_components() -> Dictionary:
 			]
 		},
 		"LevelRequirementComponent": {
-			"script": "res://addons/behavior_states/resources/components/skill/level_requirement_component.gd",
+			"script": "res://addons/ability_system/resources/components/skill/level_requirement_component.gd",
 			"name": "Level Req",
 			"color": Color("#ef4444"),
 			"fields": [
@@ -372,7 +372,7 @@ static func _get_skill_components() -> Dictionary:
 			]
 		},
 		"PointCostComponent": {
-			"script": "res://addons/behavior_states/resources/components/skill/point_cost_component.gd",
+			"script": "res://addons/ability_system/resources/components/skill/point_cost_component.gd",
 			"name": "Cost",
 			"color": Color("#f59e0b"),
 			"fields": [
@@ -381,7 +381,7 @@ static func _get_skill_components() -> Dictionary:
 			]
 		},
 		"PrerequisiteComponent": {
-			"script": "res://addons/behavior_states/resources/components/skill/prerequisite_component.gd",
+			"script": "res://addons/ability_system/resources/components/skill/prerequisite_component.gd",
 			"name": "Prerequisites",
 			"color": Color("#f97316"),
 			"fields": [
@@ -389,7 +389,7 @@ static func _get_skill_components() -> Dictionary:
 			]
 		},
 		"UnlockStatesComponent": {
-			"script": "res://addons/behavior_states/resources/components/skill/unlock_states_component.gd",
+			"script": "res://addons/ability_system/resources/components/skill/unlock_states_component.gd",
 			"name": "Unlock States",
 			"color": Color("#22c55e"),
 			"fields": [
@@ -398,7 +398,7 @@ static func _get_skill_components() -> Dictionary:
 			]
 		},
 		"UnlockItemsComponent": {
-			"script": "res://addons/behavior_states/resources/components/skill/unlock_items_component.gd",
+			"script": "res://addons/ability_system/resources/components/skill/unlock_items_component.gd",
 			"name": "Unlock Items",
 			"color": Color("#3b82f6"),
 			"fields": [
@@ -407,7 +407,7 @@ static func _get_skill_components() -> Dictionary:
 			]
 		},
 		"PassiveEffectComponent": {
-			"script": "res://addons/behavior_states/resources/components/skill/passive_effect_component.gd",
+			"script": "res://addons/ability_system/resources/components/skill/passive_effect_component.gd",
 			"name": "Passive Effects",
 			"color": Color("#a855f7"),
 			"fields": [
@@ -415,7 +415,7 @@ static func _get_skill_components() -> Dictionary:
 			]
 		},
 		"ActiveAbilityComponent": {
-			"script": "res://addons/behavior_states/resources/components/skill/active_ability_component.gd",
+			"script": "res://addons/ability_system/resources/components/skill/active_ability_component.gd",
 			"name": "Active Ability",
 			"color": Color("#ef4444"),
 			"fields": [
@@ -425,7 +425,7 @@ static func _get_skill_components() -> Dictionary:
 			]
 		},
 		"SkillLevelComponent": {
-			"script": "res://addons/behavior_states/resources/components/skill/level_component.gd",
+			"script": "res://addons/ability_system/resources/components/skill/level_component.gd",
 			"name": "Skill Level",
 			"color": Color("#eab308"),
 			"fields": [
@@ -440,7 +440,7 @@ static func _get_skill_components() -> Dictionary:
 static func _get_character_components() -> Dictionary:
 	return {
 		"HealthComponent": {
-			"script": "res://addons/behavior_states/resources/components/character/health_component.gd",
+			"script": "res://addons/ability_system/resources/components/character/health_component.gd",
 			"name": "Health",
 			"color": Color("#ef4444"),
 			"fields": [
@@ -450,7 +450,7 @@ static func _get_character_components() -> Dictionary:
 			]
 		},
 		"StaminaComponent": {
-			"script": "res://addons/behavior_states/resources/components/character/stamina_component.gd",
+			"script": "res://addons/ability_system/resources/components/character/stamina_component.gd",
 			"name": "Stamina",
 			"color": Color("#22c55e"),
 			"fields": [
@@ -460,7 +460,7 @@ static func _get_character_components() -> Dictionary:
 			]
 		},
 		"ManaComponent": {
-			"script": "res://addons/behavior_states/resources/components/character/mana_component.gd",
+			"script": "res://addons/ability_system/resources/components/character/mana_component.gd",
 			"name": "Mana",
 			"color": Color("#3b82f6"),
 			"fields": [
@@ -470,7 +470,7 @@ static func _get_character_components() -> Dictionary:
 			]
 		},
 		"BaseAttributesComponent": {
-			"script": "res://addons/behavior_states/resources/components/character/base_attributes_component.gd",
+			"script": "res://addons/ability_system/resources/components/character/base_attributes_component.gd",
 			"name": "Base Attributes",
 			"color": Color("#eab308"),
 			"fields": [
@@ -481,7 +481,7 @@ static func _get_character_components() -> Dictionary:
 			]
 		},
 		"DerivedStatsComponent": {
-			"script": "res://addons/behavior_states/resources/components/character/derived_stats_component.gd",
+			"script": "res://addons/ability_system/resources/components/character/derived_stats_component.gd",
 			"name": "Derived Stats",
 			"color": Color("#64748b"),
 			"fields": [
@@ -493,7 +493,7 @@ static func _get_character_components() -> Dictionary:
 			]
 		},
 		"MovementStatsComponent": {
-			"script": "res://addons/behavior_states/resources/components/character/movement_stats_component.gd",
+			"script": "res://addons/ability_system/resources/components/character/movement_stats_component.gd",
 			"name": "Movement Stats",
 			"color": Color("#06b6d4"),
 			"fields": [
@@ -505,7 +505,7 @@ static func _get_character_components() -> Dictionary:
 			]
 		},
 		"ExperienceComponent": {
-			"script": "res://addons/behavior_states/resources/components/character/experience_component.gd",
+			"script": "res://addons/ability_system/resources/components/character/experience_component.gd",
 			"name": "Experience",
 			"color": Color("#a855f7"),
 			"fields": [
@@ -517,7 +517,7 @@ static func _get_character_components() -> Dictionary:
 			]
 		},
 		"CombatStatsComponent": {
-			"script": "res://addons/behavior_states/resources/components/character/combat_stats_component.gd",
+			"script": "res://addons/ability_system/resources/components/character/combat_stats_component.gd",
 			"name": "Combat Stats",
 			"color": Color("#f43f5e"),
 			"fields": [

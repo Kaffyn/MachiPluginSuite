@@ -1,4 +1,4 @@
-# BehaviorStates: A Next-Gen Behavior Architecture for Godot
+# Ability System (GAS): A Next-Gen Behavior Architecture for Godot
 
 > **Visão:** Prover um Framework de Comportamento nível AAA, orientado a dados, que rivalize com os padrões da indústria (como o GAS da Unreal), permitindo que Designers e Programadores construam sistemas reativos complexos sem acoplamento de código.
 >
@@ -10,12 +10,12 @@
 
 O sistema inverte a lógica tradicional de State Machines. Em vez de hardcodar transições, usamos **Query de Dados**.
 
-| Pilar         | Componente        | Descrição                                                                           |
-| :------------ | :---------------- | :---------------------------------------------------------------------------------- |
-| **O Cérebro** | `Behavior` (Node) | O orquestrador de intenção. Faz a ponte entre o Input Bruto e o Contexto Semântico. |
-| **A Engine**  | `Machine` (Node)  | O Executor e Interpretador. Processa decisões O(1) e executa o gameplay.            |
-| **O DNA**     | Resources         | Comportamento é Dado. Mutável, trocável e extensível sem recompilação.              |
-| **A Bancada** | Editor Panel      | Uma IDE totalmente integrada dentro da Godot. Visual, intuitiva e livre de código.  |
+| Pilar         | Componente               | Descrição                                                                          |
+| :------------ | :----------------------- | :--------------------------------------------------------------------------------- |
+| **O Cérebro** | `AbilitySystemComponent` | O orquestrador de intenção. Unifica Machine e Behavior.                            |
+| **A Engine**  | `(Unified)`              | A lógica de Machine agora vive dentro do ASC.                                      |
+| **O DNA**     | Resources                | Comportamento é Dado. Mutável, trocável e extensível sem recompilação.             |
+| **A Bancada** | Editor Panel             | Uma IDE totalmente integrada dentro da Godot. Visual, intuitiva e livre de código. |
 
 ---
 

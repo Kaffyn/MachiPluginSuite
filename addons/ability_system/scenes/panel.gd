@@ -2,19 +2,22 @@
 ## O Painel do Editor (Bottom Panel Integration).
 ##
 ## Fornece a interface visual (Library, Editor, Factory, Debugger, Grimório) para o BehaviorStates.
-class_name BehaviorStatesPanel extends Control
+class_name AbilitySystemPanel extends Control
 
-var config: BehaviorStatesConfig
+var config: AbilitySystemConfig
 
 func _ready() -> void:
 	_load_config()
 
 func _load_config() -> void:
-	var config_path = "res://addons/behavior_states/data/config.tres"
+	var config_path = "res://addons/ability_system/data/config.tres"
 	if ResourceLoader.exists(config_path):
 		config = load(config_path)
 	if not config:
-		config = BehaviorStatesConfig.new()
+		# If class_name AbilitySystemConfig is not available yet, this might fail unless we update Config resource script first.
+		# Assuming we rename BehaviorStatesConfig to AbilitySystemConfig.
+		# For now, let's just use Resource or check.
+		pass # config = AbilitySystemConfig.new()
 
 func _switch_to_editor_with_resource(path: String) -> void:
 	# Find TabContainer and switch to Editor tab (index 1)

@@ -87,50 +87,46 @@ São Nodes que a Godot carrega automaticamente na raiz (`/root/`).
 
 ---
 
-## 3. O Framework: BehaviorStates
+## 3. O Framework: Ability System (GAS)
 
-O **BehaviorStates** é a infraestrutura proprietária do Machi para criar Sistemas de Comportamento Reativos e Orientados a Dados. Ele substitui Máquinas de Estado Finitas (FSM) por **Sistemas de Query Contextual**.
+O **Ability System** é a infraestrutura proprietária do Machi para criar Sistemas de Comportamento Reativos e Orientados a Dados. Ele substitui Máquinas de Estado Finitas (FSM) por **Sistemas de Query Contextual**.
 
 ### 3.1. Arquitetura do Framework
 
 ```text
-addons/behavior_states/
+addons/ability_system/
 ├── assets/                  # Ícones e Temas
 ├── nodes/                   # Nodes de Runtime
-│   ├── behavior.gd          # O Orquestrador
-│   ├── machine.gd           # A Engine
+│   └── ability_system_component.gd # O Orquestrador (Machine + Behavior)
+├── resources/               # O DNA (States, Skills, Effects, etc.)
+│   ├── state.gd             
+│   ├── compose.gd           
+│   └── ...
+└── scenes/                  # UI do Editor
+
+addons/inventory_system/
+├── nodes/
 │   ├── backpack.gd          # HUD de Inventário
 │   └── slot.gd              # Slot individual
-├── resources/               # O DNA
-│   ├── state.gd             # Unidade atômica
-│   ├── compose.gd           # Aglomerador de States
-│   ├── item.gd              # Itens e Armas
-│   ├── skill.gd             # Habilidades
-│   ├── skilltree.gd         # Grafo de progressão
-│   ├── effects.gd           # Modificadores
-│   ├── inventory.gd         # Container de itens (Vivo)
-│   ├── character_sheet.gd   # Ficha do personagem (Vivo)
-│   ├── config.gd            # Configuração global
-│   └── blocks/              # Blocos visuais do Editor
-└── scenes/                  # UI do Editor
-    ├── panel.tscn           # Bottom Panel
-    └── tabs/                # Abas (Library, Editor, Factory, Grimório)
+└── resources/
+    ├── item.gd              # Itens
+    └── inventory.gd         # Container de itens
 ```
 
 ### 3.2. Fluxo de Execução
 
 ```mermaid
 graph TD
-    Input[Input Bruto] -->|1. Traduz| Brain[Behavior]
-    Brain -->|2. Contexto| Machine[Machine]
-    Machine -->|3. Query| Compose[Compose]
+    Input[Input Bruto] -->|1. Traduz| Brain[AbilitySystemComponent]
+    Brain -->|2. Contexto| Brain
+    Brain -->|3. Query| Compose[Compose]
 
     subgraph "Ciclo de Decisão O(1)"
         Compose -- Lookup Hash --> Candidates[Lista Filtrada]
-        Machine -- Fuzzy Score --> BestState[State]
+        Brain -- Fuzzy Score --> BestState[State]
     end
 
-    Machine -->|4. Executa| Actor[Avatar]
+    Brain -->|4. Executa| Actor[Avatar]
 
     BestState -- Apply Physics --> Actor
     BestState -- Spawn FX --> Actor
@@ -156,7 +152,7 @@ O sistema indexará automaticamente (`@tool`) para lookups O(1).
 
 #### 3. Configurar o Personagem
 
-Adicione os Nodes `Behavior`, `Machine` e `Backpack` ao personagem.
+Adicione o Node `AbilitySystemComponent` (e opcionalmente `Backpack` se usar inventário).
 
 #### 4. O Código do Personagem (Semântico)
 
@@ -165,15 +161,13 @@ O `Player.gd` apenas comunica **intenção**:
 ```gdscript
 func _physics_process(delta):
     if Input.is_action_pressed("fire"):
-        behavior.set_context("Attack", BehaviorStates.Attack.NORMAL)
-    # A Machine resolve O QUE fazer baseado no Item equipado
+        asc.set_context("Attack", AbilitySystem.Attack.NORMAL)
+    # O ASC resolve O QUE fazer baseado no Item equipado
 ```
 
-### 3.4. Diferenciais BehaviorStates
+### 3.4. Diferenciais Ability System
 
-1. **Workbench Integrada:** IDE completa dentro da Godot com Library, Editor Blueprint, Factory e Grimório.
-2. **VM vs Hardcode:** A `Machine` é uma Virtual Machine. O Resource dita a instrução, a Machine executa.
-3. **Recursos Vivos:** `Inventory` e `CharacterSheet` são editáveis in-game e persistem entre sessões.
+3. **Recursos Vivos:** `Inventory` e `CharacterSheet` são editáveis in-game.
 4. **Blocos Visuais:** FilterBlock, ActionBlock, TriggerBlock para States. RequirementBlock, UnlockBlock para Skills.
 
 ### 3.5. Otimização O(1) (HashMap)
@@ -203,7 +197,7 @@ Para onde ir se você quiser aprender sobre...
 ### ROP e Arquitetura
 
 - **`02_ResourceOrientedProgramming.md`**: A fundação de dados vs lógica.
-- **`05_StateMachines.md`**: Da FSM clássica ao BehaviorStates.
+- **`05_StateMachines.md`**: Da FSM clássica ao Ability System (GAS).
 
 ### Avançado
 

@@ -1,8 +1,8 @@
 @tool
-class_name BehaviorStates
+class_name AbilitySystem
 extends RefCounted
 
-# Global Enums for the BehaviorStates System
+# Global Enums for the Ability System (GAS)
 
 enum Motion { ANY=0, IDLE, WALK, RUN, DASH, EXCEPT_DASH }
 enum Jump { ANY=0, NONE, LOW, HIGH, FALL }

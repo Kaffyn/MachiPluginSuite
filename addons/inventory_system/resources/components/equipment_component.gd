@@ -11,10 +11,11 @@ func on_equip(ctx: ItemContext) -> void:
 	if not enabled:
 		return
 	
-	# Aplica efeitos passivos
-	for effect in equip_effects:
-		if effect and effect.has_method("apply"):
-			effect.apply(ctx.character_sheet)
+	# Aplica efeitos passivos via AbilitySystemComponent
+	if ctx.asc:
+		for effect in equip_effects:
+			if effect:
+				ctx.asc.apply_effect(effect)
 	
 	ctx.equip_slot = EquipSlot.keys()[equip_slot]
 
@@ -22,10 +23,11 @@ func on_unequip(ctx: ItemContext) -> void:
 	if not enabled:
 		return
 	
-	# Remove efeitos passivos
-	for effect in equip_effects:
-		if effect and effect.has_method("remove"):
-			effect.remove(ctx.character_sheet)
+	# Remove efeitos passivos via AbilitySystemComponent
+	if ctx.asc:
+		for effect in equip_effects:
+			if effect:
+				ctx.asc.remove_effect(effect)
 
 static func _get_component_name() -> String:
 	return "Equipment"

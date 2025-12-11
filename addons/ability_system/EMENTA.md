@@ -1,4 +1,4 @@
-# BehaviorStates: Uma Arquitetura de Comportamento Next-Gen para Godot
+# Ability System (GAS): Uma Arquitetura de Comportamento Next-Gen para Godot
 
 > **Visão:** Prover um Framework de Comportamento nível AAA, orientado a dados, que rivalize com os padrões da indústria (como o GAS da Unreal), permitindo que Designers e Programadores construam sistemas reativos complexos sem acoplamento de código.
 
@@ -8,12 +8,12 @@
 
 O sistema é construído sobre quatro pilares customizados, orquestrando uma separação de responsabilidades que garante escalabilidade.
 
-| Pilar         | Componente        | Descrição                                                                                                           |
-| :------------ | :---------------- | :------------------------------------------------------------------------------------------------------------------ |
-| **O Cérebro** | `Behavior` (Node) | O orquestrador de intenção. Faz a ponte entre o Input Bruto e o Contexto Semântico.                                 |
-| **A Engine**  | `Machine` (Node)  | O Executor e Interpretador. Processa decisões O(1) e executa funções especializadas (`apply_jump`, `apply_damage`). |
-| **O DNA**     | Resources         | Comportamento é Dado. Mutável, trocável e extensível sem recompilação.                                              |
-| **A Bancada** | Editor Panel      | Uma IDE totalmente integrada dentro da Godot. Visual, intuitiva e livre de código.                                  |
+| Pilar         | Componente               | Descrição                                                                          |
+| :------------ | :----------------------- | :--------------------------------------------------------------------------------- |
+| **O Cérebro** | `AbilitySystemComponent` | O orquestrador de intenção. Unifica Machine e Behavior.                            |
+| **A Engine**  | `(Unified)`              | A lógica de Machine agora vive dentro do ASC.                                      |
+| **O DNA**     | Resources                | Comportamento é Dado. Mutável, trocável e extensível sem recompilação.             |
+| **A Bancada** | Editor Panel             | Uma IDE totalmente integrada dentro da Godot. Visual, intuitiva e livre de código. |
 
 ---
 
@@ -27,7 +27,7 @@ O sistema é construído sobre quatro pilares customizados, orquestrando uma sep
 
 # 1. A Bancada (Integrated Workspace)
 
-O Painel `BehaviorStates` transforma a Godot em uma **IDE especializada** para criação de comportamentos. É adicionado como um **Bottom Panel** via `EditorPlugin.add_control_to_bottom_panel()`.
+O Painel `AbilitySystem` transforma a Godot em uma **IDE especializada** para criação de comportamentos. É adicionado como um **Bottom Panel** via `EditorPlugin.add_control_to_bottom_panel()`.
 
 ## 1.1. Aba: Library (Biblioteca de Assets)
 
@@ -176,7 +176,7 @@ O **Aglomerador de States**. Define o "Moveset" atual.
 | `stat_modifiers: Dictionary` | Modificações de stats `{ "max_health": +50, "speed": 1.2 }`. |
 | `status_effect`              | Status aplicado (Poison, Burn, Stun).                        |
 
-### `BehaviorStatesConfig` (config.gd)
+### `AbilitySystemConfig` (config.gd)
 
 **Configuração global** do plugin.
 
@@ -226,35 +226,26 @@ A **Ficha do Personagem**. Central da verdade.
 
 Scripts que estendem `Node`. São adicionados à cena do personagem.
 
-## 3.1. `Behavior` (behavior.gd)
+## 3.1. `AbilitySystemComponent` (ability_system_component.gd)
 
-O **Orquestrador de Intenção**. Gerencia "O que o Player QUER fazer".
+O **Orquestrador de Intenção**. Unifica as antigas responsabilidades de `Behavior` e `Machine`.
 
-| Responsabilidade   | Descrição                                                                              |
-| :----------------- | :------------------------------------------------------------------------------------- |
-| **Input Handling** | Processa inputs de alto nível e os traduz para Contexto.                               |
-| **Validação**      | Antes de mudar contexto (ex: `Jump` no ar), verifica se há State ou Skill que permita. |
-| **Dono dos Dados** | Possui referências para `CharacterSheet`, `SkillTree` e `Backpack`.                    |
-| **Orquestração**   | Coordena o fluxo entre `Machine` e `Backpack`.                                         |
-
-**Signals:**
-
-- `context_changed(category, value)`: Emitido quando o contexto muda.
-
-## 3.2. `Machine` (machine.gd)
-
-A **Engine de Estados**. Gerencia "Como fazer".
-
-| Responsabilidade       | Descrição                                                                          |
-| :--------------------- | :--------------------------------------------------------------------------------- |
-| **Query Engine**       | Consulta o `Compose` ativo pelo melhor `State` compatível com o Contexto.          |
-| **Scoring**            | Aplica o algoritmo de pontuação para desempatar candidatos.                        |
-| **Execução**           | Aplica física, animação, dano e efeitos conforme o `State` ativo.                  |
-| **Cálculo de Valores** | Multiplica valores do `State` (damage_multiplier) pelos Stats do `CharacterSheet`. |
+| Responsabilidade     | Descrição                                                                  |
+| :------------------- | :------------------------------------------------------------------------- |
+| **Input & Contexto** | Processa inputs e traduz para Contexto Semântico.                          |
+| **Query Engine**     | Consulta o `Compose` ativo pelo melhor `State`.                            |
+| **Dono dos Dados**   | Referências para `CharacterSheet`, `SkillTree` e gerenciamento de Effects. |
 
 **Signals:**
 
-- `state_changed(old_state, new_state)`: Emitido quando o estado muda.
+- `context_changed(category, value)`
+- `state_changed(old_state, new_state)`
+
+## 3.2. `Inventory System` (Externo)
+
+Componentes de inventário agora residem no plugin `inventory_system`.
+
+
 
 ## 3.3. `Backpack` (backpack.gd)
 
@@ -303,7 +294,7 @@ O `Compose.gd` roda como `@tool`. Ao salvar, reconstrói os índices:
 
 ## 4.2. Query Time (Runtime)
 
-Quando a `Machine` precisa decidir:
+Quando o `ASC` precisa decidir:
 
 1. **Chaveamento:** Constrói chave a partir do Contexto (`Motion.RUN`).
 2. **Lookup O(1):** `candidates = compose.move_rules.get(Motion.RUN, [])`.
@@ -334,36 +325,26 @@ Quando a `Machine` precisa decidir:
 ## 5.2. Estrutura de Pastas
 
 ```
-addons/behavior_states/
-├── assets/                  # Ícones e Temas
-│   └── icons/               # SVGs para cada tipo de Resource
+addons/ability_system/
+├── assets/
 ├── data/                    # Singleton config.tres
 ├── nodes/                   # Nodes de Runtime
-│   ├── behavior.gd
-│   ├── machine.gd
-│   ├── backpack.gd / .tscn
-│   └── slot.gd / .tscn
+│   └── ability_system_component.gd
 ├── resources/               # Resources (o DNA)
 │   ├── state.gd
 │   ├── compose.gd
-│   ├── item.gd
-│   ├── skill.gd
-│   ├── skilltree.gd
-│   ├── effects.gd
-│   ├── inventory.gd
-│   ├── character_sheet.gd
-│   ├── config.gd
-│   └── blocks/              # Blocos visuais do Editor
+│   ├── ...
 └── scenes/                  # UI do Editor
-    ├── panel.tscn           # Bottom Panel principal
-    ├── components/          # Widgets reutilizáveis (AssetCard)
-    └── tabs/                # Abas do painel
-        ├── library.tscn     # Biblioteca de Assets
-        ├── editor.tscn      # Blueprint Editor
-        ├── factory.tscn     # Wizard de Criação
-        └── docs_viewer.tscn # Grimório
+
+addons/inventory_system/
+├── nodes/
+│   ├── backpack.gd
+│   └── slot.gd
+└── resources/
+    ├── item.gd
+    └── inventory.gd
 ```
 
 ---
 
-_BehaviorStates Framework — Documentação Técnica Completa._
+_Ability System (GAS) — Documentação Técnica Completa._

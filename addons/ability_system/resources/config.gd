@@ -1,9 +1,9 @@
 @tool
-## Configuração Global do BehaviorStates.
+## Configuração Global do AbilitySystem (GAS).
 ##
-## Define o tipo de jogo e configurações que afetam Machine e States.
-## Singleton: Acesse via preload("res://addons/behavior_states/data/&config.tres")
-class_name BehaviorStatesConfig extends Resource
+## Define o tipo de jogo e configurações que afetam AbilitySystemComponent e States.
+## Singleton: Acesse via preload("res://addons/ability_system/data/config.tres")
+class_name AbilitySystemConfig extends Resource
 
 # ============= GAME TYPE =============
 @export_category("Game Type")
@@ -44,11 +44,11 @@ func _apply_game_type_preset(type: int) -> void:
 # ============= PATHS =============
 @export_group("Paths")
 ## Caminho padrão para salvar novos States.
-@export_dir var default_states_path: String = "res://addons/behavior_states/data/states"
+@export_dir var default_states_path: String = "res://addons/ability_system/data/states"
 ## Caminho padrão para salvar novos Items.
-@export_dir var default_items_path: String = "res://addons/behavior_states/data/items"
+@export_dir var default_items_path: String = "res://addons/inventory_system/data/items"
 ## Caminho padrão para salvar Compose.
-@export_dir var default_compose_path: String = "res://addons/behavior_states/data/compose"
+@export_dir var default_compose_path: String = "res://addons/ability_system/data/compose"
 
 # ============= VISUALS =============
 @export_group("Editor Visuals")
