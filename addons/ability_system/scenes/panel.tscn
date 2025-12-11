@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://cfrbhthw780m4" path="res://addons/ability_system/scenes/panel.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://jydhqwmja5uo" path="res://addons/ability_system/scenes/tabs/library.tscn" id="2_lib"]
 [ext_resource type="Theme" uid="uid://hy5kockqpp4i" path="res://addons/ability_system/assets/theme.tres" id="2_theme"]
-[ext_resource type="PackedScene" path="res://addons/ability_system/scenes/tabs/editor.tscn" id="3_editor"]
+[ext_resource type="PackedScene" uid="uid://bcyca08i11th0" path="res://addons/ability_system/scenes/tabs/editor.tscn" id="3_editor"]
 [ext_resource type="PackedScene" uid="uid://cqunx7ihtyp6r" path="res://addons/ability_system/scenes/tabs/factory.tscn" id="4_fact"]
-[ext_resource type="PackedScene" path="res://addons/ability_system/scenes/tabs/docs_viewer.tscn" id="6_docs"]
+[ext_resource type="PackedScene" uid="uid://bj7s3yl5erosf" path="res://addons/ability_system/scenes/tabs/docs_viewer.tscn" id="6_docs"]
 
 [node name="BehaviorStatesPanel" type="Control"]
 custom_minimum_size = Vector2(0, 240)

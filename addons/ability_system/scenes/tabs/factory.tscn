@@ -34,6 +34,7 @@ item_7/text = "CharacterSheet"
 [node name="RightPanel" type="VBoxContainer" parent="HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 12
 
 [node name="ConfigPanel" type="VBoxContainer" parent="HSplitContainer/RightPanel"]
@@ -118,8 +119,8 @@ size_flags_horizontal = 4
 text = "Salvar Config"
 
 [node name="ResourcePanel" type="VBoxContainer" parent="HSplitContainer/RightPanel"]
-visible = false
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 12
 
 [node name="PresetGrid" type="HFlowContainer" parent="HSplitContainer/RightPanel/ResourcePanel"]
@@ -146,6 +147,7 @@ text = "Nome:"
 [node name="NameEdit" type="LineEdit" parent="HSplitContainer/RightPanel/ResourcePanel/NameRow"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "new_state"
 placeholder_text = "new_resource"
 
 [node name="CreateBtn" type="Button" parent="HSplitContainer/RightPanel/ResourcePanel"]

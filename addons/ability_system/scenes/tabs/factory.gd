@@ -37,6 +37,11 @@ var _preset_buttons: Array[Button] = []
 func _ready() -> void:
 	_populate_type_list()
 	_load_config()
+	
+	# Select "State" by default (index 1, as 0 is Config)
+	if type_list.item_count > 1:
+		type_list.select(1)
+		_on_type_selected(1)
 
 func _populate_type_list() -> void:
 	type_list.clear()

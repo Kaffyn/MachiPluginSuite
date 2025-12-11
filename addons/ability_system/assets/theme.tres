@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://hy5kockqpp4i"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://hy5kockqpp4i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
 content_margin_left = 6.0
@@ -64,6 +64,13 @@ bg_color = Color(0.12941177, 0.14901961, 0.18039216, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvr22"]
 bg_color = Color(0.21176471, 0.23921569, 0.2901961, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o02hh"]
+content_margin_left = 10.0
+content_margin_top = 0.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.17254902, 0.19607843, 0.23921569, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yvo5"]
 content_margin_left = 10.0
 content_margin_top = 0.0
@@ -113,5 +120,6 @@ RichTextLabel/styles/normal = SubResource("StyleBoxFlat_me7yu")
 ScrollContainer/styles/focus = SubResource("StyleBoxFlat_i482i")
 ScrollContainer/styles/panel = SubResource("StyleBoxFlat_hd5wp")
 TabContainer/styles/panel = SubResource("StyleBoxFlat_pvr22")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_o02hh")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_5yvo5")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_5ug08")
