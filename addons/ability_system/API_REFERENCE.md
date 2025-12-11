@@ -612,7 +612,7 @@ func _calculate_score(state: State) -> int:
 ## 8. Estrutura de Pastas
 
 ```text
-addons/behavior_states/
+addons/ability_system/
 ├── core/
 │   ├── component_base.gd
 │   ├── state_component.gd
@@ -656,7 +656,7 @@ addons/behavior_states/
 ```gdscript
 # res://states/attack_light.tres
 [resource]
-script = preload("res://addons/behavior_states/core/state.gd")
+script = preload("res://addons/ability_system/core/state.gd")
 
 id = &"attack_light"
 priority = 10
@@ -689,7 +689,7 @@ func _on_hit(target: Node2D) -> void:
 ```gdscript
 # res://effects/poison.tres
 [resource]
-script = preload("res://addons/behavior_states/extensions/effect.gd")
+script = preload("res://addons/ability_system/extensions/effect.gd")
 
 id = &"poison"
 components = [
@@ -711,7 +711,7 @@ func _on_sword_picked_up(sword_item: Item) -> void:
 ```gdscript
 # res://items/iron_sword.tres
 [resource]
-script = preload("res://addons/behavior_states/extensions/item.gd")
+script = preload("res://addons/ability_system/extensions/item.gd")
 
 id = &"iron_sword"
 components = [

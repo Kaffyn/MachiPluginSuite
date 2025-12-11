@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3]
 
-[ext_resource type="Theme" path="res://addons/behavior_states/assets/theme.tres" id="1_theme"]
-[ext_resource type="Script" path="res://addons/behavior_states/scenes/tabs/factory.gd" id="2_script"]
+[ext_resource type="Theme" path="res://addons/ability_system/assets/theme.tres" id="1_theme"]
+[ext_resource type="Script" path="res://addons/ability_system/scenes/tabs/factory.gd" id="2_script"]
 
 [node name="Factory" type="MarginContainer"]
 anchors_preset = 15

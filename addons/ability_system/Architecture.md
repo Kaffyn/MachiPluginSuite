@@ -164,7 +164,7 @@ Backpack
 ## 7. Estrutura de Pastas
 
 ```text
-addons/behavior_states/
+addons/ability_system/
 ├── core/
 │   ├── component_base.gd
 │   ├── state_component.gd

@@ -8,7 +8,7 @@ func _enter_tree() -> void:
 	# For Resources (Item, Inventory), class_name is definitely enough.
 	# For Nodes (Backpack, Slot), we might want them in the node list.
 	
-	add_custom_type("Backpack", "Control", preload("nodes/backpack.gd"), preload("res://addons/inventory_system/assets/icons/backpack.svg") if FileAccess.file_exists("res://addons/inventory_system/assets/icons/backpack.svg") else null)
+	add_custom_type("Backpack", "Control", preload("nodes/backpack.gd"), null)
 	add_custom_type("Slot", "Panel", preload("nodes/slot.gd"), null)
 
 func _exit_tree() -> void:

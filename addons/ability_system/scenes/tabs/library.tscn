@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://jydhqwmja5uo"]
 
-[ext_resource type="Theme" uid="uid://hy5kockqpp4i" path="res://addons/behavior_states/assets/theme.tres" id="1_theme"]
-[ext_resource type="Script" uid="uid://btnkhsr5b26e0" path="res://addons/behavior_states/scenes/tabs/library.gd" id="2_2k8tu"]
+[ext_resource type="Theme" uid="uid://hy5kockqpp4i" path="res://addons/ability_system/assets/theme.tres" id="1_theme"]
+[ext_resource type="Script" uid="uid://btnkhsr5b26e0" path="res://addons/ability_system/scenes/tabs/library.gd" id="2_2k8tu"]
 
 [node name="Asset Library" type="MarginContainer"]
 anchors_preset = 15

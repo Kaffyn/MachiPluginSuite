@@ -22,7 +22,7 @@ const SKILL_SCRIPT = preload("res://addons/ability_system/resources/skill.gd")
 const SKILL_ICON = preload("res://addons/ability_system/assets/icons/skill.svg")
 
 const SKILL_TREE_SCRIPT = preload("res://addons/ability_system/resources/skilltree.gd")
-const SKILL_TREE_ICON = preload("res://addons/ability_system/assets/icons/skilltree.svg")
+const SKILL_TREE_ICON = preload("res://addons/ability_system/assets/icons/skill.svg")
 
 # ==================== SINGLETONS ====================
 const AUTOLOAD_NAME = "AbilitySystem" # Was BehaviorStates

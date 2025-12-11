@@ -5,7 +5,7 @@
 ## @deprecated Use ComponentDefinitions em vez disso.
 class_name BlockDefinitions extends RefCounted
 
-const ComponentDefs = preload("res://addons/behavior_states/resources/components/component_definitions.gd")
+const ComponentDefs = preload("res://addons/ability_system/resources/components/component_definitions.gd")
 
 ## DEPRECATED: Use ComponentDefinitions.get_components_for_type()
 static func get_blocks_for_type(type_name: String) -> Dictionary:

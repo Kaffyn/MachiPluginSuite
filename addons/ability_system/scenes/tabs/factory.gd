@@ -5,8 +5,8 @@
 ## Também gerencia o BehaviorStatesConfig singleton.
 extends MarginContainer
 
-const Presets = preload("res://addons/behavior_states/scenes/tabs/factory_presets.gd")
-const CONFIG_PATH = "res://addons/behavior_states/data/&config.tres"
+const Presets = preload("res://addons/ability_system/scenes/tabs/factory_presets.gd")
+const CONFIG_PATH = "res://addons/ability_system/data/config.tres"
 
 # Tipos disponíveis
 const TYPES = ["Config", "State", "Item", "Skill", "Compose", "Inventory", "SkillTree", "CharacterSheet"]
@@ -30,7 +30,7 @@ const RESOURCE_TYPES = ["State", "Item", "Skill", "Compose", "Inventory", "Skill
 
 var _selected_type: String = ""
 var _selected_preset: String = ""
-var _config: BehaviorStatesConfig = null
+var _config: AbilitySystemConfig = null
 var _preset_buttons: Array[Button] = []
 
 func _ready() -> void:
@@ -49,7 +49,7 @@ func _load_config() -> void:
 	if ResourceLoader.exists(CONFIG_PATH):
 		_config = load(CONFIG_PATH)
 	else:
-		_config = BehaviorStatesConfig.new()
+		_config = AbilitySystemConfig.new()
 	_update_config_ui()
 
 func _update_config_ui() -> void:
@@ -134,7 +134,7 @@ func _on_game_type_changed(index: int) -> void:
 
 func _on_save_config_pressed() -> void:
 	if not _config:
-		_config = BehaviorStatesConfig.new()
+		_config = AbilitySystemConfig.new()
 	
 	_config.game_type = game_type_option.selected
 	_config.use_gravity = gravity_check.button_pressed
@@ -182,13 +182,13 @@ func _on_file_selected(path: String) -> void:
 
 func _create_resource_for_type(type_name: String) -> Resource:
 	var script_map = {
-		"State": "res://addons/behavior_states/resources/state.gd",
-		"Item": "res://addons/behavior_states/resources/item.gd",
-		"Skill": "res://addons/behavior_states/resources/skill.gd",
-		"Compose": "res://addons/behavior_states/resources/compose.gd",
-		"Inventory": "res://addons/behavior_states/resources/inventory.gd",
-		"SkillTree": "res://addons/behavior_states/resources/skilltree.gd",
-		"CharacterSheet": "res://addons/behavior_states/resources/character_sheet.gd"
+		"State": "res://addons/ability_system/resources/state.gd",
+		"Item": "res://addons/inventory_system/resources/item.gd",
+		"Skill": "res://addons/ability_system/resources/skill.gd",
+		"Compose": "res://addons/ability_system/resources/compose.gd",
+		"Inventory": "res://addons/inventory_system/resources/inventory.gd",
+		"SkillTree": "res://addons/ability_system/resources/skilltree.gd",
+		"CharacterSheet": "res://addons/ability_system/resources/character_sheet.gd"
 	}
 	
 	if not type_name in script_map:

@@ -41,20 +41,6 @@ const TYPE_FILTERS = {
 	"CharacterSheet": "*.tres"
 }
 
-# ... (inside _on_block_activated)
-	elif _selected_type in CONTAINER_TYPES:
-		var child_path = "res://addons/ability_system/data/" + item_text
-		var child_res = load(child_path)
-
-# ... (inside _create_resource_for_type)
-		"SkillTree": return SkillTree.new()
-		"AbilitySystemConfig": return AbilitySystemConfig.new()
-		"CharacterSheet": return CharacterSheet.new()
-
-# ... (inside _detect_resource_type)
-	elif res is SkillTree: return "SkillTree"
-	elif res is AbilitySystemConfig: return "AbilitySystemConfig"
-	elif res is CharacterSheet: return "CharacterSheet"
 
 @onready var block_list: ItemList = $VBoxContainer/HSplitContainer/Sidebar/BlockList
 @onready var search_edit: LineEdit = $VBoxContainer/HSplitContainer/Sidebar/SearchEdit
