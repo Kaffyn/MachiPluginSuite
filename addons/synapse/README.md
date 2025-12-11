@@ -1,0 +1,83 @@
+# Synapse: O Sistema Nervoso do Jogo
+
+> **Conceito:** Se o _Ability System_ é o Cérebro e os Músculos do personagem, o **Synapse** é o **Sistema Nervoso do Mundo**. Ele conecta eventos isolados (entrar em uma sala, matar um boss) a reações globais (música mudar, porta abrir, quest atualizar).
+
+---
+
+## 🧠 Filosofia: "Action & Reaction"
+
+Jogos complexos morrem quando você começa a fazer `if game_manager.boss_is_dead:` dentro do código da porta. O **Synapse** desacopla isso através de **Flags** e **Impulsos**.
+
+1. **O Mundo tem Memória:** Um dicionário global de `Flags` ("boss_defeated", "first_time_castle").
+2. **Receptores Ouvem:** Portas, luzes e spawners "ouvem" essas flags.
+3. **Impulsos Agem:** Quando uma flag muda (ou um gatilho é ativado), um `Impulse` é disparado.
+
+## 🏛️ Arquitetura
+
+### 1. WorldMemory (A Memória)
+
+O Autoload ou Resource que contém o estado atual do save.
+
+- **Flags:** `{"met_npc_arya": true, "dungeon_keys": 3}`.
+- **Signals:** `flag_changed(id, value)`.
+
+### 2. Synapse (O Gatilho)
+
+Um Node que pode ser colocado em qualquer lugar para **detectar** algo e **disparar** Impulsos.
+
+- **Ex:** `AreaSynapse` (dispara ao entrar na área).
+- **Ex:** `DeathSynapse` (dispara ao morrer).
+- **Ex:** `FlagSynapse` (dispara quando a flag "quest_complete" vira true).
+
+### 3. Impulse (A Ação)
+
+Resources modulares que fazem coisas. Eles são "Comandos".
+
+- `ImpulsePlaySound`
+- `ImpulseLoadScene`
+- `ImpulseSetFlag`
+- `ImpulseGiveItem`
+- `ImpulseSpawnScene`
+
+---
+
+## 🚀 Exemplo de Uso: "Boss Battle"
+
+Imagine a seguinte sequência complexa configurada **apenas no Inspector**, sem uma linha de código específica:
+
+1. **Jogador entra na Arena (Area3D):**
+
+   - **SynapseTrigger:** Ao entrar, dispara lista de Impulsos.
+   - **Impulse 1:** `System.SetFlag("boss_encounter_started", true)`
+   - **Impulse 2:** `Audio.PlayMusic("BossTheme")`
+   - **Impulse 3:** `Door.Lock()`
+
+2. **Boss Morre (HealthComponent):**
+
+   - **SynapseTrigger:** No sinal `on_death`.
+   - **Impulse 1:** `System.SetFlag("boss_defeated", true)`
+   - **Impulse 2:** `System.SetFlag("boss_encounter_started", false)`
+
+3. **Porta de Saída (Listening Node):**
+   - **Condition:** Escuta a flag `boss_defeated`.
+   - **Reaction:** Se `true` -> `Door.Unlock()`.
+
+---
+
+## 📂 Estrutura de Pastas
+
+```text
+addons/synapse/
+├── nodes/
+│   ├── synapse.gd           # Nó base para gatilhos
+│   └── world_memory.gd      # Autoload de estado
+├── resources/
+│   ├── impulse.gd           # Classe base de ações
+│   └── condition.gd         # Classe base de verificação
+└── impulses/                # Biblioteca de ações comuns
+    ├── impulse_set_flag.gd
+    ├── impulse_change_scene.gd
+    └── ...
+```
+
+_Synapse — Conectando o caos._
