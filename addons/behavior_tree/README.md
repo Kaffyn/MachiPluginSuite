@@ -85,28 +85,14 @@ ROOT
 
 ## 📂 Estrutura de Pastas
 
-```text
 addons/behavior_tree/
-├── nodes/
-│   ├── bt_player.gd         # O Executor da árvore
-│   └── bt_node.gd           # Classe base
-├── resources/
-│   ├── blackboard.gd        # Dados compartilhados
-│   └── behavior_tree.gd     # O Resource da árvore
-├── tasks/
-│   ├── bt_task_wait.gd
-│   ├── bt_task_move_to.gd
-│   └── asc_tasks/           # Integração com Ability System
-│       ├── bt_task_activate_ability.gd
-│       └── bt_task_set_context.gd
-└── editor/
-    ├── main_screen.tscn     # A Tela Principal (LimboAI style)
-    ├── detailed_gui/        # Componentes UI
-    │   ├── task_palette.gd  # Lista de Tasks arrastáveis (Esquerda)
-    │   ├── tree_editor.gd   # GraphEdit/Tree visual (Centro)
-    │   └── blackboard_panel.gd # Editor de Blackboard (Direita)
-    └── plugin.gd            # EditorPlugin (has_main_screen = true)
-```
+├── src/                 # Código C++ (GDExtension)
+│   ├── bt_player.cpp    # O Executor da árvore
+│   ├── bt_node.cpp      # Classe base
+│   ├── blackboard.cpp   # Dados compartilhados
+│   └── ...
+├── bin/                 # Binários compilados
+└── plugin.cfg
 
 ---
 

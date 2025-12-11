@@ -1,86 +1,24 @@
-# Sounds: Audio Architecture
+# Sounds Plugin
 
-> **Inspiração:** Middleware de áudio como **Wwise** e **FMOD**, mas nativo e "Resource-Oriented".
+**A Sinfonia do Caos.**
 
----
+Gerenciador de Áudio Inteligente e Singleton Nativo.
 
-## 🎵 O Problema: Escala e Gerenciamento
+## 🔊 Arquitetura (Refatorada)
 
-A Godot 4 já possui o `AudioStreamRandomizer` para resolver repetição (Pitch/Volume/Weight).
-Porém, ainda faltam recursos de **orquestração de alto nível**:
+### SoundServer (C++ Singleton)
+A extensão direta do `AudioServer` da Godot.
+- Orquestra a reprodução global de áudio.
+- Gerencia canais, prioridades e ducking.
 
-1. **Concorrência:** Impedir que 50 tiros toquem simultaneamente (estourando CPU e ouvido).
-2. **Prioridade:** Se o limite de sons for atingido, priorizar o "Tiro do Player" sobre o "Passo do NPC distante".
-3. **Pooling:** Não instanciar `AudioStreamPlayer` a cada tiro.
+### SoundsManager (Node)
+O braço direito do SoundServer na SceneTree.
+- **Pooling Inteligente:** Reutiliza `AudioStreamPlayers` para evitar instanciação custosa.
+- **Fire & Forget:** Toque sons com uma única linha de código. `Sounds.play_cue(explosion_cue)`.
+- Gerenciamento de Música de Fundo com Crossfading automático.
 
-## 🔊 A Solução: `SmartAudio`
-
-Nós usamos os recursos nativos da Godot (`AudioStream` e `AudioStreamRandomizer`) e os envolvemos em um sistema de gerenciamento inteligente.
-
-### 1. SoundCue (Resource wrapper)
-
-Um wrapper opcional que adiciona metadados ao `AudioStream`:
-
-- **Stream:** O `AudioStream` nativo (pode ser um `.wav` único ou um `AudioStreamRandomizer`).
-- **Concurrency:** `max_instances` (ex: 5).
-- **Stealing Behavior:** Se lotar, `IGNORE_NEW` ou `STEAL_OLDEST`?
-- **Cooldown:** Tempo mínimo entre triggers (ex: evitar "metralhadora" de som de hit).
-
-### 2. SoundManager (O Maestro)
-
-Um Singleton (`Sounds`) que gerencia um Pool de AudioStreamPlayers.
-
-- **Fire and Forget:** `Sounds.play(sound_cue, global_position)`
-- **Pooling:** Reutiliza players para evitar instanciamento em runtime.
-- **Bus Routing:** Garante que sons de UI vão para o bus UI e SFX para SFX.
-
----
-
-### 3. Workflow Automatizado (The Scanner)
-
-Em vez de criar `SoundCues` manualmente para cada som, o plugin inclui um **Gerador de Manifesto**:
-
-1. **Scan:** Percorre pastas definidas (`res://assets/sfx/footsteps`).
-2. **Group:** Agrupa arquivos por pasta (`footstep_01.wav`, `footstep_02.wav`).
-3. **Generate:** Cria/Atualiza automaticamente recursos `AudioStreamRandomizer` (Playlists) para cada grupo.
-4. **Manifest:** Salva um dicionário global de acesso rápido.
-
-> **Resultado:** Adicione um arquivo `.wav` na pasta, rode o script, e ele já está pronto para uso no jogo como `Sounds.play("footsteps")`.
-
----
-
-## 🏗️ Estrutura de Pastas
-
-```text
-addons/sounds/
-├── nodes/
-│   └── sound_bank.gd        # Preloader de sons
-├── resources/
-│   ├── sound_cue.gd         # O Resource principal
-│   └── playlist.gd          # Para música (sequencial, loop)
-└── autoload/
-    └── sound_manager.gd     # Singleton global
-```
-
-## 🚀 Exemplo de Integração
-
-### No Ability System (ActionBlock)
-
-```gdscript
-# AttackState.tres
-actions:
-  - PlaySound:
-      cue: "res://assets/sounds/sword_swing_cue.tres"
-```
-
-### No Synapse (Impulse)
-
-```gdscript
-# ImpulsePlayMusic.tres
-music_playlist: "res://assets/music/boss_theme_playlist.tres"
-fade_time: 2.0
-```
-
----
-
-_Sounds — Áudio Dinâmico, Não Repetitivo._
+### SoundCue (Resource)
+Definição de evento sonoro.
+- Variação de Pitch/Volume randomizada.
+- Múltiplos streams (ex: variações de passos).
+- Concatenação sequencial.

@@ -4,19 +4,15 @@ import sys
 
 env = SConscript("../../godot-cpp/SConstruct")
 
-# For reference:
-# - env: The construction environment.
-# - target: The target build type (template_debug, template_release, editor).
-# - platform: The target platform (linux, windows, macos, android, ios, web).
-
 # Define the name of the library
 libname = "libsounds"
 
 # Sources to compile
 sources = [
     "src/register_types.cpp",
-    "src/machi_sound_cue.cpp",
-    "src/machi_sound_manager.cpp",
+    "src/sound_cue.cpp",
+    "src/sound_manager.cpp",
+    "src/sound_server.cpp",
 ]
 
 # Include directories

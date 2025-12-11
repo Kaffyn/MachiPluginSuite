@@ -1,27 +1,35 @@
 #include "register_types.h"
 
-#include "machi_sound_cue.h"
-#include "machi_sound_manager.h"
+#include "sound_cue.h"
+#include "sound_manager.h"
+#include "sound_server.h"
 
-#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/godot.hpp>
 
 using namespace godot;
 
-void initialize_sounds_module(ModuleInitializationLevel p_level) {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
-		return;
-	}
+static SoundServer *sound_server_singleton = nullptr;
 
-	ClassDB::register_class<MachiSoundCue>();
-	ClassDB::register_class<MachiSoundManager>();
+void initialize_sounds_module(ModuleInitializationLevel p_level) {
+	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE) {
+        ClassDB::register_class<SoundCue>();
+        ClassDB::register_class<SoundManager>();
+        ClassDB::register_class<SoundServer>();
+        
+        sound_server_singleton = memnew(SoundServer);
+        Engine::get_singleton()->register_singleton("SoundServer", SoundServer::get_singleton());
+	}
 }
 
 void uninitialize_sounds_module(ModuleInitializationLevel p_level) {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
-		return;
-	}
+	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE) {
+        if (sound_server_singleton) {
+            Engine::get_singleton()->unregister_singleton("SoundServer");
+            memdelete(sound_server_singleton);
+            sound_server_singleton = nullptr;
+        }
+    }
 }
 
 extern "C" {

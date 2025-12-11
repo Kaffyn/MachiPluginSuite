@@ -1,12 +1,12 @@
 #include "register_types.h"
 
-#include "machi_bt_node.h"
-#include "machi_bt_composite.h"
-#include "machi_bt_decorator.h"
-#include "machi_bt_task.h"
-#include "machi_blackboard.h"
-#include "machi_behavior_tree.h"
-#include "machi_bt_player.h"
+#include "bt_node.h"
+#include "bt_composite.h"
+#include "bt_decorator.h"
+#include "bt_task.h"
+#include "blackboard.h"
+#include "behavior_tree.h"
+#include "bt_player.h"
 
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/godot.hpp>
@@ -15,15 +15,15 @@ using namespace godot;
 
 void initialize_behavior_tree_module(ModuleInitializationLevel p_level) {
 	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE) {
-        ClassDB::register_class<MachiBTNode>();
-        ClassDB::register_class<MachiBTComposite>();
-        ClassDB::register_class<MachiBTSequence>();
-        ClassDB::register_class<MachiBTSelector>();
-        ClassDB::register_class<MachiBTDecorator>();
-        ClassDB::register_class<MachiBTTask>();
-        ClassDB::register_class<MachiBlackboard>();
-        ClassDB::register_class<MachiBehaviorTree>();
-        ClassDB::register_class<MachiBTPlayer>();
+        ClassDB::register_class<BTNode>();
+        ClassDB::register_class<BTComposite>();
+        ClassDB::register_class<BTSequence>();
+        ClassDB::register_class<BTSelector>();
+        ClassDB::register_class<BTDecorator>();
+        ClassDB::register_class<BTTask>();
+        ClassDB::register_class<Blackboard>();
+        ClassDB::register_class<BehaviorTree>();
+        ClassDB::register_class<BTPlayer>();
 	}
 }
 

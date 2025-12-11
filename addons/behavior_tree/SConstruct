@@ -5,18 +5,18 @@ import sys
 env = SConscript("../../godot-cpp/SConstruct")
 
 # Define the name of the library
-libname = "libbehaviortree"
+libname = "libbehavior_tree"
 
 # Sources to compile
 sources = [
     "src/register_types.cpp",
-    "src/machi_bt_node.cpp",
-    "src/machi_bt_composite.cpp",
-    "src/machi_bt_decorator.cpp",
-    "src/machi_bt_task.cpp",
-    "src/machi_bt_player.cpp",
-    "src/machi_blackboard.cpp",
-    "src/machi_behavior_tree.cpp",
+    "src/bt_node.cpp",
+    "src/bt_composite.cpp",
+    "src/bt_decorator.cpp",
+    "src/bt_task.cpp",
+    "src/blackboard.cpp",
+    "src/behavior_tree.cpp",
+    "src/bt_player.cpp",
 ]
 
 # Include directories

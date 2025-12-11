@@ -10,7 +10,7 @@ on:
       - "addons/behavior_tree/**"
 
 env:
-  LIBNAME: libbehaviortree
+  LIBNAME: libbehavior_tree
 
 jobs:
   build:

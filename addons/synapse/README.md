@@ -66,18 +66,12 @@ Imagine a seguinte sequência complexa configurada **apenas no Inspector**, sem 
 
 ## 📂 Estrutura de Pastas
 
-```text
 addons/synapse/
-├── nodes/
-│   ├── synapse.gd           # Nó base para gatilhos
-│   └── world_memory.gd      # Autoload de estado
-├── resources/
-│   ├── impulse.gd           # Classe base de ações
-│   └── condition.gd         # Classe base de verificação
-└── impulses/                # Biblioteca de ações comuns
-    ├── impulse_set_flag.gd
-    ├── impulse_change_scene.gd
-    └── ...
-```
+├── src/                 # Código C++ (GDExtension)
+│   ├── synapse.cpp      # Nó base para gatilhos
+│   ├── world_memory.cpp # Singleton de estado
+│   └── ...
+├── bin/                 # Binários compilados
+└── plugin.cfg
 
 _Synapse — Conectando o caos._

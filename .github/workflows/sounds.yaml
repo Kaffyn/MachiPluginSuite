@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - "addons/sounds/**"
-      - ".github/workflows/sounds.yaml"
+      - ".github/workflows/sounds.yml"
   pull_request:
     paths:
       - "addons/sounds/**"

@@ -32,15 +32,15 @@ Um framework completo para definir **O QUE** o personagem pode fazer. Gerencia S
 
 - _Baseado em:_ Unreal GAS.
 
-### 2. [Inventory System](addons/inventory_system/README.md) (Em Breve)
+### 2. [Inventory System](addons/inventory_system/README.md)
 
 **A Mochila.**
-Sistema de inventário modular que se integra nativamente com o GAS. Itens dão Habilidades. Equipamentos mudam Stats.
+Sistema de inventário modular que se integra nativamente com o GAS. Itens dão Habilidades. Equipamentos mudam Stats. C++ Based.
 
 ### 3. [Behavior Tree](addons/behavior_tree/README.md)
 
 **O Motorista.**
-A Inteligência Artificial que pilota o Ability System. Decide **QUANDO** usar uma habilidade.
+A Inteligência Artificial que pilota o Ability System. C++ Based.
 
 - _Baseado em:_ Unreal Behavior Tree & LimboAI.
 

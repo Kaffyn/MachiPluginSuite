@@ -10,10 +10,10 @@ libname = "libsynapse"
 # Sources to compile
 sources = [
     "src/register_types.cpp",
-    "src/machi_world_memory.cpp",
-    "src/machi_synapse.cpp",
-    "src/machi_impulse.cpp",
-    "src/machi_condition.cpp",
+    "src/world_memory.cpp",
+    "src/synapse.cpp",
+    "src/impulse.cpp",
+    "src/condition.cpp",
 ]
 
 # Include directories
