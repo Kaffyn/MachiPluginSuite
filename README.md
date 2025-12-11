@@ -18,6 +18,13 @@ Nossa filosofia é trazer padrões da indústria (como Unreal GAS, Wwise, Behavi
 
 ## 🧩 O Ecossistema
 
+### 0. [Core](addons/core/README.md)
+
+**O Cérebro e os Músculos.**
+Um framework completo para definir **O QUE** o personagem pode fazer. Gerencia States, Skills, Attributes (Health/Mana), Cooldowns e Effects.
+
+- _Baseado em:_ Unreal GAS.
+
 ### 1. [Ability System (GAS)](addons/ability_system/README.md)
 
 **O Cérebro e os Músculos.**

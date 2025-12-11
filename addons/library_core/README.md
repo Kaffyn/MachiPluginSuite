@@ -1,0 +1,1 @@
+Nucleo de toda a suite, feito em godot cpp gdextension, ele possui um bottom panel de library de resources, feito para todos os plugins injetarem / utilizarem desse bottom panel proprio
