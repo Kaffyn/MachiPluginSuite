@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://addons/behavior_states/scenes/panel.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://addons/behavior_states/scenes/tabs/library.tscn" id="2_lib"]
+[ext_resource type="Theme" path="res://addons/behavior_states/assets/theme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://addons/behavior_states/scenes/tabs/editor.tscn" id="3_editor"]
+[ext_resource type="PackedScene" path="res://addons/behavior_states/scenes/tabs/factory.tscn" id="4_fact"]
+[ext_resource type="PackedScene" path="res://addons/behavior_states/scenes/tabs/docs_viewer.tscn" id="6_docs"]
+
+[node name="BehaviorStatesPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_theme")
+current_tab = 0
+
+[node name="Biblioteca" parent="MarginContainer/TabContainer" instance=ExtResource("2_lib")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Editor" parent="MarginContainer/TabContainer" instance=ExtResource("3_editor")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Factory" parent="MarginContainer/TabContainer" instance=ExtResource("4_fact")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Grimório" parent="MarginContainer/TabContainer" instance=ExtResource("6_docs")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
