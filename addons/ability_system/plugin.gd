@@ -5,7 +5,6 @@ var main_panel_instance
 
 
 # ==================== CONSTANTS ====================
-const TRANSLATION_PATH = "res://addons/ability_system/assets/translations/"
 
 # ==================== NODES ====================
 const ABILITY_SYSTEM_COMPONENT = preload("res://addons/ability_system/nodes/ability_system_component.gd")
@@ -45,9 +44,6 @@ func _enter_tree() -> void:
 	add_custom_type("Skill", "Resource", SKILL_SCRIPT, SKILL_ICON)
 	add_custom_type("SkillTree", "Resource", SKILL_TREE_SCRIPT, SKILL_TREE_ICON)
 	
-	# 3. Add Translations
-	_add_translations()
-	
 	# 4. Add Bottom Panel
 	bottom_panel_instance = BOTTOM_PANEL.instantiate()
 	add_control_to_bottom_panel(bottom_panel_instance, "Ability System")
@@ -67,34 +63,8 @@ func _exit_tree() -> void:
 	remove_custom_type("Skill")
 	remove_custom_type("SkillTree")
 	
-	# 3. Remove Translations
-	_remove_translations()
-	
-	# 4. Remove Autoload
+	# 3. Remove Autoload
 	# remove_autoload_singleton(AUTOLOAD_NAME)
 	
 	print_rich("[color=yellow]Ability System Deactivated.[/color]")
 
-func _add_translations() -> void:
-	var files = [
-		"en_US.po",
-		"es_LA.po",
-		"pt_BR.po"
-	]
-	
-	for file in files:
-		var translation = load(TRANSLATION_PATH + file)
-		if translation:
-			TranslationServer.add_translation(translation)
-
-func _remove_translations() -> void:
-	var files = [
-		"en_US.po",
-		"es_LA.po",
-		"pt_BR.po"
-	]
-	
-	for file in files:
-		var translation = load(TRANSLATION_PATH + file)
-		if translation:
-			TranslationServer.remove_translation(translation)
