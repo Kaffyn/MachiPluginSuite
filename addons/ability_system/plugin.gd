@@ -1,14 +1,9 @@
 @tool
 extends EditorPlugin
 
-var main_panel_instance
-
-
-# ==================== CONSTANTS ====================
-
 # ==================== NODES ====================
 const ABILITY_SYSTEM_COMPONENT = preload("res://addons/ability_system/nodes/ability_system_component.gd")
-const ABILITY_SYSTEM_ICON = preload("res://addons/ability_system/assets/icons/machine.svg") # Use machine icon for now
+const ABILITY_SYSTEM_ICON = preload("res://addons/ability_system/assets/icons/machine.svg") 
 
 # ==================== RESOURCES ====================
 const STATE_SCRIPT = preload("res://addons/ability_system/resources/state.gd")
@@ -24,19 +19,10 @@ const SKILL_TREE_SCRIPT = preload("res://addons/ability_system/resources/skilltr
 const SKILL_TREE_ICON = preload("res://addons/ability_system/assets/icons/skill.svg")
 
 # ==================== SINGLETONS ====================
-const AUTOLOAD_NAME = "AbilitySystem" # Was BehaviorStates
-
-# ==================== EDITOR UI ====================
-const BOTTOM_PANEL = preload("res://addons/ability_system/scenes/panel.tscn")
-var bottom_panel_instance: Control
+const AUTOLOAD_NAME = "AbilitySystem"
 
 func _enter_tree() -> void:
-	# 1. Add Autoload (Global Singleton)
-	# add_autoload_singleton(AUTOLOAD_NAME, "res://addons/ability_system/ability_system_enums.gd")
-	# Using enums file as singleton might not be best, but mimicking previous behavior if it was doing that.
-	# The previous code seemed to reference specific paths.
-	
-	# 2. Register Custom Types
+	# Register Custom Types
 	add_custom_type("AbilitySystemComponent", "Node", ABILITY_SYSTEM_COMPONENT, ABILITY_SYSTEM_ICON)
 	
 	add_custom_type("State", "Resource", STATE_SCRIPT, STATE_ICON)
@@ -44,27 +30,14 @@ func _enter_tree() -> void:
 	add_custom_type("Skill", "Resource", SKILL_SCRIPT, SKILL_ICON)
 	add_custom_type("SkillTree", "Resource", SKILL_TREE_SCRIPT, SKILL_TREE_ICON)
 	
-	# 4. Add Bottom Panel
-	bottom_panel_instance = BOTTOM_PANEL.instantiate()
-	add_control_to_bottom_panel(bottom_panel_instance, "Ability System")
-	
 	print_rich("[color=green]Ability System (GAS) v2.0 Activated![/color]")
 
 func _exit_tree() -> void:
-	# 1. Remove Bottom Panel
-	if bottom_panel_instance:
-		remove_control_from_bottom_panel(bottom_panel_instance)
-		bottom_panel_instance.queue_free()
-	
-	# 2. Remove Custom Types
+	# Remove Custom Types
 	remove_custom_type("AbilitySystemComponent")
 	remove_custom_type("State")
 	remove_custom_type("Compose")
 	remove_custom_type("Skill")
 	remove_custom_type("SkillTree")
 	
-	# 3. Remove Autoload
-	# remove_autoload_singleton(AUTOLOAD_NAME)
-	
 	print_rich("[color=yellow]Ability System Deactivated.[/color]")
-
