@@ -43,9 +43,9 @@ Define habilidades, estados, atributos, efeitos, custo, cooldowns, tags, gatilho
 
 **Arquitetura:**
 
-- **Singletons:** `BehaviorStates` (Vocabulário Global).
+- **Singletons:** `BehaviorStates` (Vocabulário Global), `NetworkManager` (Replication).
 - **Nodes:** `AbilitySystemComponent` (Brain), `Behavior` (Orchestrator), `Machine` (Executor).
-- **Resources:** `State`, `Compose` (Rules), `Skill`, `Effect`, `AttributeSet`.
+- **Resources:** `State`, `Compose` (Rules), `Skill` (Active), `PassiveAbility`, `Effect`, `AttributeSet`, `AttributeModifier`, `GameplayTag`.
 
 ### 2. [Behavior Tree](addons/behavior_tree/README.md)
 
@@ -65,8 +65,8 @@ Motor de Behavior Tree completo, escrito em C++, com nó custom, decorators, ser
 **Arquitetura:**
 
 - **Nodes:** `BehaviorTreePlayer` (Runtime Executor).
-- **Resources:** `BehaviorTree` (Asset), `Blackboard` (Memory Context).
-- **Logic:** `Selector`, `Sequence`, `Decorator` (Conditions), `Task` (Actions).
+- **Resources:** `BehaviorTree` (Asset), `BlackboardPlan` (Schema).
+- **Logic:** `BTSelector`, `BTSequence`, `BTDecorator` (Conditions), `BTService` (Periodic), `BTTask` (Actions), `SynapseQuery` (Leaf).
 
 ### 3. [Inventory System](addons/inventory_system/README.md)
 
@@ -83,8 +83,8 @@ Inventário modular, orientado a Resources, profundamente integrado ao Ability S
 
 **Arquitetura:**
 
-- **Nodes:** `InventoryContainer` (Logic), `Slot` (UI Component).
-- **Resources:** `Item`, `Inventory` (Storage), `LootTable`.
+- **Nodes:** `InventoryContainer` (Logic), `Slot` (UI Component), `CraftingStation` (Workbenches).
+- **Resources:** `Item`, `ItemCategory`, `Inventory` (Storage), `LootTable`, `Recipe` (Crafting).
 - **Integration:** Itens podem conceder `Skills` e modificar `Stats`.
 
 ### 4. [Synapse](addons/synapse/README.md)
@@ -102,7 +102,7 @@ Conecta tudo no jogo: mente, mundo, cenários e sistemas. É literalmente o glue
 **Arquitetura:**
 
 - **Singletons:** `WorldMemory` (Global Flags/State).
-- **Nodes:** `SynapseTrigger` (Event Detector), `VisualSynapse` (Eyes), `AuditorySynapse` (Ears).
+- **Nodes:** `SynapseTrigger` (Event Detector), `VisualSensor`, `AuditorySensor`, `ProximitySensor`, `StimulusArea`.
 - **Resources:** `Impulse` (Command Pattern), `VisualStimulus`, `AudioStimulus`.
 
 ### 5. [Sounds](addons/sounds/README.md)
@@ -122,7 +122,7 @@ Sistema escalável que cuida de playback, prioridade, pool e variações.
 
 - **Singletons:** `SoundServer` (C++ Mixer), `SoundsManager` (Node API).
 - **Nodes:** `SoundPlayer` (Pooled AudioStreamPlayer).
-- **Resources:** `SoundCue` (Complex Audio Events: Pitch/Vol/Seq).
+- **Resources:** `SoundCue` (Complex Audio Events), `SoundLayer`, `SoundRandomizer`.
 
 ### 6. [Quest System](addons/quest_system/README.md)
 
@@ -141,7 +141,7 @@ Framework de missões com objetivos lineares, ramificados e sistêmicos.
 
 - **Singletons:** `QuestJournal` (Manager).
 - **Nodes:** `QuestNode` (World Trigger).
-- **Resources:** `QuestResource`, `QuestStep`, `Objective`, `Reward`.
+- **Resources:** `QuestResource`, `QuestStep`, `QuestObjective`, `QuestCondition`, `Reward`.
 
 ### 7. [Gaia System](addons/gaia/README.md)
 
@@ -159,7 +159,7 @@ Sistema global de clima, ciclos e estados ambientais.
 **Arquitetura:**
 
 - **Nodes:** `DayNightCycle`, `WeatherController`.
-- **Resources:** `TimeCurve`, `WeatherResource`, `SeasonManager`.
+- **Resources:** `TimeCurve`, `WeatherResource`, `SeasonManager`, `SeasonPreset`.
 - **Events:** Emite sinais de hora/clima para o Synapse.
 
 ### 8. [Director](addons/director/README.md)
@@ -179,7 +179,7 @@ Engine de sequenciamento estilo Unreal Sequencer, mas 2D e Godot-native.
 
 - **Singletons:** `DirectorManager` (Transitions/State).
 - **Nodes:** `DirectorPlayer` (Scene Executor).
-- **Resources:** `SequenceResource` (Tracks/Keyframes/ActorBindings).
+- **Resources:** `SequenceResource`, `AnimationTrack`, `CameraTrack`, `EventTrack`.
 
 ### 9. [Osmo](addons/osmo/README.md)
 
@@ -197,7 +197,7 @@ Inspirado na fluidez do DJI Osmo.
 **Arquitetura:**
 
 - **Singletons:** `CameraServer` (Transition Manager).
-- **Nodes:** `OsmoCamera` (Physical Camera), `CameraZone`.
+- **Nodes:** `OsmoCamera` (Physical Camera), `CameraZone`, `VirtualCamera`.
 - **Resources:** `CameraShake`, `CameraState` (Preset).
 
 ### 10. [Memento](addons/memento/README.md)
@@ -216,7 +216,7 @@ Save/Load que entende Resources complexos.
 
 - **Singletons:** `MementoManager` (Async IO/Encryption).
 - **Nodes:** `SaveInterface` (Opt-in component for Nodes).
-- **Resources:** `SaveProfile` (Slot Data), `SaveSchema` (Structure).
+- **Resources:** `SaveProfile` (Slot Data), `SaveSchema` (Structure), `SaveSlot` (Metadata).
 
 ### 11. [Options](addons/options/README.md)
 
@@ -232,8 +232,8 @@ Save/Load que entende Resources complexos.
 **Arquitetura:**
 
 - **Singletons:** `OptionsManager` (Apply Settings).
-- **Resources:** `SettingsSchema` (Menu Structure).
-- **Nodes:** `OptionWidget` (Auto-bind UI elements).
+- **Resources:** `SettingsSchema` (Menu Structure), `OptionProfile` (Presets).
+- **Nodes:** `OptionWidget` (Auto-bind UI elements), `OptionsContainer` (Generator).
 
 ---
 
