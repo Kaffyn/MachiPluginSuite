@@ -19,6 +19,7 @@ O Director segue os pilares do Machi Plugin Suite:
 
 Define os dados da cutscene: duração, tracks, keys de animação, trocas de câmera. É o "roteiro".
 
+- **Tracks:** Lista polimórfica de tracks (`AnimationTrack`, `CameraTrack`, `EventTrack`).
 - Pode ser salvo como `.tres` e reutilizado.
 
 #### `DirectorManager` (Singleton)

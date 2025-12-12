@@ -6,7 +6,7 @@
 
 ---
 
-## 🏛️ Os Pilares da Arquitetura
+## 1. A Arquitetura (The Pillars)
 
 O sistema inverte a lógica tradicional de State Machines. Em vez de hardcodar transições, usamos **Query de Dados**.
 
@@ -16,6 +16,30 @@ O sistema inverte a lógica tradicional de State Machines. Em vez de hardcodar t
 | **A Engine**  | `(Unified)`              | A lógica de Machine agora vive dentro do ASC.                                      |
 | **O DNA**     | Resources                | Comportamento é Dado. Mutável, trocável e extensível sem recompilação.             |
 | **A Bancada** | Editor Panel             | Uma IDE totalmente integrada dentro da Godot. Visual, intuitiva e livre de código. |
+
+### Componentes Atualizados
+
+#### Singletons
+
+- **`BehaviorStates`:** Vocabulário Global (Enums).
+- **`NetworkManager`:** Gerenciador de Replicação para Multiplayer (Prediction & Authority).
+
+#### Nodes
+
+- **`AbilitySystemComponent` (Brain):** O coração do sistema.
+- **`Behavior` (Orchestrator):** Ponte entre Input/IA e o ASC.
+- **`Machine` (Executor):** (Interno) Executa a lógica de estado.
+
+#### Resources
+
+- **`State`:** Unidade de comportamento (Movement, Combat).
+- **`Compose`:** Regras de transição e indexação O(1).
+- **`Skill` (Active):** Habilidade ativável (Active Ability).
+- **`PassiveAbility`:** Habilidades passivas (Buffs/Auras).
+- **`Effect`:** Modificadores temporários (Status Effect).
+- **`AttributeSet`:** Container de Atributos (Health, Statmina).
+- **`AttributeModifier`:** Regra de modificação (+10 Str).
+- **`GameplayTag`:** Tags hierárquicas para query (Status.Stunned).
 
 ---
 

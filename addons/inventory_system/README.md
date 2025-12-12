@@ -4,22 +4,26 @@
 
 Sistema de inventário modular, flexível e data-driven, projetado para integração nativa com o Ability System (GAS).
 
-## 🌟 Funcionalidades Principais
+## 🌟 Funcionalidades e Arquitetura
 
-### Data-Driven Items
+### Nodes & Componentes
 
-- Itens são Resources (`Item.tres`).
-- Composição via **Componentes**: Adicione `EquippableComponent`, `ConsumableComponent`, `QuestItemComponent` para definir comportamento.
+- **`InventoryContainer` (Logic):** O cérebro do inventário.
+- **`Slot` (UI):** Componente visual pronto para Drag & Drop.
+- **`CraftingStation`:** Workbenches que processam receitas.
 
-### Inventory Container
+### Resources (Data)
 
-- Recurso `Inventory` que gerencia slots, peso e empilhamento.
-- Suporte a múltiplos inventários (Mochila, Bau, Equipamento).
+- **`Item`:** A definição base.
+- **`ItemCategory`:** Filtros e regras de organização.
+- **`Inventory`:** O Storage serializável.
+- **`LootTable`:** Regras de drop probabilístico.
+- **`Recipe`:** Regras de input/output para Crafting.
 
 ### Integração com GAS
 
-- Itens podem conceder **Habilidades** (Skills).
-- Equipamentos podem modificar **Atributos** (Stats) e aplicar **Efeitos** (Buffs/Debuffs).
+- **Skills:** Itens podem conceder habilidades ativas ou passivas.
+- **Stats:** Equipamentos aplicam `AttributeModifiers`.
 
 ## 🛠️ Editor
 

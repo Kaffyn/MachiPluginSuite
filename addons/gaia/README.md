@@ -29,7 +29,8 @@ Gerenciador de estados climáticos **2D**.
 
 Macrociclo que altera as probabilidades de clima e a paleta visual do mundo.
 
-- `SeasonManager`: Controla transição suave entre Primavera -> Verão -> Outono -> Inverno.
+- **`SeasonManager`:** Controla transição suave entre Primavera -> Verão -> Outono -> Inverno.
+- **`SeasonPreset`:** Resource que define as regras visuais e climáticas de cada estação.
 
 ---
 

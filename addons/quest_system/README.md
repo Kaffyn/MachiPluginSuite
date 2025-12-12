@@ -23,23 +23,24 @@ O **Quest System** fornece uma estrutura robusta, orientada a dados e orientada 
 A definição estática da missão.
 
 - **Metadados:** Nome, Descrição, Ícone, Categoria (Main/Side).
-- **Steps (Graph/Stages):** Uma sequência ou grafo de etapas (`QuestStep`).
+- **Steps:** Grafo de etapas (`QuestStep`).
 - **Rewards:** Lista de `RewardResource` (XP, Itens, Skills).
-- **Requirements:** Condições para aceitar (Level, outra Quest completa).
+- **Conditions:** Lista de `QuestCondition` para desbloqueio (Level, Previous Quest).
 
 #### `QuestStep`
 
 Uma etapa da missão. Pode ter múltiplos objetivos.
 
-- **Objectives:** Lista de `ObjectiveResource`.
+- **Objectives:** Lista de `QuestObjective`.
 - **IsOptional:** Se falhar ou pular, a quest continua?
 
-#### `ObjectiveResource`
+#### `QuestObjective`
 
 A menor unidade de progresso.
 
 - **Target:** O que deve ser feito.
 - **Count:** Quantidade (1/10).
+- **Condition:** `QuestCondition` específica para o objetivo.
 - **EventTrigger:** (Integração **Synapse**) Qual "Sinapse" dispara esse objetivo?
 
 ---

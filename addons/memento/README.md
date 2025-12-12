@@ -17,7 +17,10 @@ O Memento abstrai a complexidade de `FileAccess` e JSON/Binary parsing.
 
 #### `SaveProfile` (Resource)
 
-Representa um "Slot" de save no disco. Contém metadados (Hora, Screenshot, Local) e o blob de dados.
+Representa um "Slot" de save no disco. Contém metadados (`SaveSlot`) e o blob de dados.
+
+- **Metadados:** Data, Hora, Screenshot, Local, Playtime.
+- **Blob:** Os dados binários serializados.
 
 #### `MementoManager` (Singleton)
 

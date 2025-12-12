@@ -23,8 +23,9 @@ O braço direito do SoundServer na SceneTree.
 
 ### SoundCue (Resource)
 
-Definição de evento sonoro.
+Definição de evento sonoro complexo.
 
-- Variação de Pitch/Volume randomizada.
-- Múltiplos streams (ex: variações de passos).
-- Concatenação sequencial.
+- **Layers:** (`SoundLayer`) Camadas de áudio mixadas juntas.
+- **Randomizers:** (`SoundRandomizer`) Variação de Pitch/Volume/Stream.
+- **Concurrency:** Limita quantas instâncias desse som tocam ao mesmo tempo.
+- **Sequencing:** Toca sons em sequência ou aleatoriamente.

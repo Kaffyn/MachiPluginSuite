@@ -25,9 +25,10 @@ O Autoload ou Resource que contém o estado atual do save.
 
 Um Node que pode ser colocado em qualquer lugar para **detectar** algo e **disparar** Impulsos.
 
-- **Ex:** `AreaSynapse` (dispara ao entrar na área).
-- **Ex:** `DeathSynapse` (dispara ao morrer).
-- **Ex:** `FlagSynapse` (dispara quando a flag "quest_complete" vira true).
+- **Ex:** `SynapseTrigger` (Genérico).
+- **Ex:** `VisualSensor` (Eyes - Cone de Visão).
+- **Ex:** `AuditorySensor` (Ears - Raio de Audição).
+- **Ex:** `ProximitySensor` (Touch/Near - Área).
 
 ### 3. Impulse (A Ação)
 
@@ -36,7 +37,7 @@ Resources modulares que fazem coisas. Eles são "Comandos".
 - `ImpulsePlaySound`
 - `ImpulseLoadScene`
 - `ImpulseSetFlag`
-- `ImpulseGiveItem`
+- key: `ImpulseGiveItem`
 - `ImpulseSpawnScene`
 
 ### 4. Perception (Os Sentidos)
@@ -44,7 +45,8 @@ Resources modulares que fazem coisas. Eles são "Comandos".
 Como parte do Sistema Nervoso, o Synapse gerencia como os agentes percebem o mundo. Substitui Raycasts manuais por um sistema de registro centralizado.
 
 - **Stimuli:** Objetos emitem estímulos (`VisualStimulus`, `AudioStimulus`) com tags (`TEAM_A`, `DANGEROUS`).
-- **Sensors:** Nodes que captam estímulos (`VisualSynapse` para cone de visão, `AuditorySynapse` para raio de audição).
+- **Sensors:** Nodes que captam estímulos (`VisualSensor`, `AuditorySensor`).
+- **StimulusArea:** Área que emite estímulo constante (ex: Cheiro/Heat).
 - **Integração BT:** Sensores populam automaticamente a Blackboard da Behavior Tree (ex: `Target`, `LastKnownLocation`).
 
 ---

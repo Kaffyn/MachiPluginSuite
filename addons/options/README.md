@@ -28,6 +28,14 @@ Define a estrutura do menu.
 - Aplica as configurações usando as APIs nativas da Godot (`DisplayServer`, `AudioServer`, `InputMap`).
 - Garante que as configurações sejam aplicadas no start do jogo.
 
+#### `OptionProfile` (Resource)
+
+Preset de configurações (ex: "Low", "Ultra").
+
+#### `OptionsContainer` (Node)
+
+Gerador de UI dinâmico. Recebe um `SettingsSchema` e cria os `OptionWidgets` automaticamente na tela.
+
 #### `InputRemapper` (Helper)
 
 - API simplificada para remapear `InputActions` em runtime.

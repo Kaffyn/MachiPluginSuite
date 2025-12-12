@@ -20,44 +20,41 @@ Essa separação garante que a IA use as mesmas regras de gameplay que o Player.
 
 ## 🏛️ Arquitetura
 
-O sistema segue o padrão clássico de Behavior Trees com melhorias de "Quality of Life" da Godot.
+O sistema segue o padrão clássico de Behavior Trees com melhorias de "Quality of Life" da Godot e integração profunda com Synapse/GAS.
 
-### 1. Blackboard (A Memória de Curto Prazo)
+### 1. Nodes (Runtime)
 
-Um Resource/Dicionário que armazena o conhecimento da IA sobre o mundo atual.
+- **`BehaviorTreePlayer`:** O executor que roda a árvore na SceneTree.
 
-- `target: Node3D`
-- `last_known_position: Vector3`
-- `alert_level: float`
-- `has_los: bool`
+### 2. Resources (Assets)
 
-### 2. Composites (O Fluxo)
+- **`BehaviorTree`:** O asset da árvore em si.
+- **`BlackboardPlan`:** Schema que define quais chaves a Blackboard DEVE ter (safety).
 
-Nodes que controlam o fluxo de decisão.
+### 3. Logic Nodes (Leaves & Composites)
 
-- **Selector (?):** Tenta executar filhos até um ter sucesso. (Lógica OR)
-- **Sequence (->):** Executa filhos em ordem até um falhar. (Lógica AND)
-- **SimpleParallel:** Executa múltiplos nós simultaneamente (ex: Mirar e Andar).
+#### Composites (Fluxo)
 
-### 3. Decorators (As Condições)
+- **`BTSelector` (?):** OR Logic.
+- **`BTSequence` (->):** AND Logic.
+- **`BTSimpleParallel`:** Concurrency.
 
-Guardiões que permitem ou negam a execução de um ramo.
+#### Decorators (Condições)
 
-- `BlackboardCheck`: "Tenho um alvo?"
-- `Cooldown`: "Posso usar essa skill de novo?"
-- `ASC_CanActivate`: "O Ability System permite 'Attack' agora?"
+- **`BTDecorator`:** Base class.
+- **`BlackboardCheck`:** Verifica memória.
+- **`Cooldown`:** Limita frequência.
+- **`ASC_CanActivate`:** Checa se a habilidade pode ser usada.
 
-### 4. Tasks (As Folhas)
+#### Services (Periódicos)
 
-Onde a magia acontece. São os nós que interagem com o mundo.
+- **`BTService`:** Roda a cada X segundos enquanto o ramo está ativo (ex: `CheckDistance`).
 
-#### Integração com Ability System
+#### Tasks (Ações)
 
-As tasks não devem ter código de gameplay complexo (move_and_slide). Elas devem delegar para o ASC.
-
-- **`BTTask_SetIntent`:** Define inputs no ASC (ex: pressionar "Jump").
-- **`BTTask_ActivateAbility`:** Tenta ativar uma Skill ou State específico.
-- **`BTTask_WaitAbility`:** Espera uma habilidade terminar (ex: "Cast Fireball").
+- **`BTTask`:** Base class.
+- **`BTTask_SetIntent`:** Controla o GAS.
+- **`SynapseQuery`:** Pergunta ao sistema de percepção (ex: "GetVisibleEnemies").
 
 ---
 
