@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+import os
+import sys
+
+env = SConscript("../../godot-cpp/SConstruct")
+
+# Define the name of the library
+libname = "gaia"
+
+# Sources to compile
+sources = Glob("src/*.cpp")
+
+# Include directories
+env.Append(CPPPATH=["src"])
+
+# Tweak the output filename
+if env["platform"] == "macos":
+    library = env.SharedLibrary(
+        "bin/{}.{}.{}.framework/{}".format(libname, env["platform"], env["target"], libname),
+        source=sources,
+    )
+else:
+    library = env.SharedLibrary(
+        "bin/{}{}{}".format(libname, env["suffix"], env["SHLIBSUFFIX"]),
+        source=sources,
+    )
+
+Default(library)

@@ -3,11 +3,11 @@ name: Build Core GDExtension
 on:
   push:
     paths:
-      - "addons/library_core/**"
+      - "addons/library/**"
       - ".github/workflows/core.yml"
   pull_request:
     paths:
-      - "addons/library_core/**"
+      - "addons/library/**"
 
 env:
   LIBNAME: libcore
@@ -61,7 +61,7 @@ jobs:
           pip install scons
 
       - name: Compile GDExtension
-        working-directory: addons/library_core
+        working-directory: addons/library
         run: |
           scons platform=${{ matrix.platform }} target=${{ matrix.target }}
 
@@ -69,7 +69,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.LIBNAME }}.${{ matrix.platform }}${{ matrix.suffix }}
-          path: addons/library_core/bin/
+          path: addons/library/bin/
 
   build-android:
     name: Build Android (${{ matrix.arch }})
@@ -117,7 +117,7 @@ jobs:
           link-to-sdk: true
 
       - name: Compile Android
-        working-directory: addons/library_core
+        working-directory: addons/library
         env:
           ANDROID_HOME: ${{ steps.setup-ndk.outputs.android-sdk-root }}
           ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
@@ -128,4 +128,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.LIBNAME }}.android.${{ matrix.arch }}${{ matrix.suffix }}
-          path: addons/library_core/bin/
+          path: addons/library/bin/

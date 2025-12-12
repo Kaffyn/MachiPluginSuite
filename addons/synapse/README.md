@@ -39,6 +39,14 @@ Resources modulares que fazem coisas. Eles são "Comandos".
 - `ImpulseGiveItem`
 - `ImpulseSpawnScene`
 
+### 4. Perception (Os Sentidos)
+
+Como parte do Sistema Nervoso, o Synapse gerencia como os agentes percebem o mundo. Substitui Raycasts manuais por um sistema de registro centralizado.
+
+- **Stimuli:** Objetos emitem estímulos (`VisualStimulus`, `AudioStimulus`) com tags (`TEAM_A`, `DANGEROUS`).
+- **Sensors:** Nodes que captam estímulos (`VisualSynapse` para cone de visão, `AuditorySynapse` para raio de audição).
+- **Integração BT:** Sensores populam automaticamente a Blackboard da Behavior Tree (ex: `Target`, `LastKnownLocation`).
+
 ---
 
 ## 🚀 Exemplo de Uso: "Boss Battle"

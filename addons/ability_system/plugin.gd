@@ -31,7 +31,7 @@ func _enter_tree() -> void:
 	add_custom_type("SkillTree", "Resource", SKILL_TREE_SCRIPT, SKILL_TREE_ICON)
 	
 	# Register with Library Service (JEI Pattern)
-	# Check if LibraryService exists (it might not if library_core is disabled)
+	# Check if LibraryService exists (it might not if library is disabled)
 	if Engine.has_singleton("LibraryService") or DisplayServer.get_name() != "headless": 
 		# Note: In Editor, Autoloads are available as globally named nodes if tool is active.
 		# Safe access pattern via implicit name if it works, or check root.

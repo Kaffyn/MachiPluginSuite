@@ -1,0 +1,14 @@
+﻿scons: Reading SConscript files ...
+python : 
+No linha:1 caractere:1
++ python -m SCons target=template_debug 2>&1 | 
+Out-File -Encoding UTF8  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:Str 
+   ing) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+scons: *** missing SConscript file 'C:\\Users\\bru
+no\\Desktop\\Games\\MachiPluginSuite\\SConstruct'
+File "C:\Users\bruno\Desktop\Games\MachiPluginSuit
+e\addons\gaia\SConstruct", line 5, in <module>

@@ -1,0 +1,17 @@
+[configuration]
+
+entry_symbol = "gaia_library_init"
+compatibility_minimum = 4.1
+
+[libraries]
+
+windows.debug.x86_64 = "res://bin/gaia.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "res://bin/gaia.windows.template_release.x86_64.dll"
+linux.debug.x86_64 = "res://bin/gaia.linux.template_debug.x86_64.so"
+linux.release.x86_64 = "res://bin/gaia.linux.template_release.x86_64.so"
+macos.debug = "res://bin/gaia.macos.template_debug.framework"
+macos.release = "res://bin/gaia.macos.template_release.framework"
+android.debug.x86_64 = "res://bin/gaia.android.template_debug.x86_64.so"
+android.release.x86_64 = "res://bin/gaia.android.template_release.x86_64.so"
+android.debug.arm64 = "res://bin/gaia.android.template_debug.arm64.so"
+android.release.arm64 = "res://bin/gaia.android.template_release.arm64.so"
