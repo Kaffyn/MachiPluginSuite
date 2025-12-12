@@ -7,7 +7,7 @@ var panel_instance
 func _enter_tree():
 	# Load the full Library Core Panel (Library C++, Editor, Factory)
 	panel_instance = PANEL_SCENE.instantiate()
-	add_control_to_bottom_panel(panel_instance, "Core")
+	add_control_to_bottom_panel(panel_instance, "Library")
 
 func _exit_tree():
 	if panel_instance:
