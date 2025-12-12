@@ -15,3 +15,6 @@ android.debug.x86_64 = "res://addons/library/bin/library.android.template_debug.
 android.release.x86_64 = "res://addons/library/bin/library.android.template_release.x86_64.so"
 android.debug.arm64 = "res://addons/library/bin/library.android.template_debug.arm64.so"
 android.release.arm64 = "res://addons/library/bin/library.android.template_release.arm64.so"
+
+[icons]
+Library = "res://addons/library/icons/Library.svg"

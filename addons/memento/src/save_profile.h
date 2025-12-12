@@ -14,6 +14,12 @@ protected:
 public:
 	SaveProfile();
 	~SaveProfile();
+
+    void set_metadata(Dictionary p_metadata);
+    Dictionary get_metadata() const;
+
+private:
+    Dictionary metadata;
 };
 
 #endif // SAVE_PROFILE_H

@@ -14,6 +14,13 @@ protected:
 public:
 	DirectorPlayer();
 	~DirectorPlayer();
+
+    void play(Ref<Resource> p_sequence);
+    void stop();
+    bool is_playing() const;
+
+private:
+    bool playing = false;
 };
 
 #endif // DIRECTOR_PLAYER_H

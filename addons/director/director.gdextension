@@ -15,3 +15,8 @@ android.debug.x86_64 = "res://addons/director/bin/director.android.template_debu
 android.release.x86_64 = "res://addons/director/bin/director.android.template_release.x86_64.so"
 android.debug.arm64 = "res://addons/director/bin/director.android.template_debug.arm64.so"
 android.release.arm64 = "res://addons/director/bin/director.android.template_release.arm64.so"
+
+[icons]
+DirectorPlayer = "res://addons/director/icons/DirectorPlayer.svg"
+DirectorManager = "res://addons/director/icons/DirectorManager.svg"
+SequenceResource = "res://addons/director/icons/SequenceResource.svg"

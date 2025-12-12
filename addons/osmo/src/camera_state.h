@@ -17,6 +17,10 @@ public:
     
     // Properties
     float zoom_level = 1.0f;
+    Vector2 offset = Vector2(0, 0);
+
+    void set_offset(Vector2 p_offset);
+    Vector2 get_offset() const;
 };
 
 #endif // CAMERA_STATE_H

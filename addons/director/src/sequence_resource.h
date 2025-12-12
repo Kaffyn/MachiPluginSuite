@@ -14,6 +14,12 @@ protected:
 public:
 	SequenceResource();
 	~SequenceResource();
+
+    void set_tracks(TypedArray<Resource> p_tracks);
+    TypedArray<Resource> get_tracks() const;
+
+private:
+    TypedArray<Resource> tracks;
 };
 
 #endif // SEQUENCE_RESOURCE_H

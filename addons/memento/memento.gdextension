@@ -15,3 +15,8 @@ android.debug.x86_64 = "res://addons/memento/bin/memento.android.template_debug.
 android.release.x86_64 = "res://addons/memento/bin/memento.android.template_release.x86_64.so"
 android.debug.arm64 = "res://addons/memento/bin/memento.android.template_debug.arm64.so"
 android.release.arm64 = "res://addons/memento/bin/memento.android.template_release.arm64.so"
+
+[icons]
+SaveInterface = "res://addons/memento/icons/SaveInterface.svg"
+MementoManager = "res://addons/memento/icons/MementoManager.svg"
+SaveProfile = "res://addons/memento/icons/SaveProfile.svg"

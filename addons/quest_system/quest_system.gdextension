@@ -15,3 +15,8 @@ android.debug.x86_64 = "res://addons/quest_system/bin/quest_system.android.templ
 android.release.x86_64 = "res://addons/quest_system/bin/quest_system.android.template_release.x86_64.so"
 android.debug.arm64 = "res://addons/quest_system/bin/quest_system.android.template_debug.arm64.so"
 android.release.arm64 = "res://addons/quest_system/bin/quest_system.android.template_release.arm64.so"
+
+[icons]
+QuestNode = "res://addons/quest_system/icons/QuestNode.svg"
+QuestJournal = "res://addons/quest_system/icons/QuestJournal.svg"
+QuestResource = "res://addons/quest_system/icons/QuestResource.svg"

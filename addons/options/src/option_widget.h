@@ -14,6 +14,12 @@ protected:
 public:
 	OptionWidget();
 	~OptionWidget();
+
+    void set_setting_name(String p_name);
+    String get_setting_name() const;
+
+private:
+    String setting_name;
 };
 
 #endif // OPTION_WIDGET_H
