@@ -38,6 +38,8 @@ func _set_selected(val: bool):
 
 func _on_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP or event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			return
 		clicked.emit(file_path, event.button_index)
 		if event.double_click and event.button_index == MOUSE_BUTTON_LEFT:
 			activated.emit(file_path)

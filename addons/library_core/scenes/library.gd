@@ -156,7 +156,7 @@ func _on_card_activated(path: String) -> void:
 func _on_card_clicked(path: String, btn: int) -> void:
     if btn == MOUSE_BUTTON_RIGHT:
         EditorInterface.edit_resource(load(path))
-    else:
+    elif btn == MOUSE_BUTTON_LEFT:
         EditorInterface.inspect_object(load(path))
 
 func _on_refresh_pressed() -> void:
