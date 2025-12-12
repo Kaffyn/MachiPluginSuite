@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dvay51mx80bs2"]
 
 [ext_resource type="Script" uid="uid://cfrbhthw780m4" path="res://addons/ability_system/scenes/panel.gd" id="1_script"]
-[ext_resource type="PackedScene" uid="uid://jydhqwmja5uo" path="res://addons/ability_system/scenes/tabs/library.tscn" id="2_lib"]
+
 [ext_resource type="Theme" uid="uid://hy5kockqpp4i" path="res://addons/ability_system/assets/theme.tres" id="2_theme"]
 [ext_resource type="PackedScene" uid="uid://bcyca08i11th0" path="res://addons/ability_system/scenes/tabs/editor.tscn" id="3_editor"]
 [ext_resource type="PackedScene" uid="uid://cqunx7ihtyp6r" path="res://addons/ability_system/scenes/tabs/factory.tscn" id="4_fact"]
@@ -31,9 +31,6 @@ theme = ExtResource("2_theme")
 current_tab = 0
 clip_tabs = false
 
-[node name="Biblioteca" parent="MarginContainer/TabContainer" instance=ExtResource("2_lib")]
-layout_mode = 2
-metadata/_tab_index = 0
 
 [node name="Editor" parent="MarginContainer/TabContainer" instance=ExtResource("3_editor")]
 visible = false
