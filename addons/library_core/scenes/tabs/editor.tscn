@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3]
 
 [ext_resource type="Theme" uid="uid://hy5kockqpp4i" path="res://addons/ability_system/assets/theme.tres" id="1_theme"]
-[ext_resource type="Script" uid="uid://cu4hbljupgwo7" path="res://addons/library_core/scenes/tabs/editor.gd" id="2_script"]
-[ext_resource type="Script" uid="uid://digy537wahusd" path="res://addons/library_core/scenes/tabs/editor_graph.gd" id="3_graph"]
+[ext_resource type="Script" path="res://addons/library_core/scenes/tabs/editor.gd" id="2_script"]
+[ext_resource type="Script" path="res://addons/library_core/scenes/tabs/editor_graph.gd" id="3_graph"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ks2jb"]
 
