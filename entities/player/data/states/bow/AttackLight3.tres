@@ -56,7 +56,7 @@ entry_requirements = {
 "physics": 0,
 "status": 0
 }
-components = Array[ExtResource("1_21df1")]([SubResource("Resource_p55lg"), SubResource("Resource_yldsh"), SubResource("Resource_atwa1"), SubResource("Resource_21df1"), SubResource("Resource_tl5m7"), SubResource("Resource_13r3a"), SubResource("Resource_m1ppf"), SubResource("Resource_c5ljh"), SubResource("Resource_7hu2m")])
+components = [SubResource("Resource_p55lg"), SubResource("Resource_yldsh"), SubResource("Resource_atwa1"), SubResource("Resource_21df1"), SubResource("Resource_tl5m7"), SubResource("Resource_13r3a"), SubResource("Resource_m1ppf"), SubResource("Resource_c5ljh"), SubResource("Resource_7hu2m")]
 damage = 15
 cooldown = 0.6
 projectile_speed = 700.0

@@ -14,10 +14,6 @@ config/name="Machi Plugin Suite"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-SoundManager="*res://addons/sounds/sounds_autoload.gd"
-
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ability_system/plugin.cfg", "res://addons/behavior_tree/plugin.cfg", "res://addons/library_core/plugin.cfg", "res://addons/inventory_system/plugin.cfg", "res://addons/sounds/plugin.cfg", "res://addons/synapse/plugin.cfg")
+enabled=PackedStringArray("res://addons/ability_system/plugin.cfg", "res://addons/behavior_tree/plugin.cfg", "res://addons/inventory_system/plugin.cfg", "res://addons/library_core/plugin.cfg", "res://addons/sounds/plugin.cfg", "res://addons/synapse/plugin.cfg")

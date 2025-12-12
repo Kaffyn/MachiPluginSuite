@@ -43,7 +43,7 @@ entry_requirements = {
 "physics": 0,
 "status": 0
 }
-components = Array[ExtResource("1_b6u00")]([SubResource("Resource_ybd75"), SubResource("Resource_a06c4"), SubResource("Resource_b6u00"), SubResource("Resource_y5123"), SubResource("Resource_2w6hv"), SubResource("Resource_6bb21")])
+components = [SubResource("Resource_ybd75"), SubResource("Resource_a06c4"), SubResource("Resource_b6u00"), SubResource("Resource_y5123"), SubResource("Resource_2w6hv"), SubResource("Resource_6bb21")]
 cooldown = 0.3
 cancel_min_time = 0.1
 buffer_window_start = 0.4

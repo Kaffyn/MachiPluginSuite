@@ -14,7 +14,7 @@ id = "dash_evasion"
 name = "Evasive Dash"
 description = "Quick movement to dodge attacks."
 req_level = 2
-prerequisites = Array[ExtResource("2_svu3e")]([SubResource("Resource_tm44t")])
+prerequisites = [SubResource("Resource_tm44t")]
 req_attributes = {
 "agility": 5
 }

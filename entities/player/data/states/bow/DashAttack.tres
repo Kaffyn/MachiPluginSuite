@@ -61,7 +61,7 @@ entry_requirements = {
 "physics": 6,
 "status": 0
 }
-components = Array[ExtResource("1_ghrtc")]([SubResource("Resource_00fsx"), SubResource("Resource_pum0y"), SubResource("Resource_kwhap"), SubResource("Resource_ghrtc"), SubResource("Resource_5ygqt"), SubResource("Resource_finyk"), SubResource("Resource_tg7eq"), SubResource("Resource_fm0y5"), SubResource("Resource_jeivh")])
+components = [SubResource("Resource_00fsx"), SubResource("Resource_pum0y"), SubResource("Resource_kwhap"), SubResource("Resource_ghrtc"), SubResource("Resource_5ygqt"), SubResource("Resource_finyk"), SubResource("Resource_tg7eq"), SubResource("Resource_fm0y5"), SubResource("Resource_jeivh")]
 duration = 0.3
 projectile_scene = ExtResource("2_arrow")
 projectile_speed = 800.0

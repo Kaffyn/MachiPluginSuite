@@ -15,7 +15,7 @@ static SoundServer *sound_server_singleton = nullptr;
 void initialize_sounds_module(ModuleInitializationLevel p_level) {
 	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE) {
         ClassDB::register_class<SoundCue>();
-        ClassDB::register_class<SoundManager>();
+        ClassDB::register_class<MachiSoundManager>();
         ClassDB::register_class<SoundServer>();
         
         sound_server_singleton = memnew(SoundServer);

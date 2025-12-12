@@ -44,7 +44,7 @@ entry_requirements = {
 "physics": 6,
 "status": 1
 }
-components = Array[ExtResource("1_com6d")]([SubResource("Resource_r77bu"), SubResource("Resource_e3ccs"), SubResource("Resource_com6d"), SubResource("Resource_bye3t"), SubResource("Resource_6avu4"), SubResource("Resource_psxb1")])
+components = [SubResource("Resource_r77bu"), SubResource("Resource_e3ccs"), SubResource("Resource_com6d"), SubResource("Resource_bye3t"), SubResource("Resource_6avu4"), SubResource("Resource_psxb1")]
 duration = 0.5
 cost_type = 1
 cost_amount = 20

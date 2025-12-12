@@ -57,7 +57,7 @@ entry_requirements = {
 "physics": 6,
 "status": 0
 }
-components = Array[ExtResource("1_jrmxy")]([SubResource("Resource_yj6a8"), SubResource("Resource_7xmlb"), SubResource("Resource_nhkl0"), SubResource("Resource_jrmxy"), SubResource("Resource_ec7i7"), SubResource("Resource_c5ous"), SubResource("Resource_5ntce"), SubResource("Resource_qxp61"), SubResource("Resource_guirq")])
+components = [SubResource("Resource_yj6a8"), SubResource("Resource_7xmlb"), SubResource("Resource_nhkl0"), SubResource("Resource_jrmxy"), SubResource("Resource_ec7i7"), SubResource("Resource_c5ous"), SubResource("Resource_5ntce"), SubResource("Resource_qxp61"), SubResource("Resource_guirq")]
 damage = 8
 duration = 0.3
 cost_type = 1

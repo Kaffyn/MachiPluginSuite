@@ -1,5 +1,5 @@
-#ifndef SOUND_MANAGER_H
-#define SOUND_MANAGER_H
+#ifndef MACHI_SOUND_MANAGER_H
+#define MACHI_SOUND_MANAGER_H
 
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/audio_stream_player.hpp>
@@ -8,8 +8,8 @@
 
 using namespace godot;
 
-class SoundManager : public Node {
-	GDCLASS(SoundManager, Node);
+class MachiSoundManager : public Node {
+	GDCLASS(MachiSoundManager, Node);
 
 private:
     // Pool
@@ -22,8 +22,8 @@ protected:
 	static void _bind_methods();
 
 public:
-    SoundManager();
-    ~SoundManager();
+    MachiSoundManager();
+    ~MachiSoundManager();
 
     void play_cue(const Ref<SoundCue> &p_cue);
     // play_2d_cue...

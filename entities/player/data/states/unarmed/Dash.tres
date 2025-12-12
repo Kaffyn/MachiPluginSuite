@@ -44,7 +44,7 @@ entry_requirements = {
 "physics": 6,
 "status": 0
 }
-components = Array[ExtResource("1_dwu4w")]([SubResource("Resource_ydwps"), SubResource("Resource_fiyir"), SubResource("Resource_dwu4w"), SubResource("Resource_kmv76"), SubResource("Resource_jl231"), SubResource("Resource_iw635")])
+components = [SubResource("Resource_ydwps"), SubResource("Resource_fiyir"), SubResource("Resource_dwu4w"), SubResource("Resource_kmv76"), SubResource("Resource_jl231"), SubResource("Resource_iw635")]
 duration = 0.5
 cost_type = 1
 cost_amount = 10

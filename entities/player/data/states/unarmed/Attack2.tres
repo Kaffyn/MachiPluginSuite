@@ -54,7 +54,7 @@ entry_requirements = {
 "physics": 0,
 "status": 0
 }
-components = Array[ExtResource("1_t8xhq")]([SubResource("Resource_17oat"), SubResource("Resource_eua0u"), SubResource("Resource_5ps2m"), SubResource("Resource_t8xhq"), SubResource("Resource_pgevp"), SubResource("Resource_b3bci"), SubResource("Resource_qdomx"), SubResource("Resource_0se1p"), SubResource("Resource_7awuw")])
+components = [SubResource("Resource_17oat"), SubResource("Resource_eua0u"), SubResource("Resource_5ps2m"), SubResource("Resource_t8xhq"), SubResource("Resource_pgevp"), SubResource("Resource_b3bci"), SubResource("Resource_qdomx"), SubResource("Resource_0se1p"), SubResource("Resource_7awuw")]
 damage = 10
 duration = 0.4
 cancel_min_time = 0.1

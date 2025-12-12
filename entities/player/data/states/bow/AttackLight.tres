@@ -61,7 +61,7 @@ entry_requirements = {
 "physics": 0,
 "status": 0
 }
-components = Array[ExtResource("1_5ipxw")]([SubResource("Resource_ax3k8"), SubResource("Resource_680kb"), SubResource("Resource_1hcyo"), SubResource("Resource_5ipxw"), SubResource("Resource_on4hl"), SubResource("Resource_slwly"), SubResource("Resource_7keiu"), SubResource("Resource_1quk4"), SubResource("Resource_lkgtx")])
+components = [SubResource("Resource_ax3k8"), SubResource("Resource_680kb"), SubResource("Resource_1hcyo"), SubResource("Resource_5ipxw"), SubResource("Resource_on4hl"), SubResource("Resource_slwly"), SubResource("Resource_7keiu"), SubResource("Resource_1quk4"), SubResource("Resource_lkgtx")]
 damage = 10
 cooldown = 0.3
 projectile_scene = ExtResource("2_arrow")

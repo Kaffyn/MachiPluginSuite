@@ -56,7 +56,7 @@ entry_requirements = {
 "physics": 0,
 "status": 0
 }
-components = Array[ExtResource("1_njwo6")]([SubResource("Resource_uoeuj"), SubResource("Resource_prwds"), SubResource("Resource_apme8"), SubResource("Resource_njwo6"), SubResource("Resource_sk07h"), SubResource("Resource_iqnsb"), SubResource("Resource_1jk6g"), SubResource("Resource_oxtmf"), SubResource("Resource_f235l")])
+components = [SubResource("Resource_uoeuj"), SubResource("Resource_prwds"), SubResource("Resource_apme8"), SubResource("Resource_njwo6"), SubResource("Resource_sk07h"), SubResource("Resource_iqnsb"), SubResource("Resource_1jk6g"), SubResource("Resource_oxtmf"), SubResource("Resource_f235l")]
 damage = 15
 cooldown = 0.4
 cancel_min_time = 0.2

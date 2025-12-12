@@ -53,7 +53,7 @@ entry_requirements = {
 "physics": 0,
 "status": 0
 }
-components = Array[ExtResource("1_aaqtc")]([SubResource("Resource_d3oat"), SubResource("Resource_h1io2"), SubResource("Resource_00v5b"), SubResource("Resource_aaqtc"), SubResource("Resource_v4g6k"), SubResource("Resource_qlou1"), SubResource("Resource_q01sk"), SubResource("Resource_ynjgx"), SubResource("Resource_hhfiw")])
+components = [SubResource("Resource_d3oat"), SubResource("Resource_h1io2"), SubResource("Resource_00v5b"), SubResource("Resource_aaqtc"), SubResource("Resource_v4g6k"), SubResource("Resource_qlou1"), SubResource("Resource_q01sk"), SubResource("Resource_ynjgx"), SubResource("Resource_hhfiw")]
 damage = 40
 cooldown = 1.5
 is_charged = true

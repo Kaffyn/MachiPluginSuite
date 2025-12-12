@@ -43,7 +43,7 @@ entry_requirements = {
 "physics": 6,
 "status": 0
 }
-components = Array[ExtResource("1_40u3y")]([SubResource("Resource_ud4np"), SubResource("Resource_gtkw0"), SubResource("Resource_40u3y"), SubResource("Resource_v8wdy"), SubResource("Resource_iodob"), SubResource("Resource_5m7kh")])
+components = [SubResource("Resource_ud4np"), SubResource("Resource_gtkw0"), SubResource("Resource_40u3y"), SubResource("Resource_v8wdy"), SubResource("Resource_iodob"), SubResource("Resource_5m7kh")]
 damage = 15
 cost_type = 1
 cost_amount = 15

@@ -11,7 +11,12 @@ class ItemComponent : public Resource {
 protected:
 	static void _bind_methods();
 
+    bool enabled = true;
+
 public:
+    void set_enabled(bool p_enabled);
+    bool get_enabled() const;
+
     // Virtual method to apply effect?
     // virtual void apply(Node *target);
 };

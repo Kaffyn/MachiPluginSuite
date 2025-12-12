@@ -1,16 +1,16 @@
 #include "sound_manager.h"
 
-void SoundManager::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("play_cue", "cue"), &SoundManager::play_cue);
+void MachiSoundManager::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("play_cue", "cue"), &MachiSoundManager::play_cue);
 }
 
-SoundManager::SoundManager() {
+MachiSoundManager::MachiSoundManager() {
 }
 
-SoundManager::~SoundManager() {
+MachiSoundManager::~MachiSoundManager() {
 }
 
-AudioStreamPlayer *SoundManager::_get_available_player() {
+AudioStreamPlayer *MachiSoundManager::_get_available_player() {
     for (int i = 0; i < pool.size(); ++i) {
         AudioStreamPlayer *player = Object::cast_to<AudioStreamPlayer>(pool[i]);
         if (player && !player->is_playing()) {
@@ -24,7 +24,7 @@ AudioStreamPlayer *SoundManager::_get_available_player() {
     return new_player;
 }
 
-void SoundManager::play_cue(const Ref<SoundCue> &p_cue) {
+void MachiSoundManager::play_cue(const Ref<SoundCue> &p_cue) {
     if (p_cue.is_null()) return;
     
     AudioStreamPlayer *player = _get_available_player();

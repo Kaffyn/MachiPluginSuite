@@ -58,7 +58,7 @@ entry_requirements = {
 "physics": 6,
 "status": 1
 }
-components = Array[ExtResource("1_wyemr")]([SubResource("Resource_uiosg"), SubResource("Resource_op15w"), SubResource("Resource_64mw6"), SubResource("Resource_wyemr"), SubResource("Resource_unawi"), SubResource("Resource_2vg6l"), SubResource("Resource_jtamo"), SubResource("Resource_mjnyf"), SubResource("Resource_2kw8g")])
+components = [SubResource("Resource_uiosg"), SubResource("Resource_op15w"), SubResource("Resource_64mw6"), SubResource("Resource_wyemr"), SubResource("Resource_unawi"), SubResource("Resource_2vg6l"), SubResource("Resource_jtamo"), SubResource("Resource_mjnyf"), SubResource("Resource_2kw8g")]
 cooldown = 0.5
 duration = 0.5
 cost_type = 1
