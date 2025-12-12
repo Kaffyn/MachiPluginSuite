@@ -30,6 +30,21 @@ func _enter_tree() -> void:
 	add_custom_type("Skill", "Resource", SKILL_SCRIPT, SKILL_ICON)
 	add_custom_type("SkillTree", "Resource", SKILL_TREE_SCRIPT, SKILL_TREE_ICON)
 	
+	# Register with Library Service (JEI Pattern)
+	# Check if LibraryService exists (it might not if library_core is disabled)
+	if Engine.has_singleton("LibraryService") or DisplayServer.get_name() != "headless": 
+		# Note: In Editor, Autoloads are available as globally named nodes if tool is active.
+		# Safe access pattern via implicit name if it works, or check root.
+		# Ideally, we assume LibraryService is active if Core is active.
+		var service = get_node_or_null("/root/LibraryService")
+		if service:
+			service.register_resource("State", STATE_ICON, "Behavior")
+			service.register_resource("Compose", COMPOSE_ICON, "Behavior")
+			service.register_resource("Skill", SKILL_ICON, "Systems")
+			service.register_resource("SkillTree", SKILL_TREE_ICON, "Systems")
+			service.register_resource("AbilitySystemConfig", ABILITY_SYSTEM_ICON, "Systems")
+			service.register_resource("CharacterSheet", ABILITY_SYSTEM_ICON, "Systems")
+	
 	print_rich("[color=green]Ability System (GAS) v2.0 Activated![/color]")
 
 func _exit_tree() -> void:
