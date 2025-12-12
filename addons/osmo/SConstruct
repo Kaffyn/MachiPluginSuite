@@ -4,19 +4,23 @@ import sys
 
 env = SConscript("../../godot-cpp/SConstruct")
 
+# For reference:
+# - env.Append(CPPPATH=["src/"])
+# - env.Append(LIBS=["..."])
+
 env.Append(CPPPATH=["src/"])
 sources = Glob("src/*.cpp")
 
 if env["platform"] == "macos":
     library = env.SharedLibrary(
-        "bin/inventory_system.{}.{}.framework/inventory_system.{}.{}".format(
+        "bin/osmo.{}.{}.framework/osmo.{}.{}".format(
             env["platform"], env["target"], env["platform"], env["target"]
         ),
         source=sources,
     )
 else:
     library = env.SharedLibrary(
-        "bin/inventory_system{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+        "bin/osmo{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 

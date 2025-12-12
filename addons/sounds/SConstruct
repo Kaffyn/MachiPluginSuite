@@ -4,29 +4,19 @@ import sys
 
 env = SConscript("../../godot-cpp/SConstruct")
 
-# Define the name of the library
-libname = "libsounds"
+env.Append(CPPPATH=["src/"])
+sources = Glob("src/*.cpp")
 
-# Sources to compile
-sources = [
-    "src/register_types.cpp",
-    "src/sound_cue.cpp",
-    "src/sound_manager.cpp",
-    "src/sound_server.cpp",
-]
-
-# Include directories
-env.Append(CPPPATH=["src"])
-
-# Tweak the output filename
 if env["platform"] == "macos":
     library = env.SharedLibrary(
-        "bin/{}.{}.{}.framework/{}".format(libname, env["platform"], env["target"], libname),
+        "bin/sounds.{}.{}.framework/sounds.{}.{}".format(
+            env["platform"], env["target"], env["platform"], env["target"]
+        ),
         source=sources,
     )
 else:
     library = env.SharedLibrary(
-        "bin/{}{}{}".format(libname, env["suffix"], env["SHLIBSUFFIX"]),
+        "bin/sounds{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 

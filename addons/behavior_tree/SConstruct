@@ -4,33 +4,19 @@ import sys
 
 env = SConscript("../../godot-cpp/SConstruct")
 
-# Define the name of the library
-libname = "libbehavior_tree"
+env.Append(CPPPATH=["src/"])
+sources = Glob("src/*.cpp")
 
-# Sources to compile
-sources = [
-    "src/register_types.cpp",
-    "src/bt_node.cpp",
-    "src/bt_composite.cpp",
-    "src/bt_decorator.cpp",
-    "src/bt_task.cpp",
-    "src/blackboard.cpp",
-    "src/behavior_tree.cpp",
-    "src/bt_player.cpp",
-]
-
-# Include directories
-env.Append(CPPPATH=["src"])
-
-# Tweak the output filename
 if env["platform"] == "macos":
     library = env.SharedLibrary(
-        "bin/{}.{}.{}.framework/{}".format(libname, env["platform"], env["target"], libname),
+        "bin/behavior_tree.{}.{}.framework/behavior_tree.{}.{}".format(
+            env["platform"], env["target"], env["platform"], env["target"]
+        ),
         source=sources,
     )
 else:
     library = env.SharedLibrary(
-        "bin/{}{}{}".format(libname, env["suffix"], env["SHLIBSUFFIX"]),
+        "bin/behavior_tree{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 

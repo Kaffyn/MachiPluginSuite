@@ -4,30 +4,19 @@ import sys
 
 env = SConscript("../../godot-cpp/SConstruct")
 
-# Define the name of the library
-libname = "libsynapse"
+env.Append(CPPPATH=["src/"])
+sources = Glob("src/*.cpp")
 
-# Sources to compile
-sources = [
-    "src/register_types.cpp",
-    "src/world_memory.cpp",
-    "src/synapse.cpp",
-    "src/impulse.cpp",
-    "src/condition.cpp",
-]
-
-# Include directories
-env.Append(CPPPATH=["src"])
-
-# Tweak the output filename
 if env["platform"] == "macos":
     library = env.SharedLibrary(
-        "bin/{}.{}.{}.framework/{}".format(libname, env["platform"], env["target"], libname),
+        "bin/synapse.{}.{}.framework/synapse.{}.{}".format(
+            env["platform"], env["target"], env["platform"], env["target"]
+        ),
         source=sources,
     )
 else:
     library = env.SharedLibrary(
-        "bin/{}{}{}".format(libname, env["suffix"], env["SHLIBSUFFIX"]),
+        "bin/synapse{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 

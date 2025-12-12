@@ -1,0 +1,57 @@
+name: Memento Build
+
+on:
+  push:
+    paths:
+      - 'addons/memento/**'
+      - '.github/workflows/memento.yml'
+
+env:
+  LIBNAME: memento
+
+jobs:
+  build:
+    name: Build {{ '${{matrix.os}}' }} ({{ '${{matrix.arch}}' }})
+    runs-on: {{ '${{matrix.os}}' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            arch: x86_64
+            target: template_release
+          - os: ubuntu-latest
+            arch: x86_64
+            target: template_debug
+          - os: windows-latest
+            arch: x86_64
+            target: template_release
+          - os: windows-latest
+            arch: x86_64
+            target: template_debug
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Set up SCons
+        run: pip install scons
+
+      - name: Build
+        run: |
+          cd addons/memento
+          scons target={{ '${{matrix.target}}' }} arch={{ '${{matrix.arch}}' }}
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: {{ '${{env.LIBNAME}}' }}-{{ '${{matrix.os}}' }}-{{ '${{matrix.target}}' }}-{{ '${{matrix.arch}}' }}
+          path: |
+            addons/memento/bin/*
