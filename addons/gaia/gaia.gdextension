@@ -15,3 +15,10 @@ android.debug.x86_64 = "res://bin/gaia.android.template_debug.x86_64.so"
 android.release.x86_64 = "res://bin/gaia.android.template_release.x86_64.so"
 android.debug.arm64 = "res://bin/gaia.android.template_debug.arm64.so"
 android.release.arm64 = "res://bin/gaia.android.template_release.arm64.so"
+
+[icons]
+SeasonManager = "res://addons/gaia/icons/SeasonManager.svg"
+SeasonPreset = "res://addons/gaia/icons/SeasonPreset.svg"
+WeatherResource = "res://addons/gaia/icons/WeatherResource.svg"
+DayNightCycle = "res://addons/gaia/icons/DayNightCycle.svg"
+WeatherController = "res://addons/gaia/icons/WeatherController.svg"

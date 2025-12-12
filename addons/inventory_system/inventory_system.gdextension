@@ -13,3 +13,10 @@ macos.debug = "bin/libinventory_system.macos.template_debug.framework/libinvento
 macos.release = "bin/libinventory_system.macos.template_release.framework/libinventory_system"
 android.debug.arm64 = "bin/libinventory_system.android.template_debug.arm64.so"
 android.release.arm64 = "bin/libinventory_system.android.template_release.arm64.so"
+
+[icons]
+InventoryContainer = "res://addons/inventory_system/icons/InventoryContainer.svg"
+Item = "res://addons/inventory_system/icons/Item.svg"
+Recipe = "res://addons/inventory_system/icons/Recipe.svg"
+CraftingStation = "res://addons/inventory_system/icons/CraftingStation.svg"
+Slot = "res://addons/inventory_system/icons/Slot.svg"

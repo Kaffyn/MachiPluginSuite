@@ -13,3 +13,10 @@ macos.debug = "bin/libsynapse.macos.template_debug.framework/libsynapse"
 macos.release = "bin/libsynapse.macos.template_release.framework/libsynapse"
 android.debug.arm64 = "bin/libsynapse.android.template_debug.arm64.so"
 android.release.arm64 = "bin/libsynapse.android.template_release.arm64.so"
+
+[icons]
+Synapse = "res://addons/synapse/icons/Synapse.svg"
+Impulse = "res://addons/synapse/icons/Impulse.svg"
+SynapseTrigger = "res://addons/synapse/icons/SynapseTrigger.svg"
+VisualSensor = "res://addons/synapse/icons/VisualSensor.svg"
+AuditorySensor = "res://addons/synapse/icons/AuditorySensor.svg"

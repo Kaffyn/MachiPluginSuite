@@ -13,3 +13,12 @@ macos.debug = "bin/libbehavior_tree.macos.template_debug.framework/libbehavior_t
 macos.release = "bin/libbehavior_tree.macos.template_release.framework/libbehavior_tree"
 android.debug.arm64 = "bin/libbehavior_tree.android.template_debug.arm64.so"
 android.release.arm64 = "bin/libbehavior_tree.android.template_release.arm64.so"
+
+[icons]
+BehaviorTreePlayer = "res://addons/behavior_tree/icons/BehaviorTreePlayer.svg"
+BehaviorTree = "res://addons/behavior_tree/icons/BehaviorTree.svg"
+BlackboardPlan = "res://addons/behavior_tree/icons/BlackboardPlan.svg"
+BTSelector = "res://addons/behavior_tree/icons/BTSelector.svg"
+BTSequence = "res://addons/behavior_tree/icons/BTSequence.svg"
+BTDecorator = "res://addons/behavior_tree/icons/BTDecorator.svg"
+BTTask = "res://addons/behavior_tree/icons/BTTask.svg"
