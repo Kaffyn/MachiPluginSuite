@@ -21,78 +21,100 @@ Nossa filosofia é trazer padrões da indústria (como Unreal GAS, Wwise, Behavi
 ### 0. [Library](addons/library/README.md)
 
 **A Fundação.**
-Sistema híbrido (C++ e GDScript) que fornece as ferramentas compartilhadas do editor. Inclui Navegador de Assets, Factory e Utilities.
+Ferramentas de produtividade para o Editor Godot, independentes de runtime.
+
+- **Panel:** `Assets` (Browser), `Editor` (Tools), `Factory` (Creators).
+- **Core:** Hybrid Architecture (C++ Logic + GDScript UI).
 
 ### 1. [Ability System](addons/ability_system/README.md)
 
 **O Cérebro e os Músculos.**
-Um framework completo para definir **O QUE** o personagem pode fazer. Gerencia States, Skills, Attributes (Health/Mana), Cooldowns e Effects.
+Framework de comportamento "Query-Based" que substitui máquinas de estado hardcoded.
 
-- _Baseado em:_ Unreal GAS.
+- **Singletons:** `BehaviorStates` (Vocabulário Global).
+- **Nodes:** `AbilitySystemComponent` (Brain), `Behavior` (Orchestrator), `Machine` (Executor).
+- **Resources:** `State`, `Compose` (Rules), `Skill`, `Effect`, `AttributeSet`.
 
 ### 2. [Behavior Tree](addons/behavior_tree/README.md)
 
 **O Motorista.**
-A Inteligência Artificial que pilota o Ability System. C++ Based.
+Inteligência Artificial que pilota o Ability System (o Carro).
 
-- _Baseado em:_ Unreal Behavior Tree & LimboAI.
+- **Nodes:** `BehaviorTreePlayer` (Runtime Executor).
+- **Resources:** `BehaviorTree` (Asset), `Blackboard` (Memory Context).
+- **Logic:** `Selector`, `Sequence`, `Decorator` (Conditions), `Task` (Actions).
 
 ### 3. [Inventory System](addons/inventory_system/README.md)
 
 **A Mochila.**
-Sistema de inventário modular que se integra nativamente com o GAS. Itens dão Habilidades. Equipamentos mudam Stats. C++ Based.
+Gestão de itens e equipamentos com integração profunda de gameplay.
+
+- **Nodes:** `InventoryContainer` (Logic), `Slot` (UI Component).
+- **Resources:** `Item`, `Inventory` (Storage), `LootTable`.
+- **Integration:** Itens podem conceder `Skills` e modificar `Stats`.
 
 ### 4. [Synapse](addons/synapse/README.md)
 
-**O Sistema Nervoso do Mundo e da Mente.**
-Orquestrador de Game Flow e Percepção Sensorial.
+**O Sistema Nervoso (Mundo & Mente).**
+Gerencia Eventos Globais (Macro) e Percepção Sensorial (Micro).
 
-- **Micro:** Gerencia visão e audição da IA (Sense).
-- **Macro:** Conecta eventos isolados (matar boss, entrar em área) a reações globais (quest update, música, cutscene).
-
-- _Baseado em:_ Unreal AIPerception + Event-Driven Architecture.
+- **Singletons:** `WorldMemory` (Global Flags/State).
+- **Nodes:** `SynapseTrigger` (Event Detector), `VisualSynapse` (Eyes), `AuditorySynapse` (Ears).
+- **Resources:** `Impulse` (Command Pattern), `VisualStimulus`, `AudioStimulus`.
 
 ### 5. [Sounds](addons/sounds/README.md)
 
 **A Voz.**
-Gerenciador de Áudio Inteligente. Foca em concorrência, prioridade e pooling, usando `AudioStreamRandomizer` nativo para variedade. Inclui workflow de auto-scan para assets.
+Gerenciador de áudio com foco em concorrência e instanciamento dinâmico.
 
-- _Baseado em:_ Wwise/FMOD (Middlewares).
+- **Singletons:** `SoundServer` (C++ Mixer), `SoundsManager` (Node API).
+- **Nodes:** `SoundPlayer` (Pooled AudioStreamPlayer).
+- **Resources:** `SoundCue` (Complex Audio Events: Pitch/Vol/Seq).
 
 ### 6. [Quest System](addons/quest_system/README.md)
 
 **A Jornada.**
-Gerenciador de Narrativa e Missões. Criação de objetivos lineares ou ramificados, com total integração ao sistema de eventos (Synapse) e recompensas.
+Sistema narrativo de estados baseado em Grafos e Eventos.
 
-- _Baseado em:_ Event-Driven Architecture / Graph Theory.
+- **Singletons:** `QuestJournal` (Manager).
+- **Nodes:** `QuestNode` (World Trigger).
+- **Resources:** `QuestResource`, `QuestStep`, `Objective`, `Reward`.
 
 ### 7. [Gaia System](addons/gaia/README.md)
 
-**A Vida do Mundo.**
-Simulador ambiental. Ciclo Dia/Noite, Clima e Estações. Totalmente desacoplado, focado em estética e imersão.
+**A Vida.**
+Simulação ambiental estética (Ciclos e Clima).
 
-- _Baseado em:_ Solar/Lunar Cycles & Weather States.
+- **Nodes:** `DayNightCycle`, `WeatherController`.
+- **Resources:** `TimeCurve`, `WeatherResource`, `SeasonManager`.
+- **Events:** Emite sinais de hora/clima para o Synapse.
 
 ### 8. [Director](addons/director/README.md)
 
 **O Diretor.**
-Sequencer e Cutscene Engine. Controla Câmeras, Animações e Eventos em uma Timeline unificada. Perfeito para narrativa linear.
+Timeline Sequencer para Cutscenes lineares e eventos scriptados.
 
-- _Baseado em:_ Unreal Sequencer.
+- **Singletons:** `DirectorManager` (Transitions/State).
+- **Nodes:** `DirectorPlayer` (Scene Executor).
+- **Resources:** `SequenceResource` (Tracks/Keyframes/ActorBindings).
 
 ### 9. [Memento](addons/memento/README.md)
 
 **A Memória.**
-Sistema de Save/Load robusto. Serializa Resources complexos, suporta múltiplos slots e criptografia.
+Camada de persistência assíncrona e serialização segura.
 
-- _Baseado em:_ Unreal SaveGame.
+- **Singletons:** `MementoManager` (Async IO/Encryption).
+- **Nodes:** `SaveInterface` (Opt-in component for Nodes).
+- **Resources:** `SaveProfile` (Slot Data), `SaveSchema` (Structure).
 
 ### 10. [Options](addons/options/README.md)
 
-**O Painel de Controle.**
-Gerenciamento de Configurações (Vídeo, Áudio, Input, Gameplay) com persistência automática e geração de UI.
+**O Painel.**
+Gerenciador de configurações de usuário com UI automática.
 
-- _Baseado em:_ GameUserSettings.
+- **Singletons:** `OptionsManager` (Apply Settings).
+- **Resources:** `SettingsSchema` (Menu Structure).
+- **Nodes:** `OptionWidget` (Auto-bind UI elements).
 
 ---
 
