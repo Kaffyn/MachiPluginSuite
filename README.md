@@ -28,9 +28,20 @@ Sistema híbrido (C++ e GDScript) que fornece as ferramentas compartilhadas do e
 
 ### 1. [Ability System](addons/ability_system/README.md)
 
-**O Cérebro e os Músculos.**
-Um framework completo para definir **O QUE** o personagem pode fazer. Gerencia States, Skills, Attributes (Health/Mana), Cooldowns e Effects.
-Substitui máquinas de estado hardcoded por um sistema "Query-Based" inspirado na Unreal GAS.
+**O Sistema de Jogo mais importante.**
+Define habilidades, estados, atributos, efeitos, custo, cooldowns, tags, gatilhos e modificadores.
+
+**Funções Principais:**
+
+- Atributos (Health, Mana, Stamina, Armor…).
+- States (Idle, Roll, Attack, Cast…).
+- Active Abilities (inputs, animações, custos).
+- Passive Abilities (buffs/auras).
+- Gameplay Effects (modificadores temporários/permanentes).
+- Gameplay Tags.
+- Prediction & Authority (para Multiplayer futuro).
+
+**Arquitetura:**
 
 - **Singletons:** `BehaviorStates` (Vocabulário Global).
 - **Nodes:** `AbilitySystemComponent` (Brain), `Behavior` (Orchestrator), `Machine` (Executor).
@@ -38,8 +49,20 @@ Substitui máquinas de estado hardcoded por um sistema "Query-Based" inspirado n
 
 ### 2. [Behavior Tree](addons/behavior_tree/README.md)
 
-**O Motorista.**
-A Inteligência Artificial que pilota o Ability System (o Carro). Baseado em Unreal Behavior & LimboAI.
+**A Inteligência que controla personagens e sistemas vivos.**
+Motor de Behavior Tree completo, escrito em C++, com nó custom, decorators, services e blackboard global.
+
+**Funções Principais:**
+
+- Execução hierárquica de comportamentos.
+- Blackboard com suporte a Resources e tipos customizados.
+- Services periódicos.
+- Decorators condicionais.
+- Query Nodes integrados ao Synapse e Navigation.
+- Controle AI-driven de Abilities (via Ability System).
+- Serve tanto para IA quanto para lógica sistêmica.
+
+**Arquitetura:**
 
 - **Nodes:** `BehaviorTreePlayer` (Runtime Executor).
 - **Resources:** `BehaviorTree` (Asset), `Blackboard` (Memory Context).
@@ -47,8 +70,18 @@ A Inteligência Artificial que pilota o Ability System (o Carro). Baseado em Unr
 
 ### 3. [Inventory System](addons/inventory_system/README.md)
 
-**A Mochila.**
-Sistema de inventário modular que se integra nativamente com o GAS. Itens dão Habilidades. Equipamentos mudam Stats. C++ Based.
+**O sistema de itens unificado.**
+Inventário modular, orientado a Resources, profundamente integrado ao Ability System.
+
+**Funções Principais:**
+
+- Slots, Stacks e Categorias.
+- Equipamentos que alteram atributos e adicionam habilidades.
+- Itens ativos (usáveis) e passivos.
+- Bancos de crafting, loot tables e containers.
+- Integração direta com Synapse e BehaviorTree.
+
+**Arquitetura:**
 
 - **Nodes:** `InventoryContainer` (Logic), `Slot` (UI Component).
 - **Resources:** `Item`, `Inventory` (Storage), `LootTable`.
@@ -56,11 +89,17 @@ Sistema de inventário modular que se integra nativamente com o GAS. Itens dão 
 
 ### 4. [Synapse](addons/synapse/README.md)
 
-**O Sistema Nervoso (Mundo & Mente).**
-Orquestrador de Game Flow e Percepção Sensorial.
+**O Sistema Nervoso Central: Percepção + Eventos.**
+Conecta tudo no jogo: mente, mundo, cenários e sistemas. É literalmente o glue system que a Unreal usa: enxergar + reagir.
 
-- **Micro:** Gerencia visão e audição da IA (Sense).
-- **Macro:** Conecta eventos isolados (matar boss, entrar em área) a reações globais (quest update, música, cutscene).
+**Funções Principais:**
+
+- Senses 2D: visão, audição, proximidade, tags, áreas.
+- Stimuli: qualquer evento pode virar um estímulo (som, hit, uso, área, item).
+- Propagation: eventos se propagam para IAs, Director, Quest, Ability System.
+- Event Orchestration: um único hub para eventos globais.
+
+**Arquitetura:**
 
 - **Singletons:** `WorldMemory` (Global Flags/State).
 - **Nodes:** `SynapseTrigger` (Event Detector), `VisualSynapse` (Eyes), `AuditorySynapse` (Ears).
@@ -68,8 +107,18 @@ Orquestrador de Game Flow e Percepção Sensorial.
 
 ### 5. [Sounds](addons/sounds/README.md)
 
-**A Voz.**
-Gerenciador de Áudio Inteligente. Foca em concorrência, prioridade e pooling, usando `AudioStreamRandomizer` nativo para variedade. Inclui workflow de auto-scan para assets.
+**Gerenciamento inteligente de áudio.**
+Sistema escalável que cuida de playback, prioridade, pool e variações.
+
+**Funções Principais:**
+
+- Sound Cues como Resources.
+- Randomizers e Layers.
+- Concurrency Rules (limitar sons repetidos).
+- Prioridades e distâncias.
+- Áudio contextual com Synapse (event-driven).
+
+**Arquitetura:**
 
 - **Singletons:** `SoundServer` (C++ Mixer), `SoundsManager` (Node API).
 - **Nodes:** `SoundPlayer` (Pooled AudioStreamPlayer).
@@ -77,8 +126,18 @@ Gerenciador de Áudio Inteligente. Foca em concorrência, prioridade e pooling, 
 
 ### 6. [Quest System](addons/quest_system/README.md)
 
-**A Jornada.**
-Gerenciador de Narrativa e Missões. Criação de objetivos lineares ou ramificados, com total integração ao sistema de eventos (Synapse) e recompensas.
+**Narrativa Sistemática.**
+Framework de missões com objetivos lineares, ramificados e sistêmicos.
+
+**Funções Principais:**
+
+- Missões como Resources.
+- Objetivos com condições dinâmicas.
+- Hooks diretos para Synapse (event-driven).
+- Rewards integrados ao Inventory e Ability System.
+- Tracking, UI e persistência.
+
+**Arquitetura:**
 
 - **Singletons:** `QuestJournal` (Manager).
 - **Nodes:** `QuestNode` (World Trigger).
@@ -86,8 +145,18 @@ Gerenciador de Narrativa e Missões. Criação de objetivos lineares ou ramifica
 
 ### 7. [Gaia System](addons/gaia/README.md)
 
-**A Vida.**
-Simulador ambiental. Ciclo Dia/Noite, Clima e Estações. Totalmente desacoplado, focado em estética e imersão.
+**Simulação de Ambiente e Atmosfera.**
+Sistema global de clima, ciclos e estados ambientais.
+
+**Funções Principais:**
+
+- Ciclo dia/noite com curvas configuráveis.
+- Clima (clear, rain, storm, fog).
+- Estações com presets.
+- Exposição pública via Resources.
+- Hooks para Synapse e Director.
+
+**Arquitetura:**
 
 - **Nodes:** `DayNightCycle`, `WeatherController`.
 - **Resources:** `TimeCurve`, `WeatherResource`, `SeasonManager`.
@@ -95,27 +164,72 @@ Simulador ambiental. Ciclo Dia/Noite, Clima e Estações. Totalmente desacoplado
 
 ### 8. [Director](addons/director/README.md)
 
-**O Diretor.**
-Sequencer e Cutscene Engine. Controla Câmeras, Animações e Eventos em uma Timeline unificada. Perfeito para narrativa linear.
+**Timeline unificada para cinematics, eventos e animações.**
+Engine de sequenciamento estilo Unreal Sequencer, mas 2D e Godot-native.
+
+**Funções Principais:**
+
+- Faixas de animação, posição, câmera, áudio e eventos.
+- Controle de cutscenes e transições narrativas.
+- Integração com Osmo (Camera).
+- Eventos de timeline conectados ao Synapse.
+- Usado tanto para cenas quanto para scripting visual de gameplay.
+
+**Arquitetura:**
 
 - **Singletons:** `DirectorManager` (Transitions/State).
 - **Nodes:** `DirectorPlayer` (Scene Executor).
 - **Resources:** `SequenceResource` (Tracks/Keyframes/ActorBindings).
 
-### 9. [Memento](addons/memento/README.md)
+### 9. [Osmo](addons/osmo/README.md)
 
-**A Memória.**
-Sistema de Save/Load robusto. Serializa Resources complexos, suporta múltiplos slots e criptografia.
-Camada de persistência assíncrona.
+**O Sistema de Câmera Dinâmico 2D.**
+Inspirado na fluidez do DJI Osmo.
+
+**Funções Principais:**
+
+- Câmera física 2D com real smoothing.
+- Tracks de câmera do Director.
+- Camera Zones inteligentes.
+- Zoom dinâmico e framing automático.
+- Suporte a câmeras múltiplas e virtual cameras.
+
+**Arquitetura:**
+
+- **Singletons:** `CameraServer` (Transition Manager).
+- **Nodes:** `OsmoCamera` (Physical Camera), `CameraZone`.
+- **Resources:** `CameraShake`, `CameraState` (Preset).
+
+### 10. [Memento](addons/memento/README.md)
+
+**Persistência Completa.**
+Save/Load que entende Resources complexos.
+
+**Funções Principais:**
+
+- Serialização com controle preciso de versões.
+- Múltiplos perfis e slots.
+- Criptografia opcional.
+- Integração automática com Ability System, Inventory, Quest, Gaia.
+
+**Arquitetura:**
 
 - **Singletons:** `MementoManager` (Async IO/Encryption).
 - **Nodes:** `SaveInterface` (Opt-in component for Nodes).
 - **Resources:** `SaveProfile` (Slot Data), `SaveSchema` (Structure).
 
-### 10. [Options](addons/options/README.md)
+### 11. [Options](addons/options/README.md)
 
-**O Painel.**
-Gerenciador de Configurações (Vídeo, Áudio, Input, Gameplay) com persistência automática e geração de UI.
+**Painel de Configurações Universal.**
+
+**Funções Principais:**
+
+- Perfis e presets.
+- Configurações de áudio, vídeo, input e gameplay.
+- Aplicação automática no ProjectSettings.
+- Gerador de UI pronto para Themes.
+
+**Arquitetura:**
 
 - **Singletons:** `OptionsManager` (Apply Settings).
 - **Resources:** `SettingsSchema` (Menu Structure).
