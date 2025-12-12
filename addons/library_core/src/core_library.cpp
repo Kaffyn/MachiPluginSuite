@@ -267,7 +267,7 @@ void CoreLibrary::_on_card_clicked(String path, int mouse_btn) {
     if (mouse_btn == MOUSE_BUTTON_RIGHT) {
          EditorInterface::get_singleton()->edit_resource(ResourceLoader::get_singleton()->load(path));
     } else {
-         EditorInterface::get_singleton()->inspect_object(ResourceLoader::get_singleton()->load(path));
+         EditorInterface::get_singleton()->inspect_object(ResourceLoader::get_singleton()->load(path).ptr());
     }
 }
 
