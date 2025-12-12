@@ -75,11 +75,11 @@ Imagine a seguinte sequência complexa configurada **apenas no Inspector**, sem 
 ## 📂 Estrutura de Pastas
 
 addons/synapse/
-├── src/                 # Código C++ (GDExtension)
-│   ├── synapse.cpp      # Nó base para gatilhos
-│   ├── world_memory.cpp # Singleton de estado
-│   └── ...
-├── bin/                 # Binários compilados
+├── src/ # Código C++ (GDExtension)
+│ ├── synapse.cpp # Nó base para gatilhos
+│ ├── world_memory.cpp # Singleton de estado
+│ └── ...
+├── bin/ # Binários compilados
 └── plugin.cfg
 
 _Synapse — Conectando o caos._

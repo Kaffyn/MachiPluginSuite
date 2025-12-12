@@ -268,10 +268,10 @@ signal hit_connected(target: Node2D, damage: float)
 func on_physics(ctx: StateContext, delta: float) -> void:
     # Ler input do contexto (NUNCA Input.* diretamente)
     var dir = ctx.input_direction
-    
+
     # Aplicar movimento
     ctx.body.velocity.x = dir.x * ctx.base_speed
-    
+
     # Emitir evento
     if hit_something:
         ctx.hit_connected.emit(target, ctx.base_damage)
@@ -304,8 +304,8 @@ static func _get_component_fields() -> Array
 
 **Components disponíveis (16):**
 
-| Component           | Cor       | Descrição                        |
-| :------------------ | :-------- | :------------------------------- |
+| Component           | Cor        | Descrição                        |
+| :------------------ | :--------- | :------------------------------- |
 | MovementComponent   | 🟢 #22c55e | Velocidade, aceleração, friction |
 | PhysicsComponent    | 🔵 #06b6d4 | Gravidade, pulo, air resistance  |
 | DashComponent       | 🟢 #22c55e | Dash direcional                  |
@@ -321,7 +321,7 @@ static func _get_component_fields() -> Array
 | ComboComponent      | 🟡 #eab308 | Chain de ataques                 |
 | BufferComponent     | 🟡 #eab308 | Input buffering                  |
 | CostComponent       | 🟠 #f59e0b | Custo de recurso                 |
-| InterruptComponent  | 🩷 #ec4899 | Política de interrupção          |
+| InterruptComponent  | 🩷 #ec4899  | Política de interrupção          |
 
 ---
 
@@ -559,7 +559,7 @@ A `Machine` consulta o índice por cada categoria do contexto:
 func _get_candidates(compose: Compose) -> Array[State]:
     var candidates: Array[State] = []
     var seen: Dictionary = {}
-    
+
     # Lookup por cada categoria do contexto → O(K)
     for category in behavior.context.keys():
         var value = behavior.context[category]
@@ -568,7 +568,7 @@ func _get_candidates(compose: Compose) -> Array[State]:
             if not seen.has(state.name):
                 seen[state.name] = true
                 candidates.append(state)
-    
+
     return candidates
 ```
 
@@ -578,17 +578,17 @@ func _get_candidates(compose: Compose) -> Array[State]:
 func _calculate_score(state: State) -> int:
     var score = 0
     score += state.priority_override * 100
-    
+
     # Bonus por especificidade
     for category in state.entry_requirements.keys():
         if state.entry_requirements[category] > 0:
             score += 10
-    
+
     # Bonus de combo
     if current_state and state == current_state.next_combo_state:
         if combo_window_open:
             score += 50
-    
+
     return score
 ```
 

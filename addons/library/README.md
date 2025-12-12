@@ -1,28 +1,27 @@
-# Core Plugin
+# Library Plugin
 
-**O Alicerce do Machi Plugin Suite.**
+**Ferramentas de Editor e Gestão de Assets.**
 
-Este plugin fornece a infraestrutura compartilhada para todos os outros sistemas (Ability System, Inventory, Behavior Tree, etc).
+Este plugin é uma coleção de ferramentas de produtividade para o Editor Godot, totalmente independente do runtime do jogo. Ele não injeta dependências no código do gameplay.
 
 ## 🔧 Componentes
 
-### CoreLibrary (Bottom Panel)
+### Library (Bottom Panel)
 
-Um painel centralizado para gerenciamento de assets e recursos da suite. Substitui as libraries individuais de cada plugin, unificando a experiência de edição.
+Um painel centralizado para gerenciamento de assets e recursos da suite.
 
-> **Arquitetura Híbrida:** Combina o poder bruto do C++ (GDExtension) com a flexibilidade de UI do GDScript/Scenes (`.tscn`).
+> **Arquitetura Híbrida:** UI em GDScript (`.tscn`) rodando sobre lógica C++.
 
 #### Abas Principais:
 
-1.  **Assets:** Navegador visual otimizado para Resources do Machi.
-2.  **Editor:** Ferramentas especializadas e Inspectores customizados.
-3.  **Factory:** Criador rápido de Resources complexos (ex: Item com componentes).
+1. **Assets:** Navegador visual para recursos.
+2. **Editor:** Ferramentas e utilitários.
+3. **Factory:** Criador de Resources.
 
 ### Utilities
 
-- Funções auxiliares de baixo nível compartilhadas.
-- Definições de macros e tipos comuns.
+- Funções auxiliares de editor.
 
 ## 📦 Integração
 
-Este plugin é uma dependência obrigatória para o uso completo da Suite. Ele é registrado automaticamente como um tool.
+Este plugin é **Passivo**. Ele não é necessário para que o jogo rode, servindo apenas para acelerar o workflow de desenvolvimento no Editor.

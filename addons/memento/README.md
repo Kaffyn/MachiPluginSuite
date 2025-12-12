@@ -9,23 +9,28 @@
 
 O Memento abstrai a complexidade de `FileAccess` e JSON/Binary parsing.
 
-1.  **Resource-Oriented:** O Schema do Save é definido por Resources (`SaveProfile`, `SaveSchema`).
-2.  **Server/Singleton:** `MementoManager` executa a serialização em threads separadas.
-3.  **Interfaces:** Nodes implementam métodos para definir *o que* salvar.
+1. **Resource-Oriented:** O Schema do Save é definido por Resources (`SaveProfile`, `SaveSchema`).
+2. **Server/Singleton:** `MementoManager` executa a serialização em threads separadas.
+3. **Interfaces:** Nodes implementam métodos para definir _o que_ salvar.
 
 ### Core Classes
 
 #### `SaveProfile` (Resource)
+
 Representa um "Slot" de save no disco. Contém metadados (Hora, Screenshot, Local) e o blob de dados.
 
 #### `MementoManager` (Singleton)
+
 Autoload responsável por:
+
 - **Async IO:** Salvar/Carregar sem congelar o jogo.
 - **Slot Management:** Gerenciar múltiplos slots (AutoSave, QuickSave, Manual).
 - **Encryption:** Criptografia opcional dos dados.
 
 #### `Saveable` (Interface / Node)
+
 Pode ser um Node ou uma Interface que os objetos implementam.
+
 - `func serialize() -> Dictionary`: Retorna o estado atual.
 - `func deserialize(data: Dictionary)`: Restaura o estado.
 

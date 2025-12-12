@@ -245,8 +245,6 @@ O **Orquestrador de Intenção**. Unifica as antigas responsabilidades de `Behav
 
 Componentes de inventário agora residem no plugin `inventory_system`.
 
-
-
 ## 3.3. `Backpack` (backpack.gd)
 
 A **Interface de Inventário (HUD)**. Gerencia visualmente o `Inventory`.

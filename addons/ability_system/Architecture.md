@@ -151,13 +151,13 @@ Backpack
 
 ## 6. Servers vs Nodes
 
-| Situação                 | Node                      | Server                              |
-| :----------------------- | :------------------------ | :---------------------------------- |
-| Componente persistente   | ✅ Sempre                  | ❌                                   |
-| Hitbox efêmera (1 frame) | ❌                         | ✅ `PhysicsServer.intersect_shape()` |
-| Animação                 | ✅ AnimationTree           | ❌ Não tem equivalente               |
-| Áudio one-shot           | Pool de AudioStreamPlayer | Ou AudioServer para mix             |
-| Colisão do personagem    | ✅ CollisionShape          | ❌                                   |
+| Situação                 | Node                      | Server                               |
+| :----------------------- | :------------------------ | :----------------------------------- |
+| Componente persistente   | ✅ Sempre                 | ❌                                   |
+| Hitbox efêmera (1 frame) | ❌                        | ✅ `PhysicsServer.intersect_shape()` |
+| Animação                 | ✅ AnimationTree          | ❌ Não tem equivalente               |
+| Áudio one-shot           | Pool de AudioStreamPlayer | Ou AudioServer para mix              |
+| Colisão do personagem    | ✅ CollisionShape         | ❌                                   |
 
 ---
 

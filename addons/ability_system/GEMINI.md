@@ -99,8 +99,8 @@ addons/ability_system/
 ├── nodes/                   # Nodes de Runtime
 │   └── ability_system_component.gd # O Orquestrador (Machine + Behavior)
 ├── resources/               # O DNA (States, Skills, Effects, etc.)
-│   ├── state.gd             
-│   ├── compose.gd           
+│   ├── state.gd
+│   ├── compose.gd
 │   └── ...
 └── scenes/                  # UI do Editor
 

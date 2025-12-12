@@ -52,7 +52,7 @@ Um único sistema de **Components** que funciona tanto em **runtime** quanto no 
 
 ## O que NÃO fazemos
 
-| ❌ Anti-pattern                 | ✅ BehaviorStates               |
+| ❌ Anti-pattern                | ✅ BehaviorStates              |
 | :----------------------------- | :----------------------------- |
 | Custom CharacterBody           | Usamos o nativo                |
 | Substituir AnimationTree       | Integramos com ele             |
@@ -69,7 +69,7 @@ Um único sistema de **Components** que funciona tanto em **runtime** quanto no 
 | **Transições**        | Hardcoded       | Automáticas via Query     |
 | **Acoplamento**       | Estado→Estado   | Estado→Contexto           |
 | **Escala**            | O(N²) conexões  | O(N) estados isolados     |
-| **Designer-friendly** | ❌ Código        | ✅ Arquivos .tres          |
+| **Designer-friendly** | ❌ Código       | ✅ Arquivos .tres         |
 | **Hot-Swap**          | Difícil         | Trocar Compose em runtime |
 
 ---

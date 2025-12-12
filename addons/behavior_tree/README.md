@@ -86,12 +86,12 @@ ROOT
 ## 📂 Estrutura de Pastas
 
 addons/behavior_tree/
-├── src/                 # Código C++ (GDExtension)
-│   ├── bt_player.cpp    # O Executor da árvore
-│   ├── bt_node.cpp      # Classe base
-│   ├── blackboard.cpp   # Dados compartilhados
-│   └── ...
-├── bin/                 # Binários compilados
+├── src/ # Código C++ (GDExtension)
+│ ├── bt_player.cpp # O Executor da árvore
+│ ├── bt_node.cpp # Classe base
+│ ├── blackboard.cpp # Dados compartilhados
+│ └── ...
+├── bin/ # Binários compilados
 └── plugin.cfg
 
 ---
