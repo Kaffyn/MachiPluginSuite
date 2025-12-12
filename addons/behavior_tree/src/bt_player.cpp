@@ -4,8 +4,6 @@
 
 BTPlayer::BTPlayer() {
     active = true;
-    // Initialize blackboard if needed
-    blackboard.instantiate();
 }
 
 BTPlayer::~BTPlayer() {
@@ -31,6 +29,9 @@ void BTPlayer::_bind_methods() {
 
 void BTPlayer::_notification(int p_what) {
 	if (p_what == NOTIFICATION_READY) {
+        if (blackboard.is_null()) {
+            blackboard.instantiate();
+        }
         set_process_internal(true); 
         set_physics_process_internal(true);
         restart();
