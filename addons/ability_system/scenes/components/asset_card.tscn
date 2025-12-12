@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8j6y2k5l4m1n"]
 
-[ext_resource type="Script" uid="uid://db0s3hhtb2qle" path="res://addons/ability_system/scenes/components/asset_card.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://d2hb7f76m23ge" path="res://addons/ability_system/scenes/components/asset_card.gd" id="1_script"]
 [ext_resource type="LabelSettings" uid="uid://cmn3exkx57a5v" path="res://addons/ability_system/assets/label.tres" id="2_satao"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_satao"]
