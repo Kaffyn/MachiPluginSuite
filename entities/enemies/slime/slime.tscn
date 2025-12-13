@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8j1k2l3m4n5"]
+
+[ext_resource type="Script" path="res://entities/enemies/slime/slime.gd" id="1_slime"]
+[ext_resource type="Script" uid="uid://uebkiw51h7cv" path="res://addons/ability_system/nodes/ability_system_component.gd" id="2_abrql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slime"]
+size = Vector2(32, 24)
+
+[node name="Slime" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_slime")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_slime")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -12.0
+offset_right = 16.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.8, 0.2, 1)
+
+[node name="AbilitySystemComponent" type="Node" parent="."]
+script = ExtResource("2_abrql")
+metadata/_custom_type_script = "uid://uebkiw51h7cv"
+
+[node name="BehaviorTree" type="BehaviorTree" parent="."]
+
+[node name="Synapse" type="Synapse" parent="."]

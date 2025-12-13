@@ -1,26 +1,31 @@
-extends CharacterBody2D
+extends Entity
+class_name Player
 
+@export_category("Attributes")
+@export var speed: float = 200.0
+@export var acceleration: float = 800.0
+@export var friction: float = 1000.0
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@onready var osmo_camera: OsmoCamera = $OsmoCamera
+@onready var ability_system: Node = $AbilitySystemComponent
+# @onready var machine: Machine = $Machine # Uncomment when Machine is added
 
-@export var compose : Compose
+func _ready() -> void:
+	# Initialize things if needed
+	pass
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	move(delta)
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
+func move(delta: float) -> void:
+	# Get input direction (WASD / Arrows)
+	var input_vector: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
+	if input_vector != Vector2.ZERO:
+		# Accelerate
+		velocity = velocity.move_toward(input_vector * speed, acceleration * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+		# Decelerate
+		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	
 	move_and_slide()
