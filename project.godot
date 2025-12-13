@@ -24,7 +24,8 @@ Director="*res://addons/director/director_autoload.gd"
 Memento="*res://addons/memento/memento_autoload.gd"
 Options="*res://addons/options/options_autoload.gd"
 Osmo="*res://addons/osmo/osmo_autoload.gd"
+Voyager="*res://addons/voyager/voyager_autoload.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ability_system/plugin.cfg", "res://addons/behavior_tree/plugin.cfg", "res://addons/director/plugin.cfg", "res://addons/gaia/plugin.cfg", "res://addons/inventory_system/plugin.cfg", "res://addons/library/plugin.cfg", "res://addons/memento/plugin.cfg", "res://addons/options/plugin.cfg", "res://addons/osmo/plugin.cfg", "res://addons/quest_system/plugin.cfg", "res://addons/sounds/plugin.cfg", "res://addons/synapse/plugin.cfg")
+enabled=PackedStringArray("res://addons/ability_system/plugin.cfg", "res://addons/behavior_tree/plugin.cfg", "res://addons/director/plugin.cfg", "res://addons/gaia/plugin.cfg", "res://addons/inventory_system/plugin.cfg", "res://addons/library/plugin.cfg", "res://addons/memento/plugin.cfg", "res://addons/options/plugin.cfg", "res://addons/osmo/plugin.cfg", "res://addons/quest_system/plugin.cfg", "res://addons/sounds/plugin.cfg", "res://addons/synapse/plugin.cfg", "res://addons/voyager/plugin.cfg")

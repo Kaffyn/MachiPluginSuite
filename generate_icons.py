@@ -52,6 +52,10 @@ PLUGINS = {
     "library": {
         "color": "#0EA5E9", # Sky
         "icons": ["Library"]
+    },
+    "voyager": {
+        "color": "#8B5CF6", # Violet
+        "icons": ["VoyagerServer", "LevelAnchor"]
     }
 }
 
