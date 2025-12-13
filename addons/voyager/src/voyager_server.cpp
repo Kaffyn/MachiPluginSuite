@@ -20,14 +20,16 @@ void VoyagerServer::_bind_methods() {
 
 VoyagerServer::VoyagerServer() {
     singleton = this;
-    load_thread = memnew(Thread);
+    // load_thread = memnew(Thread);
 }
 
 VoyagerServer::~VoyagerServer() {
+    /*
     if (load_thread->is_started()) {
         load_thread->wait_to_finish();
     }
     memdelete(load_thread);
+    */
     
     if (singleton == this) {
         singleton = nullptr;
