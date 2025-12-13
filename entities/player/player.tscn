@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://wlt02ey1ifnt"]
 
-[ext_resource type="Script" path="res://entities/player/player.gd" id="1_7thud"]
+[ext_resource type="Script" uid="uid://ko6flcoh2dyl" path="res://entities/player/player.gd" id="1_7thud"]
 [ext_resource type="Script" uid="uid://uebkiw51h7cv" path="res://addons/ability_system/nodes/ability_system_component.gd" id="2_abrql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1504"]
@@ -26,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2, 0.6, 1, 1)
 
-[node name="OsmoCamera" type="OsmoCamera" parent="."]
+[node name="OsmoCamera" type="OsmoCamera2D" parent="."]
 
 [node name="AbilitySystemComponent" type="Node" parent="."]
 script = ExtResource("2_abrql")

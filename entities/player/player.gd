@@ -1,12 +1,11 @@
-extends Entity
-class_name Player
+class_name Player extends Entity
 
 @export_category("Attributes")
 @export var speed: float = 200.0
 @export var acceleration: float = 800.0
 @export var friction: float = 1000.0
 
-@onready var osmo_camera: OsmoCamera = $OsmoCamera
+@onready var osmo_camera: OsmoCamera2D = $OsmoCamera
 @onready var ability_system: Node = $AbilitySystemComponent
 # @onready var machine: Machine = $Machine # Uncomment when Machine is added
 

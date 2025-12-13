@@ -1,6 +1,5 @@
-#include "register_types.h"
-
-#include "osmo_camera.h"
+#include "osmo_camera_2d.h"
+#include "osmo_camera_3d.h"
 #include "camera_server.h"
 #include "camera_state.h"
 
@@ -15,7 +14,8 @@ void initialize_osmo_module(ModuleInitializationLevel p_level) {
 		return;
 	}
 
-	ClassDB::register_class<OsmoCamera>();
+	ClassDB::register_class<OsmoCamera2D>();
+	ClassDB::register_class<OsmoCamera3D>();
 	ClassDB::register_class<OsmoServer>();
 	ClassDB::register_class<CameraState>();
 }

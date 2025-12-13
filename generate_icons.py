@@ -27,7 +27,7 @@ PLUGINS = {
     },
     "synapse": {
         "color": "#EC4899", # Pink
-        "icons": ["Synapse", "Impulse", "SynapseTrigger", "VisualSensor", "AuditorySensor"]
+        "icons": ["Synapse", "Impulse", "SynapseTrigger", "SynapseSensor2D", "SynapseSensor3D"]
     },
     "director": {
         "color": "#6366F1", # Indigo
@@ -47,7 +47,7 @@ PLUGINS = {
     },
     "osmo": {
         "color": "#F43F5E", # Rose
-        "icons": ["OsmoCamera", "CameraServer", "CameraState", "CameraZone"]
+        "icons": ["OsmoCamera2D", "OsmoCamera3D", "OsmoServer", "CameraState", "CameraZone"]
     },
     "library": {
         "color": "#0EA5E9", # Sky

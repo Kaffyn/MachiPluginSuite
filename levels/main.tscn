@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7x8y9z0a1b2"]
+[gd_scene load_steps=6 format=3 uid="uid://c7x80a00a1b2"]
 
-[ext_resource type="Script" path="res://levels/main.gd" id="1_2262g"]
+[ext_resource type="Script" uid="uid://d2i2l1jtbmdp4" path="res://levels/main.gd" id="1_2262g"]
 [ext_resource type="PackedScene" uid="uid://wlt02ey1ifnt" path="res://entities/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://c8j1k2l3m4n5" path="res://entities/enemies/slime/slime.tscn" id="3_slime"]
-[ext_resource type="PackedScene" uid="uid://v5x6y7z8a9b0" path="res://entities/npcs/villager/villager.tscn" id="4_villager"]
+[ext_resource type="PackedScene" uid="uid://v5x6y708bab0" path="res://entities/npcs/villager/villager.tscn" id="4_villager"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hub"]
 vertices = PackedVector2Array(1143, 638, 9, 642, 11, 10, 1146, 13)
@@ -24,7 +24,6 @@ z_index = 1
 format = 2
 
 [node name="GaiaDayNight" type="CanvasModulate" parent="Environment"]
-color = Color(1, 1, 1, 1)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_hub")

@@ -13,17 +13,25 @@ using namespace godot;
 
 static WorldMemory *world_memory_singleton = nullptr;
 
+#include "synapse_sensor_2d.h"
+#include "synapse_sensor_3d.h"
+
 void initialize_synapse_module(ModuleInitializationLevel p_level) {
-	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE) {
-        ClassDB::register_class<Impulse>();
-        ClassDB::register_class<Condition>();
-        ClassDB::register_class<WorldMemory>();
-        ClassDB::register_class<Synapse>();
-        
-        // Register Singleton
-        world_memory_singleton = memnew(WorldMemory);
-        Engine::get_singleton()->register_singleton("WorldMemory", WorldMemory::get_singleton());
+	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+		return;
 	}
+
+	ClassDB::register_class<WorldMemory>();
+	ClassDB::register_class<Impulse>();
+	ClassDB::register_class<Synapse>();
+	ClassDB::register_class<Condition>();
+	
+	ClassDB::register_class<SynapseSensor2D>();
+	ClassDB::register_class<SynapseSensor3D>();
+        
+    // Register Singleton
+    world_memory_singleton = memnew(WorldMemory);
+    Engine::get_singleton()->register_singleton("WorldMemory", WorldMemory::get_singleton());
 }
 
 void uninitialize_synapse_module(ModuleInitializationLevel p_level) {

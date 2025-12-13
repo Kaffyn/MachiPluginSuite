@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Machi Plugin Suite"
+run/main_scene="uid://c7x80a00a1b2"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
