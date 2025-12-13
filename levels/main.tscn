@@ -1,9 +1,46 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://c7x8y9z0a1b2"]
 
 [ext_resource type="Script" path="res://levels/main.gd" id="1_2262g"]
-[ext_resource type="PackedScene" path="res://entities/player/player.tscn" id="2_wdj6m"]
+[ext_resource type="PackedScene" uid="uid://wlt02ey1ifnt" path="res://entities/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://c8j1k2l3m4n5" path="res://entities/enemies/slime/slime.tscn" id="3_slime"]
+[ext_resource type="PackedScene" uid="uid://v5x6y7z8a9b0" path="res://entities/npcs/villager/villager.tscn" id="4_villager"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_hub"]
+vertices = PackedVector2Array(1143, 638, 9, 642, 11, 10, 1146, 13)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(11, 10, 9, 642, 1143, 638, 1146, 13)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_2262g")
 
-[node name="Player" parent="." instance=ExtResource("2_wdj6m")]
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Ground" type="TileMap" parent="Environment"]
+format = 2
+
+[node name="Walls" type="TileMap" parent="Environment"]
+z_index = 1
+format = 2
+
+[node name="GaiaDayNight" type="CanvasModulate" parent="Environment"]
+color = Color(1, 1, 1, 1)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_hub")
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Entities" instance=ExtResource("2_player")]
+position = Vector2(576, 324)
+
+[node name="Slime" parent="Entities" instance=ExtResource("3_slime")]
+position = Vector2(800, 200)
+
+[node name="Villager" parent="Entities" instance=ExtResource("4_villager")]
+position = Vector2(300, 300)
+
+[node name="Systems" type="Node2D" parent="."]
+
+[node name="DirectorPlayer" type="DirectorPlayer" parent="Systems"]
