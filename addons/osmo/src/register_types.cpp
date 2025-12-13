@@ -16,7 +16,7 @@ void initialize_osmo_module(ModuleInitializationLevel p_level) {
 	}
 
 	ClassDB::register_class<OsmoCamera>();
-	ClassDB::register_class<CameraServer>();
+	ClassDB::register_class<OsmoServer>();
 	ClassDB::register_class<CameraState>();
 }
 

@@ -12,7 +12,7 @@ void QuestResource::_bind_methods() {
 
     ADD_PROPERTY(PropertyInfo(Variant::STRING, "quest_id"), "set_quest_id", "get_quest_id");
     ADD_PROPERTY(PropertyInfo(Variant::STRING, "title"), "set_title", "get_title");
-    ADD_PROPERTY(PropertyInfo(Variant::STRING, "description", "set_description", "get_description");
+    ADD_PROPERTY(PropertyInfo(Variant::STRING, "description"), "set_description", "get_description");
 }
 
 QuestResource::QuestResource() {

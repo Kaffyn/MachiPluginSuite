@@ -19,6 +19,9 @@ public:
     float zoom_level = 1.0f;
     Vector2 offset = Vector2(0, 0);
 
+    void set_zoom_level(float p_zoom);
+    float get_zoom_level() const;
+
     void set_offset(Vector2 p_offset);
     Vector2 get_offset() const;
 };

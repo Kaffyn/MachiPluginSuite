@@ -4,16 +4,16 @@
 
 using namespace godot;
 
-void CameraServer::_bind_methods() {
-    ClassDB::bind_method(D_METHOD("register_camera", "camera"), &CameraServer::register_camera);
+void OsmoServer::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("register_camera", "camera"), &OsmoServer::register_camera);
 }
 
-CameraServer::CameraServer() {
+OsmoServer::OsmoServer() {
 }
 
-CameraServer::~CameraServer() {
+OsmoServer::~OsmoServer() {
 }
 
-void CameraServer::register_camera(Node* p_camera) {
+void OsmoServer::register_camera(Node* p_camera) {
     // TODO: Implement registration logic
 }

@@ -14,8 +14,8 @@ env:
 
 jobs:
   build:
-    name: Build {{ '${{matrix.os}}' }} ({{ '${{matrix.arch}}' }})
-    runs-on: {{ '${{matrix.os}}' }}
+    name: Build ${{ matrix.os }} (${{ matrix.arch }})
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -42,7 +42,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
       - name: Set up SCons
         run: pip install scons
@@ -50,11 +50,11 @@ jobs:
       - name: Build
         run: |
           cd addons/library
-          scons target={{ '${{matrix.target}}' }} arch={{ '${{matrix.arch}}' }}
+          scons target=${{ matrix.target }} arch=${{ matrix.arch }}
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: {{ '${{env.LIBNAME}}' }}-{{ '${{matrix.os}}' }}-{{ '${{matrix.target}}' }}-{{ '${{matrix.arch}}' }}
+          name: ${{ env.LIBNAME }}-${{ matrix.os }}-${{ matrix.target }}-${{ matrix.arch }}
           path: |
             addons/library/bin/*

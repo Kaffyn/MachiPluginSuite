@@ -5,15 +5,15 @@
 
 using namespace godot;
 
-class CameraServer : public Node {
-	GDCLASS(CameraServer, Node);
+class OsmoServer : public Node {
+	GDCLASS(OsmoServer, Node);
 
 protected:
 	static void _bind_methods();
 
 public:
-	CameraServer();
-	~CameraServer();
+	OsmoServer();
+	~OsmoServer();
 
     void register_camera(Node* p_camera);
 };

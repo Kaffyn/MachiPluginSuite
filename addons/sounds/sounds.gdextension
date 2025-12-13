@@ -5,8 +5,8 @@ compatibility_minimum = "4.1"
 
 [libraries]
 
-windows.debug.x86_64 = "bin/libsounds.windows.template_debug.x86_64.dll"
-windows.release.x86_64 = "bin/libsounds.windows.template_release.x86_64.dll"
+windows.debug.x86_64 = "res://addons/sounds/bin/sounds.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "res://addons/sounds/bin/sounds.windows.template_release.x86_64.dll"
 linux.debug.x86_64 = "bin/libsounds.linux.template_debug.x86_64.so"
 linux.release.x86_64 = "bin/libsounds.linux.template_release.x86_64.so"
 macos.debug = "bin/libsounds.macos.template_debug.framework/libsounds"

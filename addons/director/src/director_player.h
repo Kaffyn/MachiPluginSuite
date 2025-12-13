@@ -2,6 +2,7 @@
 #define DIRECTOR_PLAYER_H
 
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/resource.hpp>
 
 using namespace godot;
 

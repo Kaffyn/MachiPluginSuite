@@ -5,8 +5,8 @@ compatibility_minimum = "4.1"
 
 [libraries]
 
-windows.debug.x86_64 = "bin/libbehavior_tree.windows.template_debug.x86_64.dll"
-windows.release.x86_64 = "bin/libbehavior_tree.windows.template_release.x86_64.dll"
+windows.debug.x86_64 = "res://addons/behavior_tree/bin/behavior_tree.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "res://addons/behavior_tree/bin/behavior_tree.windows.template_release.x86_64.dll"
 linux.debug.x86_64 = "bin/libbehavior_tree.linux.template_debug.x86_64.so"
 linux.release.x86_64 = "bin/libbehavior_tree.linux.template_release.x86_64.so"
 macos.debug = "bin/libbehavior_tree.macos.template_debug.framework/libbehavior_tree"
