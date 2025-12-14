@@ -1,121 +1,76 @@
-# Arquitetura e Plantas Baixas (Blueprints)
+# Godot MBA: Diretrizes para Agentes de IA (GEMINI.md)
 
-> **Contexto AI:** Este arquivo contém a "Planta Baixa" (Interface Pública/Blueprint) de todos os sistemas core do Machi Plugin Suite. Use-o como referência absoluta para assinaturas de métodos e sinais.
+> **META-INSTRUÇÃO:** Este arquivo contém as **REGRAS IMUTÁVEIS** sobre como você (a IA) deve gerar código, documentação e estruturas neste projeto. Leia-o antes de tomar qualquer decisão arquitetural.
 
 ---
 
-## 1. Ability System (GAS)
+## 1. Regras de Documentação (`README.md`)
 
-### `AbilitySystemComponent` (ASC)
+Todo plugin na pasta `addons/` deve possuir um `README.md` que funcione como um **GDD/PDD (Technical Design Document)**.
 
-**Responsabilidade:** Centralizar Habilidades, Efeitos e Atributos.
+- ❌ **Proibido:** Readmes genéricos, curtos ou que apenas dizem "como instalar".
+- ✅ **Obrigatório:** Documentos técnicos completos que explicam **O QUE** o sistema faz e **COMO** ele é arquitetado.
+
+### Estrutura Obrigatória do README
+
+1. **Visão Geral:** O propósito filosófico do componente.
+2. **Arquitetura:** Diagramas ou explicações de fluxo de dados.
+3. **Planta Baixa (Blueprint):** A seção mais importante (veja abaixo).
+
+---
+
+## 2. O Conceito de "Planta Baixa" (Blueprint)
+
+Uma **Planta Baixa** é a especificação técnica dos scripts do plugin. Ela serve como a "interface pública" para que humanos e IAs entendam o sistema sem ler o código fonte.
+
+### Regras da Planta Baixa:
+
+1. **Formato:** Use blocos de código `gdscript`.
+2. **Abrangência:** Deve cobrir **TODOS** os scripts principais (Classes, Singles, Resources).
+3. **Conteúdo:**
+   - `class_name` e `extends`.
+   - **Sinais** (`signal name(args)`).
+   - **Enums** exportados.
+   - **Variáveis** exportadas.
+   - **Métodos Públicos** com tipagem estrita (`func name(arg: Type) -> Ret:`) e comentários breves.
+   - **NÃO** inclua implementação (corpo das funções).
+
+---
+
+## 3. Exemplo de Referência (Golden Sample)
+
+Use este formato como gabarito para gerar novas Plantas Baixas.
+
+### `AbilitySystemComponent` (Blueprint)
 
 ```gdscript
+## AbilitySystemComponent (ASC)
+##
+## Componente central do GAS. Unifica dados e lógica.
+
 @tool
 class_name AbilitySystemComponent extends Node
 
-# Signals
+# ==================== SIGNALS ====================
+
 signal state_changed(old_state: State, new_state: State)
 signal effect_applied(effect: Effect)
-signal effect_removed(effect: Effect)
 signal context_changed(category: String, value: int)
-signal damage_dealt(target: Node, amount: int)
-signal skill_learned(skill: Skill)
 
-# API
+# ==================== PUBLIC API ====================
+
+## Troca o estado atual, respeitando as regras de transição.
 func change_state(new_state: State) -> void:
+
+## Define uma variável de contexto para queries (ex: "Weapon", "Sword").
 func set_context(category: String, value: int) -> void:
-func get_context(category: String) -> int:
+
+## Retorna o valor atual de um atributo (base + modificadores).
 func get_stat(stat_name: String) -> Variant:
-func modify_stat(stat_name: String, amount: float) -> void:
+
+## Aplica um efeito de jogo (dano, cura, buff).
 func apply_effect(effect: Effect) -> void:
-func remove_effect(effect: Effect) -> void:
+
+## Lista todos os estados disponíveis no deck atual.
 func get_all_available_states() -> Array[State]:
-```
-
----
-
-## 2. Yggdrasil (Scene Manager)
-
-### `YggdrasilServer` (C++ Singleton)
-
-**Responsabilidade:** Loading assíncrono e Threading.
-
-```gdscript
-class_name YggdrasilServer extends Node
-
-signal load_completed()
-
-func start_load(path: String) -> void:
-func get_load_progress() -> float:
-func is_loading() -> bool:
-func get_loaded_scene() -> PackedScene:
-```
-
-### `Yggdrasil` (Autoload Wrapper)
-
-**Responsabilidade:** Gerenciar Viewport e Transições.
-
-```gdscript
-extends YggdrasilServer
-
-func setup_frame(target_parent: Node) -> void:
-func change_scene(scene_path: String, params: Dictionary = {}) -> void:
-func get_current_level() -> Node:
-```
-
----
-
-## 3. Synapse (Perception & Events)
-
-### `WorldMemory` (Global State)
-
-**Responsabilidade:** Flags globais e persistência de mundo.
-
-```gdscript
-class_name WorldMemory extends Node
-
-signal flag_changed(id: String, value: Variant)
-
-func set_flag(name: String, value: Variant) -> void:
-func get_flag(name: String, default: Variant = null) -> Variant:
-func has_flag(name: String) -> bool:
-func remove_flag(name: String) -> bool:
-func get_all_flags() -> Dictionary:
-```
-
-### `Synapse` (Trigger)
-
-**Responsabilidade:** Disparar Impulsos.
-
-```gdscript
-class_name Synapse extends Node
-
-@export var impulses: Array[Impulse]
-
-func trigger() -> void:
-```
-
-### `SynapseSensor2D` (Perception)
-
-**Responsabilidade:** Detectar estímulos visuais/auditivos.
-
-```gdscript
-class_name SynapseSensor2D extends Area2D
-
-@export var vision_angle: float = 60.0
-@export var max_range: float = 300.0
-
-func can_see(target: Node2D) -> bool:
-func can_hear(source: Node2D, db: float) -> bool:
-```
-
-### `Impulse` (Command)
-
-**Responsabilidade:** Ação atômica (Command Pattern).
-
-```gdscript
-class_name Impulse extends Resource
-
-func execute(context: Object) -> void:
 ```
