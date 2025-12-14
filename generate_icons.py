@@ -53,9 +53,9 @@ PLUGINS = {
         "color": "#0EA5E9", # Sky
         "icons": ["Library"]
     },
-    "voyager": {
+    "yggdrasil": {
         "color": "#8B5CF6", # Violet
-        "icons": ["VoyagerServer", "LevelAnchor"]
+        "icons": ["YggdrasilServer", "LevelAnchor"]
     }
 }
 

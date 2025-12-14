@@ -1,11 +1,10 @@
-@tool
-class_name AbilitySystemComponent extends Node
-
 ## AbilitySystemComponent (ASC)
 ##
 ## Central component for the Gameplay Ability System.
 ## Unifies data management (Attributes/Stats, Effects) and logic execution (States, Transitions).
-## Replaces previous 'Behavior' and 'Machine' nodes.
+
+@tool
+class_name AbilitySystemComponent extends Node
 
 # ==================== SIGNALS ====================
 
