@@ -51,7 +51,7 @@ def build_plugins():
                             encoding='cp1252', # Windows console uses CP1252
                             errors='replace',
                             check=False, # Don't raise exception on failure, just log it
-                            shell=True
+                            shell=False
                         )
                         
                         log_file.write(result.stdout)

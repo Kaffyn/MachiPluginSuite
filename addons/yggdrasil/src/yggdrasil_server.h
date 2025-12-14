@@ -8,17 +8,17 @@
 
 using namespace godot;
 
-class VoyagerServer : public Node {
-	GDCLASS(VoyagerServer, Node);
+class YggdrasilServer : public Node {
+	GDCLASS(YggdrasilServer, Node);
 
 protected:
 	static void _bind_methods();
 
 public:
-	VoyagerServer();
-	~VoyagerServer();
+	YggdrasilServer();
+	~YggdrasilServer();
 
-    static VoyagerServer *get_singleton();
+    static YggdrasilServer *get_singleton();
 
     // Async Loading API
     void start_load(const String &p_path);
@@ -27,7 +27,7 @@ public:
     Ref<PackedScene> get_loaded_scene();
 
 private:
-    static VoyagerServer *singleton;
+    static YggdrasilServer *singleton;
     
     // Threading
     Thread *load_thread;

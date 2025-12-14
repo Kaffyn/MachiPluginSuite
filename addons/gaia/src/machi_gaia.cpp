@@ -32,6 +32,24 @@ void MachiGaia::set_weather(String type) {
     // TODO: Emit signal or call WeatherController
 }
 
+void MachiGaia::register_sky(Node *p_world_env) {
+    world_env = p_world_env;
+    UtilityFunctions::print("[Gaia] Sky registered.");
+}
+
+void MachiGaia::register_sun(Node *p_directional_light) {
+    sun_light = p_directional_light;
+    UtilityFunctions::print("[Gaia] Sun registered.");
+}
+
+void MachiGaia::_update_environment() {
+    if (sun_light) {
+        double hours = current_time;
+        double angle = (hours / 24.0) * 360.0 - 90.0;
+        sun_light->call("set_rotation_degrees", Vector3(angle, -90.0, 0.0));
+    }
+}
+
 void MachiGaia::_bind_methods() {
     ClassDB::bind_method(D_METHOD("get_time"), &MachiGaia::get_time);
     ClassDB::bind_method(D_METHOD("set_time", "p_time"), &MachiGaia::set_time);
