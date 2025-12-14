@@ -1,11 +1,11 @@
-# 
+# Ability System Component (ASC) - Planta Baixa
 
-## Diretrizes de Planejamento;
+## Visão Geral
 
-- **README:** devem ser sempre GDD's ou PDD's, nada de fazer um readme padrão e curto, a ideia é serem documentos tecninicos e completos para serem usados durante o desenvolvimento
-- **Planta Baixa:** todos os readmes precisam de planta baixa, ou seja, um diagrama de classes, componentes, funcs, variaveis etc, a ideia é ser um esqueleto pronto para ser preenchido
+**Componente:** `AbilitySystemComponent`
+**Responsabilidade:** Centralizar a gestão de Habilidades, Efeitos e Atributos de uma entidade. Unifica dados e lógica.
 
-**Exemplo:**
+## Planta Baixa (Blueprint)
 
 ```gdscript
 ## AbilitySystemComponent (ASC)
@@ -35,16 +35,6 @@ signal skill_learned(skill: Skill)
 @export_group("Data & Config")
 @export var character_sheet: CharacterSheet
 @export var skill_tree: SkillTree
-# Inventory Integration: Loose coupling (optional)
-# We might fetch this via group or external assignment, or keep it if strongly coupled.
-# Ideally, ASC shouldn't know about Backpack directly for strict separation, but for now we follow the previous pattern
-# or interface via signals/method calls if needed.
-# For now, let's omit direct Backpack export to enforce separation, OR keep it as a 'NodePath' or loose reference.
-# Previous 'Behavior' had 'backpack'. Let's see if we can decouple.
-# If 'Backpack' is now in another plugin, we can't type hint it easily without circular dependency risks 
-# if the user hasn't enabled the other plugin.
-# BUT custom types in Godot are global. So `Backpack` class_name is available if the plugin is there.
-# We'll use dynamic access for now or assume it's assigned.
 
 @export_group("Debug")
 @export var blackboard: Dictionary = {} # Runtime data
@@ -93,4 +83,4 @@ func _get_active_effect_context(effect: Effect) -> EffectContext:
 func _trigger_effect_components(ctx: EffectContext, method: String, args: Array = []) -> void:
 
 func get_all_available_states() -> Array[State]:
-````
+```
