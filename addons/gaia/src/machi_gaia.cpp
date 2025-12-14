@@ -20,6 +20,7 @@ MachiGaia *MachiGaia::get_singleton() {
 
 void MachiGaia::set_time(float p_time) {
     current_time = p_time;
+    _update_environment();
 }
 
 float MachiGaia::get_time() const {
@@ -35,6 +36,9 @@ void MachiGaia::_bind_methods() {
     ClassDB::bind_method(D_METHOD("get_time"), &MachiGaia::get_time);
     ClassDB::bind_method(D_METHOD("set_time", "p_time"), &MachiGaia::set_time);
     ClassDB::bind_method(D_METHOD("set_weather", "type"), &MachiGaia::set_weather);
+    
+    ClassDB::bind_method(D_METHOD("register_sky", "p_world_env"), &MachiGaia::register_sky);
+    ClassDB::bind_method(D_METHOD("register_sun", "p_directional_light"), &MachiGaia::register_sun);
     
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "time"), "set_time", "get_time");
 }

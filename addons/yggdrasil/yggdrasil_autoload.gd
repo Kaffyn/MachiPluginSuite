@@ -33,7 +33,9 @@ func change_scene(scene_path: String, params: Dictionary = {}) -> void:
         push_error("Yggdrasil: Failed to load scene: " + scene_path)
         return
         
-    # 2. Memento Save (TODO)
+    # 2. Mimir Save
+    if _current_level_node:
+        Mimir.save_level_state(_current_level_node)
     
     # 3. Swap
     if _current_level_node:
@@ -43,5 +45,6 @@ func change_scene(scene_path: String, params: Dictionary = {}) -> void:
     _viewport.add_child(new_instance)
     _current_level_node = new_instance
     
-    # 4. Memento Load (TODO)
+    # 4. Mimir Load
+    Mimir.load_level_state(_current_level_node)
 

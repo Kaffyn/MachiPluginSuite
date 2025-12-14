@@ -74,3 +74,41 @@ func apply_effect(effect: Effect) -> void:
 ## Lista todos os estados disponíveis no deck atual.
 func get_all_available_states() -> Array[State]:
 ```
+
+---
+
+## 5. Gaia (Environment)
+
+### `MachiGaia` (C++ Singleton)
+**Responsabilidade:** Ciclo Dia/Noite e Clima.
+
+```gdscript
+class_name MachiGaia extends Node
+
+var time: float # 0.0 - 24.0
+
+func set_time(value: float) -> void:
+func set_weather(type: String) -> void:
+func register_sky(world_env: Node) -> void:
+func register_sun(sun: Node) -> void:
+```
+
+---
+
+## 6. Sounds (Audio)
+
+### `MachiAudio2D` / `MachiAudio3D`
+**Responsabilidade:** Tocar SoundCues com variação.
+
+```gdscript
+func play_cue(cue: SoundCue) -> void:
+```
+
+### `SoundCue` (Resource)
+**Responsabilidade:** Container de variação de áudio.
+
+```gdscript
+func get_next_stream() -> AudioStream:
+func get_next_pitch() -> float:
+func get_next_volume() -> float:
+```

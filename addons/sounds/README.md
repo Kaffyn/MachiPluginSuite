@@ -1,31 +1,45 @@
-# Sounds Plugin
+# Sounds (Machi Audio) - Planta Baixa
 
-**A Sinfonia do Caos.**
+## Visão Geral
 
-Gerenciador de Áudio Inteligente e Singleton Nativo.
+**Componente:** `MachiAudio2D` / `MachiAudio3D`
+**Responsabilidade:** Tocar efeitos sonoros variados e espacializados a partir de recursos `SoundCue`, abstraindo a lógica de variação de pitch/volume.
 
-## 🔊 Arquitetura (Refatorada)
+## Arquitetura
 
-### SoundServer (C++ Singleton)
+1.  **SoundCue (Resource):** Container de áudios com regras de randomização.
+2.  **MachiAudio (Nodes):** Wrappers de `AudioStreamPlayer` que sabem tocar `SoundCue`.
+3.  **MachiSoundManager (Global):** Gerencia música e canais globais.
 
-A extensão direta do `AudioServer` da Godot.
+## Planta Baixa (Blueprint)
 
-- Orquestra a reprodução global de áudio.
-- Gerencia canais, prioridades e ducking.
+```gdscript
+## SoundCue (Resource)
+@export var audio_streams: Array[AudioStream]
+@export var pitch_min: float = 1.0
+@export var pitch_max: float = 1.0
+@export var volume_min_db: float = 0.0
+@export var volume_max_db: float = 0.0
 
-### SoundsManager (Node)
+func get_next_stream() -> AudioStream:
+func get_next_pitch() -> float:
+func get_next_volume() -> float:
+```
 
-O braço direito do SoundServer na SceneTree.
+```gdscript
+## MachiAudio2D (Node)
+extends AudioStreamPlayer2D
 
-- **Pooling Inteligente:** Reutiliza `AudioStreamPlayers` para evitar instanciação custosa.
-- **Fire & Forget:** Toque sons com uma única linha de código. `Sounds.play_cue(explosion_cue)`.
-- Gerenciamento de Música de Fundo com Crossfading automático.
+func play_cue(cue: SoundCue) -> void:
+```
 
-### SoundCue (Resource)
+```gdscript
+## MachiAudio3D (Node)
+extends AudioStreamPlayer3D
 
-Definição de evento sonoro complexo.
+func play_cue(cue: SoundCue) -> void:
+```
 
-- **Layers:** (`SoundLayer`) Camadas de áudio mixadas juntas.
-- **Randomizers:** (`SoundRandomizer`) Variação de Pitch/Volume/Stream.
-- **Concurrency:** Limita quantas instâncias desse som tocam ao mesmo tempo.
-- **Sequencing:** Toca sons em sequência ou aleatoriamente.
+## Dependências
+
+-   **Nenhuma:** Sistema independente.

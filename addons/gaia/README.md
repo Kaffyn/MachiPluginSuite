@@ -1,58 +1,49 @@
-# Gaia - Environment System
+# Gaia (Environment) - Planta Baixa
 
-> **"A Vida do Mundo."**
+## Visão Geral
 
-O **Gaia** é o plugin responsável por simular o ambiente vivo do jogo, controlando Ciclo Dia/Noite, Clima (Weather) e Estações (Seasons). Ele foca puramente na estética e simulação ambiental, delegando eventos de gameplay para a **Synapse**.
+**Componente:** `MachiGaia` (Singleton `Gaia`)
+**Responsabilidade:** Simular o ciclo de vida do mundo (Dia/Noite, Clima, Estações) e controlar o ambiente visual (2D/3D).
 
----
+## Arquitetura
 
-## 🌎 Módulos
+1.  **MachiGaia (C++):** Mantém o estado do tempo (`current_time`) e lógica de rotação do sol/cor do céu.
+2.  **Wrappers (GDScript):** `setup_3d` permite injetar `WorldEnvironment` e `DirectionalLight3D` da cena atual.
+3.  **Drivers:**
+    *   **2D:** Controla `CanvasModulate` (Tintura global).
+    *   **3D:** Controla `DirectionalLight3D` (Rotação) e `WorldEnvironment` (Sky).
 
-### 1. Chronos (Day/Night Cycle)
+## Planta Baixa (Blueprint)
 
-Controla a passagem do tempo e a iluminação global **2D**.
+```gdscript
+## MachiGaia (C++ Singleton)
+## Exposed as Autoload 'Gaia'
 
-- **TimeCurve:** Recurso `Curve` para definir a cor do `CanvasModulate` baseada na hora (0.0 a 1.0).
-- **DateSystem:** Dia, Mês, Ano.
-- **Target:** Controla um `CanvasModulate` na cena para tintura global.
+class_name MachiGaia extends Node
 
-### 2. Atmosphere (Weather)
+# Properties
+var time: float # 0.0 to 24.0
 
-Gerenciador de estados climáticos **2D**.
+# Methods
+func set_time(value: float) -> void:
+func get_time() -> float:
+func set_weather(type: String) -> void:
 
-- **WeatherResource:** Define um clima (Chuva, Neve, Tempestade).
-  - `particles: PackedScene` (Prefab com `GPUParticles2D`).
-  - `audio_ambience: AudioStream` (Loop de fundo).
-  - `overlay_shader: ShaderMaterial` (Opcional, ex: Distorção de calor).
+# 3D Registration
+func register_sky(world_env: Node) -> void:
+func register_sun(sun: Node) -> void:
+```
 
-### 3. Seasons (Estações)
+```gdscript
+## Gaia (Autoload Wrapper)
+## Extends MachiGaia to add GDScript helpers.
 
-Macrociclo que altera as probabilidades de clima e a paleta visual do mundo.
+extends MachiGaia
 
-- **`SeasonManager`:** Controla transição suave entre Primavera -> Verão -> Outono -> Inverno.
-- **`SeasonPreset`:** Resource que define as regras visuais e climáticas de cada estação.
+# Helper to connect 3D nodes in one call
+func setup_3d(environment: WorldEnvironment, sun: DirectionalLight3D) -> void:
+```
 
----
+## Dependências
 
-## 🔌 Integrações
-
-### Synapse
-
-O Gaia é um grande emissor de eventos.
-
-- `Gaia.pulse("time", "hour_changed", {hour=8})`
-- `Gaia.pulse("weather", "started", {type="rain"})`
-- **Exemplo:** NPCs vão para casa à noite porque a Behavior Tree deles escuta o evento `hour_changed`.
-
-### Sounds Plugin
-
-- Gaia usa o **Sounds** para tocar ambiências de forma inteligente (crossfade entre chuva e sol), sem implementar lógica de áudio própria.
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Implementar `DayNightCycle` (Node) e `TimeCurve` (Resource).
-- [ ] Implementar `WeatherController` e `WeatherResource`.
-- [ ] Integração com `WorldEnvironment`.
-- [ ] Conectar com Synapse Signals.
+-   **Nenhuma:** Gaia é um provedor de dados/visual.

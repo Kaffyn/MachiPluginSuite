@@ -1,0 +1,22 @@
+[configuration]
+
+entry_symbol = "mimir_library_init"
+compatibility_minimum = "4.1"
+
+[libraries]
+
+windows.debug.x86_64 = "res://addons/mimir/bin/mimir.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "res://addons/mimir/bin/mimir.windows.template_release.x86_64.dll"
+linux.debug.x86_64 = "res://addons/memento/bin/memento.linux.template_debug.x86_64.so"
+linux.release.x86_64 = "res://addons/memento/bin/memento.linux.template_release.x86_64.so"
+macos.debug = "res://addons/memento/bin/memento.macos.template_debug.framework"
+macos.release = "res://addons/memento/bin/memento.macos.template_release.framework"
+android.debug.x86_64 = "res://addons/memento/bin/memento.android.template_debug.x86_64.so"
+android.release.x86_64 = "res://addons/memento/bin/memento.android.template_release.x86_64.so"
+android.debug.arm64 = "res://addons/memento/bin/memento.android.template_debug.arm64.so"
+android.release.arm64 = "res://addons/memento/bin/memento.android.template_release.arm64.so"
+
+[icons]
+SaveInterface = "res://addons/memento/icons/SaveInterface.svg"
+MementoManager = "res://addons/memento/icons/MementoManager.svg"
+SaveProfile = "res://addons/memento/icons/SaveProfile.svg"
