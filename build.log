@@ -1,0 +1,152 @@
+Build Log for Machi Plugin Suite
+===================================
+
+
+--- Building Plugin: behavior_tree ---
+scons: Reading SConscript files ...
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `C:\Users\bruno\Desktop\Games\MachiPluginSuite\godot-cpp\bin\libgodot-cpp.windows.template_debug.x86_64.lib' is up to date.
+Linking Shared Library bin\behavior_tree.windows.template_debug.x86_64.dll ...
+scons: done building targets.
+
+[SUCCESS] Build finished for behavior_tree
+
+--- Building Plugin: director ---
+scons: Reading SConscript files ...
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `C:\Users\bruno\Desktop\Games\MachiPluginSuite\godot-cpp\bin\libgodot-cpp.windows.template_debug.x86_64.lib' is up to date.
+Linking Shared Library bin\director.windows.template_debug.x86_64.dll ...
+scons: done building targets.
+
+[SUCCESS] Build finished for director
+
+--- Building Plugin: gaia ---
+scons: Reading SConscript files ...
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `C:\Users\bruno\Desktop\Games\MachiPluginSuite\godot-cpp\bin\libgodot-cpp.windows.template_debug.x86_64.lib' is up to date.
+Linking Shared Library bin\gaia.windows.template_debug.x86_64.dll ...
+scons: done building targets.
+PermissionError: [WinError 5] Acesso negado: '.sconsign.tmp' -> '.sconsign.dblite':
+  File "C:\Users\bruno\AppData\Roaming\Python\Python314\site-packages\SCons\Script\Main.py", line 1524:
+    _exec_main(parser, values)
+  File "C:\Users\bruno\AppData\Roaming\Python\Python314\site-packages\SCons\Script\Main.py", line 1478:
+    _main(parser)
+  File "C:\Users\bruno\AppData\Roaming\Python\Python314\site-packages\SCons\Script\Main.py", line 1223:
+    nodes = _build_targets(fs, options, targets, target_top)
+  File "C:\Users\bruno\AppData\Roaming\Python\Python314\site-packages\SCons\Script\Main.py", line 1412:
+    jobs.run(postfunc = jobs_postfunc)
+  File "C:\Users\bruno\AppData\Roaming\Python\Python314\site-packages\SCons\Taskmaster\Job.py", line 114:
+    postfunc()
+  File "C:\Users\bruno\AppData\Roaming\Python\Python314\site-packages\SCons\Script\Main.py", line 1409:
+    SCons.SConsign.write()
+  File "C:\Users\bruno\AppData\Roaming\Python\Python314\site-packages\SCons\SConsign.py", line 131:
+    syncmethod()
+  File "C:\Users\bruno\AppData\Roaming\Python\Python314\site-packages\SCons\dblite.py", line 210:
+    self._os_replace(self._tmp_name, self._file_name)
+
+[FAILURE] Build failed for gaia (Exit Code: 2)
+
+--- Building Plugin: inventory_system ---
+scons: Reading SConscript files ...
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `C:\Users\bruno\Desktop\Games\MachiPluginSuite\godot-cpp\bin\libgodot-cpp.windows.template_debug.x86_64.lib' is up to date.
+Linking Shared Library bin\inventory_system.windows.template_debug.x86_64.dll ...
+scons: done building targets.
+
+[SUCCESS] Build finished for inventory_system
+
+--- Building Plugin: library ---
+scons: Reading SConscript files ...
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `C:\Users\bruno\Desktop\Games\MachiPluginSuite\godot-cpp\bin\libgodot-cpp.windows.template_debug.x86_64.lib' is up to date.
+Linking Shared Library bin\library.windows.template_debug.x86_64.dll ...
+scons: done building targets.
+
+[SUCCESS] Build finished for library
+
+--- Building Plugin: mimir ---
+scons: Reading SConscript files ...
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `C:\Users\bruno\Desktop\Games\MachiPluginSuite\godot-cpp\bin\libgodot-cpp.windows.template_debug.x86_64.lib' is up to date.
+Linking Shared Library bin\mimir.windows.template_debug.x86_64.dll ...
+scons: done building targets.
+
+[SUCCESS] Build finished for mimir
+
+--- Building Plugin: options ---
+scons: Reading SConscript files ...
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `C:\Users\bruno\Desktop\Games\MachiPluginSuite\godot-cpp\bin\libgodot-cpp.windows.template_debug.x86_64.lib' is up to date.
+Linking Shared Library bin\options.windows.template_debug.x86_64.dll ...
+scons: done building targets.
+
+[SUCCESS] Build finished for options
+
+--- Building Plugin: osmo ---
+scons: Reading SConscript files ...
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `C:\Users\bruno\Desktop\Games\MachiPluginSuite\godot-cpp\bin\libgodot-cpp.windows.template_debug.x86_64.lib' is up to date.
+Linking Shared Library bin\osmo.windows.template_debug.x86_64.dll ...
+scons: done building targets.
+
+[SUCCESS] Build finished for osmo
+
+--- Building Plugin: quest_system ---
+scons: Reading SConscript files ...
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `C:\Users\bruno\Desktop\Games\MachiPluginSuite\godot-cpp\bin\libgodot-cpp.windows.template_debug.x86_64.lib' is up to date.
+Linking Shared Library bin\quest_system.windows.template_debug.x86_64.dll ...
+scons: done building targets.
+
+[SUCCESS] Build finished for quest_system
+
+--- Building Plugin: sounds ---
+scons: Reading SConscript files ...
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `C:\Users\bruno\Desktop\Games\MachiPluginSuite\godot-cpp\bin\libgodot-cpp.windows.template_debug.x86_64.lib' is up to date.
+Linking Shared Library bin\sounds.windows.template_debug.x86_64.dll ...
+scons: done building targets.
+
+[SUCCESS] Build finished for sounds
+
+--- Building Plugin: synapse ---
+scons: Reading SConscript files ...
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `C:\Users\bruno\Desktop\Games\MachiPluginSuite\godot-cpp\bin\libgodot-cpp.windows.template_debug.x86_64.lib' is up to date.
+Linking Shared Library bin\synapse.windows.template_debug.x86_64.dll ...
+scons: done building targets.
+
+[SUCCESS] Build finished for synapse
+
+--- Building Plugin: yggdrasil ---
+scons: Reading SConscript files ...
+Building for architecture x86_64 on platform windows
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `C:\Users\bruno\Desktop\Games\MachiPluginSuite\godot-cpp\bin\libgodot-cpp.windows.template_debug.x86_64.lib' is up to date.
+Linking Shared Library bin\yggdrasil.windows.template_debug.x86_64.dll ...
+scons: done building targets.
+
+[SUCCESS] Build finished for yggdrasil
