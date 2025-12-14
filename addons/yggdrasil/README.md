@@ -17,6 +17,22 @@ O Yggdrasil opera como uma **Árvore de Mundos**:
 ## Planta Baixa (Blueprint)
 
 ```gdscript
+## YggdrasilServer (C++ Singleton)
+##
+## Low-level resource loader and thread manager.
+## Exposed as singleton 'YggdrasilServer'.
+
+class_name YggdrasilServer extends Node
+
+signal load_completed()
+
+func start_load(path: String) -> void:
+func get_load_progress() -> float:
+func is_loading() -> bool:
+func get_loaded_scene() -> PackedScene:
+```
+
+```gdscript
 ## Yggdrasil (Autoload Wrapper)
 ##
 ## GDScript wrapper for the C++ YggdrasilServer.

@@ -12,6 +12,57 @@ Jogos complexos morrem quando você começa a fazer `if game_manager.boss_is_dea
 2. **Receptores Ouvem:** Portas, luzes e spawners "ouvem" essas flags.
 3. **Impulsos Agem:** Quando uma flag muda (ou um gatilho é ativado), um `Impulse` é disparado.
 
+## Planta Baixa (Blueprints)
+
+```gdscript
+## WorldMemory (WM)
+## Global State Manager. Stores flags and signals changes.
+
+class_name WorldMemory extends Node
+
+signal flag_changed(id: String, value: Variant)
+
+func set_flag(name: String, value: Variant) -> void:
+func get_flag(name: String, default: Variant = null) -> Variant:
+func has_flag(name: String) -> bool:
+func remove_flag(name: String) -> bool:
+func get_all_flags() -> Dictionary:
+```
+
+```gdscript
+## Synapse
+## Generic Trigger Node. Dispatches Impulses when triggered.
+
+class_name Synapse extends Node
+
+@export var impulses: Array[Impulse]
+
+func trigger() -> void:
+    # Executes all assigned impulses
+```
+
+```gdscript
+## SynapseSensor2D
+## Perception Node (Eyes/Ears). Detects stimuli in the world.
+
+class_name SynapseSensor2D extends Area2D
+
+@export var vision_angle: float = 60.0
+@export var max_range: float = 300.0
+
+func can_see(target: Node2D) -> bool:
+func can_hear(source: Node2D, db: float) -> bool:
+```
+
+```gdscript
+## Impulse (Command)
+## Resource that performs an action when triggered.
+
+class_name Impulse extends Resource
+
+func execute(context: Object) -> void: # Virtual
+```
+
 ## 🏛️ Arquitetura
 
 ### 1. WorldMemory (A Memória)
